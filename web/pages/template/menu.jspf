@@ -1,0 +1,53 @@
+
+<body class="">
+    <div class="wrapper ">
+
+
+<div class="sidebar" data-color="purple" data-background-color="" data-image="./assets/img/bg2.png">
+      <div class="logo">
+        <a href="#" class="simple-text logo-normal">
+          <img src="./assets/img/sara/saraazul.png" class="img-fluid" >
+        </a>
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li class="nav-item active  ">
+            <a class="nav-link" href="./dashboard.html">
+              <i class="material-icons">notifications</i>
+              <p>Notificaciones</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="./user.html">
+              <i class="material-icons">cloud_upload</i>
+              <p>Subir</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="./tables.html">
+              <i class="material-icons">folder_special</i>
+              <p>Consultar</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="./typography.html">
+              <i class="material-icons">edit_road</i>
+              <p>Corregir</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="./Home">
+              <i class="material-icons">swap_horiz</i>
+              <p>Cambiar rol</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="./Logout">
+              <i class="material-icons">exit_to_app</i>
+              <p>Salir</p>
+            </a>
+          </li>
+        
+        </ul>
+      </div>
+    </div>

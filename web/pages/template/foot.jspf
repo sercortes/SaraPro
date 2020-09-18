@@ -1,0 +1,36 @@
+   
+<footer class="footer">
+        <div class="container-fluid">
+          <nav class="">
+            <ul>
+              <li class="float-left">
+                <a href="#">
+                  <img src="./assets/img/sara/saranegro.png" class="img-fluid" >
+                </a>
+       
+              </li>
+
+              <li class="">
+                <a href="#">
+                  <img src="./assets/img/sara/senanegro.png" class="img-fluid" >
+                </a>
+              </li>
+
+
+              <li class="float-right">
+                <a href="#" id="fecha" class="pt-5">
+                  <i class="material-icons">laptop</i> 
+                </a>
+              </li>
+
+            </ul>
+          </nav>
+
+          Contacto: sarapro.emails@gmail.com
+
+        </div>
+      </footer>
+
+   
+    </div>
+  </div>
