@@ -22,6 +22,10 @@
     <servlet-mapping>
         <servlet-name>redirect</servlet-name>
         <url-pattern>/Home</url-pattern>
+        <url-pattern>/Menu</url-pattern>
+        <url-pattern>/Upload</url-pattern>
+        <url-pattern>/Search</url-pattern>
+        <url-pattern>/SendAgain</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

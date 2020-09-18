@@ -11,26 +11,26 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item active  ">
-            <a class="nav-link" href="./dashboard.html">
-              <i class="material-icons">notifications</i>
-              <p>Notificaciones</p>
+            <li class="nav-item" id="notification">
+            <a class="nav-link" href="./Menu">
+              <i class="material-icons">home</i>
+              <p>Inicio</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./user.html">
+          <li class="nav-item" id="upload">
+            <a class="nav-link" href="./Upload">
               <i class="material-icons">cloud_upload</i>
               <p>Subir</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./tables.html">
+          <li class="nav-item" id="consultar">
+            <a class="nav-link" href="./Search">
               <i class="material-icons">folder_special</i>
               <p>Consultar</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./typography.html">
+          <li class="nav-item" id="Corregir">
+            <a class="nav-link" href="./SendAgain">
               <i class="material-icons">edit_road</i>
               <p>Corregir</p>
             </a>

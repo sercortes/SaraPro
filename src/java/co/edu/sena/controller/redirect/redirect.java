@@ -27,15 +27,42 @@ public class redirect extends HttpServlet {
         String direccion = request.getServletPath();
         RequestDispatcher rd;
 
-
         switch (direccion) {
             case "/Home":
 
-             rd = request.getRequestDispatcher("/pages/start/home.jsp");
+                rd = request.getRequestDispatcher("/pages/start/home.jsp");
                 rd.forward(request, response);
+                
+                break;
+                
+            case "/Menu":
+
+                rd = request.getRequestDispatcher("/pages/home.jsp");
+                rd.forward(request, response);
+                
+                break;
+                
+             case "/Upload":
+
+                rd = request.getRequestDispatcher("/pages/instructor/upload.jsp");
+                rd.forward(request, response);
+                
+                break;
+                
+             case "/Search":
+
+                rd = request.getRequestDispatcher("/pages/instructor/consultar.jsp");
+                rd.forward(request, response);
+                
                 break;
 
+            case "/SendAgain":
 
+                rd = request.getRequestDispatcher("/pages/instructor/corregir.jsp");
+                rd.forward(request, response);
+                
+                break;
+                
         }
 
     }

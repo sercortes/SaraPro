@@ -11,7 +11,7 @@
                         <div class="col-lg-12 col-md-12">
                             <div class="card">
                                 <div class="card-header card-header-warning">
-                                    <h4 class="card-title">Notificaciones ${idRol}</h4>
+                                    <h4 class="card-title">Subir Producto Virtual ${idRol}</h4>
                                     <p class="card-category"></p>
                                 </div>
                                 <div class="card-body table-responsive">
@@ -42,7 +42,7 @@
 
  <%@include file="/pages/template/foot.jspf"%>
  <%@include file="/pages/template/footer.jspf"%>
- <script>
-     let menu = document.getElementById('notification')
-    menu.classList.add('active')
- </script>
+ 
+ <script src="./assets/js/proyect/instructor/upload.js" charset="utf-8"></script>
+
+
