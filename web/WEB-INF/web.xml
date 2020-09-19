@@ -8,6 +8,14 @@
         <servlet-name>redirect</servlet-name>
         <servlet-class>co.edu.sena.controller.redirect.redirect</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Selects</servlet-name>
+        <servlet-class>co.edu.sena.controller.selects.Selects</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Instructores</servlet-name>
+        <servlet-class>co.edu.sena.controller.selects.Instructores</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Start</servlet-name>
         <url-pattern>/Start</url-pattern>
@@ -26,6 +34,29 @@
         <url-pattern>/Upload</url-pattern>
         <url-pattern>/Search</url-pattern>
         <url-pattern>/SendAgain</url-pattern>
+        <url-pattern>/Notify</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Selects</servlet-name>
+        <url-pattern>/SelectsTipoDocu</url-pattern>
+        <url-pattern>/SelectsCentros</url-pattern>
+        <url-pattern>/SelectsArea</url-pattern>
+        <url-pattern>/getNotificationsCorre</url-pattern>
+        <url-pattern>/getNotificationsGeneral</url-pattern>
+        <url-pattern>/getEvaluation</url-pattern>
+        <url-pattern>/getItemsList</url-pattern>
+        <url-pattern>/getItemsCalificados</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Instructores</servlet-name>
+        <url-pattern>/Instructores</url-pattern>
+        <url-pattern>/Categorias</url-pattern>
+        <url-pattern>/TemasCategorias</url-pattern>
+        <url-pattern>/ProductosVirtualesTecnico</url-pattern>
+        <url-pattern>/ProductosVirtualesPedagogico</url-pattern>
+        <url-pattern>/ProductosVirtualesCoor</url-pattern>
+        <url-pattern>/getAutoresPro</url-pattern>
+        <url-pattern>/updatePassword</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

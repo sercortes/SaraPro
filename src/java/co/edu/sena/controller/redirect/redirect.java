@@ -26,6 +26,7 @@ public class redirect extends HttpServlet {
         
         String direccion = request.getServletPath();
         RequestDispatcher rd;
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 
         switch (direccion) {
             case "/Home":
@@ -62,6 +63,15 @@ public class redirect extends HttpServlet {
                 rd.forward(request, response);
                 
                 break;
+ 
+            case "/Notify":
+
+                rd = request.getRequestDispatcher("/pages/instructor/notificaciones.jsp");
+                rd.forward(request, response);
+                
+                break;
+                        
+                        
                 
         }
 

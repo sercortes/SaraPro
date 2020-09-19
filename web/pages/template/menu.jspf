@@ -11,12 +11,20 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-            <li class="nav-item" id="notification">
+            <li class="nav-item" id="Inicio">
             <a class="nav-link" href="./Menu">
               <i class="material-icons">home</i>
               <p>Inicio</p>
             </a>
           </li>
+          
+            <li class="nav-item" id="notification">
+            <a class="nav-link" href="./Notify">
+              <i class="material-icons">notifications</i>
+              <p>Notificaciones</p>
+            </a>
+          </li>
+          
           <li class="nav-item" id="upload">
             <a class="nav-link" href="./Upload">
               <i class="material-icons">cloud_upload</i>
