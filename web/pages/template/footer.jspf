@@ -4,7 +4,9 @@
 
   <script src="./assets/js/core/jquery-3.5.1.min.js"></script>
   <script src="./assets/js/core/popper.min.js"></script>
+  
   <script src="./assets/js/core/bootstrap-material-design.min.js"></script>
+  
   <script src="./assets/js/plugins/sweetalert2.js"></script>
   <script src="./assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
   <script src="./assets/js/plugins/bootstrap-notify.js"></script>

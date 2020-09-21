@@ -15,9 +15,7 @@ $(function(){
         type: 'POST',
         url:'./Categorias',
         success: function(data){
-            
-            console.log(data)
-            
+
             let categoria = document.getElementById('SelectCategoria');
             let str = `<option value="">Seleccionar...</option>`
             
