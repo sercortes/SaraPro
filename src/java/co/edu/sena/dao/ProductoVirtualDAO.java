@@ -200,6 +200,44 @@ public class ProductoVirtualDAO {
             return null;
         }
     }
+      
+      public ArrayList<ProductoVirtualDTO> getProductos() {
+        try {
+           String sql = "SELECT PV.*, V.*, f.id_area_centro, count(*) FROM producto_virtual PV "
+                    + "INNER JOIN version V ON PV.id_p_virtual=V.id_p_virtual "
+                    + "INNER JOIN autor a ON V.id_version = a.id_version "
+                    + "INNER JOIN funcionario f ON a.id_funcionario=f.id_funcionario "
+                    + "INNER JOIN area_centro ac ON f.id_area_centro = ac.id_area_centro "
+                   + "INNER JOIN centro c ON ac.id_centro = c.id_centro "
+                    + "WHERE V.id_estado = 6 GROUP BY(PV.id_p_virtual)";
+                         
+            ps = conn.prepareStatement(sql);
+            
+            rs = ps.executeQuery();
+            List<ProductoVirtualDTO> list = new ArrayList<ProductoVirtualDTO>();
+            ProductoVirtualDTO productoVirtualDTO;
+            VersioDTO versioDTO;
+            while (rs.next()) {
+                productoVirtualDTO = new ProductoVirtualDTO();
+                
+                productoVirtualDTO.setNombre(rs.getString("nom_p_virtual"));
+                productoVirtualDTO.setDescripcion(rs.getString("des_p_virtual"));
+                productoVirtualDTO.setPalabrasClave(rs.getString("palabras_clave"));
+                
+                versioDTO = new VersioDTO();
+                versioDTO.setIdVersion(rs.getString("id_version"));
+                versioDTO.setNumVersion(rs.getString("num_version"));
+                versioDTO.setUrl(rs.getString("url_version"));
+                
+                productoVirtualDTO.setVersioDTO(versioDTO);
+                list.add(productoVirtualDTO);
+            }
+            return (ArrayList<ProductoVirtualDTO>) list;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
     
     
      public void CloseAll(){

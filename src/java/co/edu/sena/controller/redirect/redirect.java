@@ -52,7 +52,7 @@ public class redirect extends HttpServlet {
 
             case "/Search":
 
-                rd = request.getRequestDispatcher("/pages/instructor/consultar.jsp");
+                rd = request.getRequestDispatcher("/pages/general/productos.jsp");
                 rd.forward(request, response);
 
                 break;
