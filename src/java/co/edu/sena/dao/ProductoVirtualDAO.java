@@ -12,6 +12,7 @@ import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationExceptio
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,7 @@ public class ProductoVirtualDAO {
         this.conn = conn;
     }
     
-    public int insertReturn(ProductoVirtualDTO ProductoVirtualDTO) {
+    public int insertReturn(ProductoVirtualDTO ProductoVirtualDTO) throws Exception{
         int productoVirtual = 0;
         String sql = "INSERT INTO producto_virtual (nom_p_virtual, des_p_virtual, palabras_clave, id_formato, derechosdeautor)"
                 + "VALUES (?, ?, ?, ?, ?)";
@@ -51,10 +52,10 @@ public class ProductoVirtualDAO {
             return productoVirtual;
         } catch (MySQLIntegrityConstraintViolationException e) {
             System.out.println(e);
-            return 0;
+            throw new Exception();
         } catch (Exception e) {
             System.out.println(e);
-            return 0;
+            throw new Exception();
         }
 
     }

@@ -82,7 +82,7 @@ public class VersionDAO {
         }
     }
     
-    public int insertReturn(VersioDTO versioDTO) {
+    public int insertReturn(VersioDTO versioDTO) throws Exception{
         int productoVirtual = 0;
         String sql = "INSERT INTO version (url_version, inst_instalacion, reqst_instalacion, id_p_virtual)"
                 + "VALUES (?, ?, ?, ?)";
@@ -102,10 +102,10 @@ public class VersionDAO {
             return productoVirtual;
         } catch (MySQLIntegrityConstraintViolationException e) {
             System.out.println(e);
-            return 0;
+            throw new Exception();
         } catch (Exception e) {
             System.out.println(e);
-            return 0;
+            throw new Exception();
         }
 
     }

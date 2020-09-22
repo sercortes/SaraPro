@@ -28,7 +28,7 @@ public class DetallesTemaDAO {
         this.conn = conn;
     }
     
-    public int insertReturn(DetallesTemaDTO detallesTemaDTO) {
+    public int insertReturn(DetallesTemaDTO detallesTemaDTO) throws Exception{
         int productoVirtual = 0;
         String sql = "INSERT INTO detalles_tema (id_tema, id_p_virtual, tipo_tema)"
                 + "VALUES (?, ?, ?)";
@@ -47,10 +47,10 @@ public class DetallesTemaDAO {
             return productoVirtual;
         } catch (MySQLIntegrityConstraintViolationException e) {
             System.out.println(e);
-            return 0;
+            throw new Exception();
         } catch (Exception e) {
             System.out.println(e);
-            return 0;
+            throw new Exception();
         }
 
     }

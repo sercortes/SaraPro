@@ -2,12 +2,11 @@ $(function(){
     
     let menu = document.getElementById('upload')
     menu.classList.add('active')
-    
+   
     autores()
     categorias()
     
 })
-
 
     function categorias(){
         
@@ -27,7 +26,8 @@ $(function(){
             
         },
         error: function(data){
-            console.log(data)
+            console.log('sergio')
+            window.location.replace("./RedirectRol")
         }
     })
     

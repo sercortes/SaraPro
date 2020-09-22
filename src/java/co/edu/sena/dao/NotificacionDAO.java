@@ -62,7 +62,7 @@ public class NotificacionDAO {
 
     }
     
-    public int insertReturn(NotificacionDTO notificacionDTO) {
+    public int insertReturn(NotificacionDTO notificacionDTO) throws Exception{
         int productoVirtual = 0;
         String sql = "INSERT INTO notificacion (conte_notificacion, ides_proceso, id_tipo_notificacion, "
                 + "id_funcionario, estado)"
@@ -84,10 +84,10 @@ public class NotificacionDAO {
             return productoVirtual;
         } catch (MySQLIntegrityConstraintViolationException e) {
             System.out.println(e);
-            return 0;
+            throw new Exception();
         } catch (Exception e) {
             System.out.println(e);
-            return 0;
+            throw new Exception();
         }
 
     }

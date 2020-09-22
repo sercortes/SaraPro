@@ -13,7 +13,7 @@ $(document).on('click', '#send', function (e) {
         }
     }
 
-    var form = $('#formProducts')[0]
+    var form = $('#formProduct')[0]
     var data = new FormData(form)
 
     let arregloCategorias = $('select#MultiCategoriass').val()
@@ -23,8 +23,8 @@ $(document).on('click', '#send', function (e) {
     console.log(arregloAutores)
     console.log(arregloCategorias)
 
-//    $('#send').attr('disabled', true);
-//    $('#cargas').addClass('is-active');
+    $('#send').attr('disabled', true);
+    $('#cargas').addClass('is-active');
 
     enviarServlet(data, arregloCategorias, arregloAutores)   
 
@@ -44,34 +44,37 @@ function enviarServlet(data, categorias, autores) {
         cache: false,
         success: function (data) {
 
-            console.log(data)
-            console.log(typeof data)
-            console.log(data == '1')
+         $('#cargas').removeClass('is-active');
+
             if (data == '1') {
                 swal('', 'El producto ha sido creado', "success").then((value) => {
-                             location.reload()
+                           location.reload()
                     });
                
             } else if (data == '0') {
-
-                $.notify(":(", "error");
+            
+               swal('', 'error', "error").then((value) => {
+                         location.reload()
+                    });
+            
             }
-
-            $('#UploadForm').trigger('reset')
-            $('#subir_oas').attr('disabled', false);
-            $('#cargas').removeClass('is-active');
 
         },
         error: function (e) {
 
-            console.log(e)
+            swal('', 'error', "error").then((value) => {
+                             location.reload()
+                    });
 
         }
     });
 
 }
 
-
+function clean(){
+        $('#send').attr('disabled', true);
+        $('#formProduct').trigger('reset')
+}
 
 document.getElementById('formProduct').addEventListener('change', e => {
 

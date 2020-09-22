@@ -1,6 +1,7 @@
 <%@include file="/pages/template/head.jspf"%>
 
 <link rel="stylesheet" type="text/css" href="./assets/css/multi-select.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/css-loader.css">
 
 <%@include file="/pages/template/menu.jspf"%>   
 
@@ -211,6 +212,8 @@
                                 </div>
 
                             </div> <!-- cierree input type file -->
+                            
+                              <div id="cargas" class="loader loader-bouncing"></div>  
 
                         </form>
 

@@ -47,7 +47,7 @@ public class Start extends HttpServlet {
             case "/RedirectRol":
 
                 RedirectRol(request, response);
-
+                
                 break;
                 
             case "/Logout":

@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -19,11 +20,10 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class redirect extends HttpServlet {
 
-   
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String direccion = request.getServletPath();
         RequestDispatcher rd;
         response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
@@ -33,55 +33,52 @@ public class redirect extends HttpServlet {
 
                 rd = request.getRequestDispatcher("/pages/start/home.jsp");
                 rd.forward(request, response);
-                
+
                 break;
-                
+
             case "/Menu":
 
                 rd = request.getRequestDispatcher("/pages/home.jsp");
                 rd.forward(request, response);
-                
+
                 break;
-                
-             case "/Upload":
+
+            case "/Upload":
 
                 rd = request.getRequestDispatcher("/pages/instructor/upload.jsp");
                 rd.forward(request, response);
-                
+
                 break;
-                
-             case "/Search":
+
+            case "/Search":
 
                 rd = request.getRequestDispatcher("/pages/instructor/consultar.jsp");
                 rd.forward(request, response);
-                
+
                 break;
 
             case "/SendAgain":
 
                 rd = request.getRequestDispatcher("/pages/instructor/corregir.jsp");
                 rd.forward(request, response);
-                
+
                 break;
- 
+
             case "/Notify":
 
                 rd = request.getRequestDispatcher("/pages/instructor/notificaciones.jsp");
                 rd.forward(request, response);
-                
+
                 break;
-                        
-                        
-                
+
         }
 
     }
 
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-     
+
     }
 
     /**
@@ -93,5 +90,23 @@ public class redirect extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    public static void checkSession(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        request.setCharacterEncoding("UTF-8");
+
+        HttpSession sesion = request.getSession();
+
+        if (sesion.getAttribute("idRol") == null) {
+
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+
+        } else {
+
+            request.getRequestDispatcher("pages/home.jsp").forward(request, response);
+
+        }
+
+    }
 
 }

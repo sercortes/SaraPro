@@ -41,11 +41,11 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 public class uploadProduct extends HttpServlet {
 
-   private final String UPLOAD_DIRECTORY = "/home/equipo/servers2/glassfish4/glassfish/domains/domain1/docroot/files/";
-   
-   private final String SERVER_UPLOAD = "http://192.168.0.6:8080/files/";
-   private static final long serialVersionUID = 1L;
-    
+    private final String UPLOAD_DIRECTORY = "/home/equipo/servers2/glassfish4/glassfish/domains/domain1/docroot/files/";
+
+    private final String SERVER_UPLOAD = "http://192.168.0.6:8080/files/";
+    private static final long serialVersionUID = 1L;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -111,13 +111,6 @@ public class uploadProduct extends HttpServlet {
                             case "derechosAutor":
                                 productoVirtualDTO.setDerechosAutor(item.getString("UTF-8"));
                                 break;
-                        }
-                    }
-                }
-
-                for (FileItem item : multiparts) {
-                    if (item.isFormField()) {
-                        switch (item.getFieldName()) {
                             case "instrucciones":
                                 versioDTO.setInstrucionesInstalacion(item.getString("UTF-8"));
                                 break;
@@ -133,27 +126,10 @@ public class uploadProduct extends HttpServlet {
 
                 folder = Integer.toString(idProducto);
 
-                for (FileItem item : multiparts) {
-                    if (!item.isFormField()) {
-
-                        String name = new File(item.getName()).getName();
-                        File tempFile = new File(UPLOAD_DIRECTORY + File.separator + folder + File.separator + name);
-
-                        if (tempFile.exists()) {
-                            tempFile.delete();
-                        }
-
-                        if (tempFile.getParentFile().mkdirs()) {
-                            item.write(tempFile);
-                        }
-
-                        versioDTO.setUrl(SERVER_UPLOAD + folder + File.separator + tempFile.getName());
-                        versioDTO.setIdProductoVirtualFK(Integer.toString(idProducto));
-
-                    }
-                }
+                readFiles(versioDTO, multiparts, folder);
 
                 System.out.println(versioDTO.toString());
+                
                 int idVersion = versionDAO.insertReturn(versioDTO);
 
                 ArrayList<AutorDTO> listaAutores = new ArrayList<>();
@@ -255,6 +231,37 @@ public class uploadProduct extends HttpServlet {
         } else {
             System.out.println("request is invalid");
         }
+
+    }
+
+    public VersioDTO readFiles(VersioDTO versioDTO, List<FileItem> multiparts, String folder) throws Exception {
+
+        for (FileItem item : multiparts) {
+            if (!item.isFormField()) {
+
+                String name = new File(item.getName()).getName();
+                File tempFile = new File(UPLOAD_DIRECTORY + File.separator + folder + File.separator + name);
+
+                if (tempFile.exists()) {
+                    tempFile.delete();
+                }
+
+                if (tempFile.getParentFile().mkdirs()) {
+                    item.write(tempFile);
+                }else{
+                    System.out.println("Error escritura archivo");
+                    System.out.println("ya existe el folder "+folder);
+                    throw new Exception();
+                    // item.write(tempFile);
+                }
+
+                versioDTO.setUrl(SERVER_UPLOAD + folder + File.separator + tempFile.getName());
+                versioDTO.setIdProductoVirtualFK(folder);
+
+            }
+        }
+        
+        return versioDTO;
 
     }
 

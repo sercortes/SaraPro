@@ -32,7 +32,7 @@ public class AutorDAO {
         this.conn = conn;
     }
     
-    public int insertReturn(AutorDTO autorDTO) {
+    public int insertReturn(AutorDTO autorDTO) throws Exception{
         int productoVirtual = 0;
         String sql = "INSERT INTO autor (id_version, id_funcionario, principal)"
                 + "VALUES (?, ?, ?)";
@@ -54,10 +54,10 @@ public class AutorDAO {
             return productoVirtual;
         } catch (MySQLIntegrityConstraintViolationException e) {
             System.out.println(e);
-            return 0;
+            throw new Exception();
         } catch (Exception e) {
             System.out.println(e);
-            return 0;
+            throw new Exception();
         }
 
     }
