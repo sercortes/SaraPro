@@ -47,6 +47,7 @@
         <url-pattern>/Search</url-pattern>
         <url-pattern>/SendAgain</url-pattern>
         <url-pattern>/Notify</url-pattern>
+        <url-pattern>/ChangePass</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Selects</servlet-name>

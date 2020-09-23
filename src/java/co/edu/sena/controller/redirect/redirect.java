@@ -70,6 +70,13 @@ public class redirect extends HttpServlet {
                 rd.forward(request, response);
 
                 break;
+                
+           case "/ChangePass":
+
+                rd = request.getRequestDispatcher("/pages/general/changepass.jsp");
+                rd.forward(request, response);
+
+                break;
 
         }
 
