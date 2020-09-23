@@ -1,5 +1,7 @@
 <%@include file="/pages/template/head.jspf"%>
 
+<%@include file="/pages/template/validation.jspf"%>
+
         <%@include file="/pages/template/menu.jspf"%>   
 
             <%@include file="/pages/template/nav.jspf"%>

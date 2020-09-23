@@ -18,37 +18,47 @@
             </a>
           </li>
           
-            <li class="nav-item" id="notification">
-            <a class="nav-link" href="./Notify">
-              <i class="material-icons">notifications</i>
-              <p>Notificaciones</p>
-            </a>
-          </li>
+          <c:if test="${idRol == 1 }">
+                <li class="nav-item" id="notification">
+                <a class="nav-link" href="./Notify">
+                  <i class="material-icons">notifications</i>
+                  <p>Notificaciones</p>
+                </a>
+                </li>
+          </c:if>
+            
+          <c:if test="${idRol == 1 }">
+                <li class="nav-item" id="upload">
+                  <a class="nav-link" href="./Upload">
+                    <i class="material-icons">cloud_upload</i>
+                    <p>Subir</p>
+                  </a>
+                </li>
+          </c:if>  
           
-          <li class="nav-item" id="upload">
-            <a class="nav-link" href="./Upload">
-              <i class="material-icons">cloud_upload</i>
-              <p>Subir</p>
-            </a>
-          </li>
           <li class="nav-item" id="consultar">
             <a class="nav-link" href="./Search">
               <i class="material-icons">folder_special</i>
               <p>Consultar</p>
             </a>
           </li>
+          
+          <c:if test="${idRol == 1 }">
           <li class="nav-item" id="Corregir">
             <a class="nav-link" href="./SendAgain">
               <i class="material-icons">edit_road</i>
               <p>Corregir</p>
             </a>
           </li>
+          </c:if>
+          
           <li class="nav-item ">
             <a class="nav-link" href="./Home">
               <i class="material-icons">swap_horiz</i>
               <p>Cambiar rol</p>
             </a>
           </li>
+          
           <li class="nav-item ">
             <a class="nav-link" href="./Logout">
               <i class="material-icons">exit_to_app</i>
