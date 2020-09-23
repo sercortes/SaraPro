@@ -97,7 +97,7 @@ public class ProductoVirtualDAO {
         }
     }
    
-    public VersioDTO getIdProductoVirtual(String ver){
+    public VersioDTO getIdProductoVirtual(String ver) throws Exception{
         
 
         String sql = "SELECT id_p_virtual, id_version, num_version, id_estado FROM version WHERE id_version = ? LIMIT 1";
@@ -118,10 +118,10 @@ public class ProductoVirtualDAO {
             return versioDTO;  
         } catch(MySQLIntegrityConstraintViolationException e){
             System.out.println("D"+e+"D");
-            return null;
+            throw new Exception();
         }catch(Exception e){
             System.out.println(e);
-            return null;
+            throw new Exception();
         }
     }
    

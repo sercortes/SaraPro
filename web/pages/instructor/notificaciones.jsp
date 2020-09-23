@@ -16,8 +16,6 @@
                     </div>
                     <div class="card-body table-responsive">
                         
-                      
-
                          <table id="example" class="table table-hover">
                              <thead class="text-warning">
                                  <tr class="">
@@ -34,8 +32,6 @@
                                 </tr>
                             </tfoot>
                         </table>
-                        
-                 
 
                     </div>
                 </div>

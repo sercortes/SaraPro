@@ -61,7 +61,7 @@ public class VersionDAO {
         }
     }
      
-       public boolean updateProductoVirtual(VersioDTO versioDTO) {
+       public boolean updateProductoVirtual(VersioDTO versioDTO) throws Exception{
             try {
            
             String sql = "UPDATE version set url_version = ?, num_version = ?, id_estado = ? "
@@ -78,7 +78,7 @@ public class VersionDAO {
             return estado;
         } catch (Exception ex) {
             System.out.println("Error edit " + ex.getMessage());
-            return false;
+            throw new Exception();
         }
     }
     
