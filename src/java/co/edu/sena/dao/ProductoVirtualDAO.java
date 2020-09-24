@@ -86,6 +86,7 @@ public class ProductoVirtualDAO {
                 versioDTO.setIdVersion(rs.getString("id_version"));
                 versioDTO.setNumVersion(rs.getString("num_version"));
                 versioDTO.setUrl(rs.getString("url_version"));
+                versioDTO.setFechaEnvio(rs.getDate("fecha_envio"));
                 
                 productoVirtualDTO.setVersioDTO(versioDTO);
                 list.add(productoVirtualDTO);
@@ -151,6 +152,7 @@ public class ProductoVirtualDAO {
                 versioDTO.setIdVersion(rs.getString("id_version"));
                 versioDTO.setNumVersion(rs.getString("num_version"));
                 versioDTO.setUrl(rs.getString("url_version"));
+                versioDTO.setFechaEnvio(rs.getDate("fecha_envio"));
                 
                 productoVirtualDTO.setVersioDTO(versioDTO);
                 list.add(productoVirtualDTO);
@@ -228,6 +230,7 @@ public class ProductoVirtualDAO {
                 versioDTO.setIdVersion(rs.getString("id_version"));
                 versioDTO.setNumVersion(rs.getString("num_version"));
                 versioDTO.setUrl(rs.getString("url_version"));
+                versioDTO.setFechaPublicacion(rs.getDate("fecha_publicacion"));
                 
                 productoVirtualDTO.setVersioDTO(versioDTO);
                 list.add(productoVirtualDTO);

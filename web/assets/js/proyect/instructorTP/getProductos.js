@@ -1,18 +1,17 @@
-$(function () {
-
-    let menu = document.getElementById('consultar')
+$(function(){
+    
+    let menu = document.getElementById('getProducts')
     menu.classList.add('active')
     queryProducts()
-
+    
 })
-
 
 function queryProducts() {
 
     $.ajax({
         type: 'POST',
         async: false,
-        url: "./Productos",
+        url: "./ProductosVirtuales",
         success: function (data) {
 
             console.log(data)
@@ -46,7 +45,7 @@ function queryProducts() {
                         }
                     },
                     {"data": "palabrasClave"},
-                    {"data": "versioDTO.fechaPublicacion"},
+                    {"data": "versioDTO.fechaEnvio"},
                      {
                         "mData": "versioDTO",
                         "mRender": function (data, type, row) {

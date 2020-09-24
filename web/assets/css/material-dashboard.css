@@ -1,4 +1,16 @@
+.azul{
+    background-color: #009192b5;
+    color:#fff;
+}
+.gris{
+    background-color: #6c757d;
+    color:#fff;
+}
 
+.naranja{
+    background-color: #fd9811;
+    color:#fff;
+}
 .card {
   font-size: .875rem;
 }

@@ -56,21 +56,9 @@ public class Instructores extends HttpServlet {
                 
                 break;
                 
-            case "/ProductosVirtualesTecnico":
+            case "/ProductosVirtuales":
                 
-                ProductosVirtualesTecnico(request, response);
-                
-                break;
-                
-          case "/ProductosVirtualesPedagogico":
-                
-                ProductosVirtualesPedagogico(request, response);
-                
-                break;
-                
-         case "/ProductosVirtualesCoor":
-                
-                ProductosVirtualesCoor(request, response);
+                ProductosVirtuales(request, response);
                 
                 break;
                 
@@ -157,7 +145,7 @@ public class Instructores extends HttpServlet {
         
     }
 
-    private void ProductosVirtualesTecnico(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void ProductosVirtuales(HttpServletRequest request, HttpServletResponse response) throws IOException {
         
                 request.setCharacterEncoding("UTF-8");
                 
@@ -165,25 +153,17 @@ public class Instructores extends HttpServlet {
                 ProductoVirtualDAO productoVirtualDAO = new ProductoVirtualDAO(conexions.getConnection());
                 
                 String centroCoor = (String) request.getSession().getAttribute("idAreaCentro");
+                int idRol = (Integer) request.getSession().getAttribute("idRol");
+                System.out.println("con ROLL "+idRol);
+                ArrayList<?> lista = null;
                 
-                ArrayList<?> lista = productoVirtualDAO.getProductosVirtualesTecnico(centroCoor);
-
-                productoVirtualDAO.CloseAll();
-                response.setContentType("application/json");
-                new Gson().toJson(lista, response.getWriter());
-        
-    }
-
-    private void ProductosVirtualesPedagogico(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, IOException {
-        
-                request.setCharacterEncoding("UTF-8");
-                
-                ConexionSer conexions = new ConexionSer();
-                ProductoVirtualDAO productoVirtualDAO = new ProductoVirtualDAO(conexions.getConnection());
-                
-                String centroCoor = (String) request.getSession().getAttribute("idAreaCentro");
-                
-                ArrayList<?> lista = productoVirtualDAO.getProductosVirtualesPedagogico(centroCoor);
+                if (idRol == 2) {
+                    lista = productoVirtualDAO.getProductosVirtualesTecnico(centroCoor);
+                }else if(idRol == 3){
+                    lista = productoVirtualDAO.getProductosVirtualesPedagogico(centroCoor);
+                }else if(idRol == 4){
+                    lista = productoVirtualDAO.getProductosVirtualesCoor(centroCoor);
+                }
 
                 productoVirtualDAO.CloseAll();
                 response.setContentType("application/json");

@@ -18,6 +18,15 @@
             </a>
           </li>
           
+           <c:if test="${idRol == 2 || idRol == 3 || idRol == 4}">
+          <li class="nav-item " id="getProducts">
+            <a class="nav-link" href="./getProductos">
+              <i class="material-icons">fact_check</i>
+              <p>Productos pendientes</p>
+            </a>
+          </li>
+          </c:if>
+          
           <c:if test="${idRol == 1 }">
                 <li class="nav-item" id="notification">
                 <a class="nav-link" href="./Notify">

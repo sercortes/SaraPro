@@ -48,6 +48,7 @@
         <url-pattern>/SendAgain</url-pattern>
         <url-pattern>/Notify</url-pattern>
         <url-pattern>/ChangePass</url-pattern>
+        <url-pattern>/getProductos</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Selects</servlet-name>
@@ -65,9 +66,7 @@
         <url-pattern>/Instructores</url-pattern>
         <url-pattern>/Categorias</url-pattern>
         <url-pattern>/TemasCategorias</url-pattern>
-        <url-pattern>/ProductosVirtualesTecnico</url-pattern>
-        <url-pattern>/ProductosVirtualesPedagogico</url-pattern>
-        <url-pattern>/ProductosVirtualesCoor</url-pattern>
+        <url-pattern>/ProductosVirtuales</url-pattern>
         <url-pattern>/getAutoresPro</url-pattern>
         <url-pattern>/updatePassword</url-pattern>
     </servlet-mapping>
