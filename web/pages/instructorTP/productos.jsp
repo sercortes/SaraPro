@@ -15,6 +15,7 @@
                     <div class="card-header card-header-warning">
                         <h4 class="card-title">Evaluar Productos Virtuales</h4>
                         <p class="card-category"></p>
+                        <input type="hidden" value="${idUser}" id="webpagelink">
                     </div>
                     <div class="card-body table-responsive">
 

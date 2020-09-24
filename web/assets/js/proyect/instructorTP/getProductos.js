@@ -8,6 +8,8 @@ $(function(){
 
 function queryProducts() {
 
+  let idUser = document.getElementById('webpagelink').value
+
     $.ajax({
         type: 'POST',
         async: false,
@@ -15,16 +17,22 @@ function queryProducts() {
         success: function (data) {
 
             console.log(data)
-
+            
             let arrayF = []
 
             for (var item of data) {
+                let bande = 0
                 item.autores = []
                 let arra = getAutores(item.versioDTO.idVersion)
                 for (var au of arra) {
                     item.autores.push(au)
+                    if (au.idFuncionario == idUser) {
+                        bande = 1
+                    }
                 }
-                arrayF.push(item)
+                if (bande == 0) {
+                    arrayF.push(item)
+                }
             }
 
             console.log(arrayF)

@@ -154,7 +154,7 @@ public class Instructores extends HttpServlet {
                 
                 String centroCoor = (String) request.getSession().getAttribute("idAreaCentro");
                 int idRol = (Integer) request.getSession().getAttribute("idRol");
-                System.out.println("con ROLL "+idRol);
+                System.out.println("Lista con rol "+idRol);
                 ArrayList<?> lista = null;
                 
                 if (idRol == 2) {
