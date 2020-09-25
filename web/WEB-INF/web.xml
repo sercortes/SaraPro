@@ -28,6 +28,10 @@
         <servlet-name>sendAgain</servlet-name>
         <servlet-class>co.edu.sena.controller.upload.sendAgain</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManagementList</servlet-name>
+        <servlet-class>co.edu.sena.controller.list.ManagementList</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Start</servlet-name>
         <url-pattern>/Start</url-pattern>
@@ -81,6 +85,12 @@
     <servlet-mapping>
         <servlet-name>sendAgain</servlet-name>
         <url-pattern>/sendAgain</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagementList</servlet-name>
+        <url-pattern>/CreateItems</url-pattern>
+        <url-pattern>/getList</url-pattern>
+        <url-pattern>/CreateList</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

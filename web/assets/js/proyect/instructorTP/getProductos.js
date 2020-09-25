@@ -8,17 +8,25 @@ $(function(){
 
 function queryProducts() {
 
-  let idUser = document.getElementById('webpagelink').value
-
     $.ajax({
         type: 'POST',
         async: false,
         url: "./ProductosVirtuales",
         success: function (data) {
+     
+           generateTable(data)
 
-            console.log(data)
-            
-            let arrayF = []
+        }
+
+    })
+
+}
+
+function generateTable(data){
+    
+    let idUser = document.getElementById('webpagelink').value
+    
+     let arrayF = []
 
             for (var item of data) {
                 let bande = 0
@@ -34,8 +42,6 @@ function queryProducts() {
                     arrayF.push(item)
                 }
             }
-
-            console.log(arrayF)
 
             $('#example').dataTable({
                 "processing": true,
@@ -57,7 +63,13 @@ function queryProducts() {
                      {
                         "mData": "versioDTO",
                         "mRender": function (data, type, row) {
-                            return ` <a target="_blank" class="btn btn-info" href="${data.url}" download="">Descargar P.V</a>`;
+                            return `<a target="_blank" class="btn btn-info" href="${data.url}" download="">Descargar P.V</a>`;
+                        }
+                    },
+                    {
+                        "mData": "versioDTO",
+                        "mRender": function (data, type, row) {
+                            return `<button type="button" id="${data.idVersion}" class="btn btn-info btnEvaluar" value="${row.nombre}">Evaluar P.V</button>`;
                         }
                     },
                 ],
@@ -69,11 +81,7 @@ function queryProducts() {
                     "infoFiltered": "(total _MAX_ )"
                 }
             })
-
-        }
-
-    })
-
+    
 }
 
 function getAutores(id) {
@@ -92,7 +100,8 @@ function getAutores(id) {
             datos = data
         },
         error: function (data) {
-            console.log(data)
+           
+           
         }
     })
 

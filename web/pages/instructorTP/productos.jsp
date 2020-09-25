@@ -27,6 +27,7 @@
                                     <th scope="col">Palabras clave</th>
                                     <th scope="col">Fecha Envío</th>
                                     <th scope="col">Opciones</th>
+                                    <th scope="col">Evaluar</th>
                                 </tr>
                             </thead>
                             <tfoot class="gris text-center">
@@ -36,23 +37,26 @@
                                     <th>Palabras clave</th>
                                     <th>Fecha Envío</th>
                                     <th>Opciones</th>
+                                    <th>Evaluar</th>
                                 </tr>
                             </tfoot>
                         </table>
 
                     </div>
+                    
                 </div>
             </div>
 
         </div>
     </div>
 </div>
-
+<%@include file="/pages/instructorTP/modalCalificar.jspf"%>
 
 <%@include file="/pages/template/foot.jspf"%>
 <%@include file="/pages/template/footer.jspf"%>
 
 <script src="./assets/js/plugins/jquery.dataTables.min.js"></script>
 <script src="./assets/js/proyect/instructorTP/getProductos.js" charset="utf-8"></script>
+<script src="./assets/js/proyect/instructorTP/evaluar.js" charset="utf-8"></script>
 
 
