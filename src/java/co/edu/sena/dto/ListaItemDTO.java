@@ -15,6 +15,8 @@ public class ListaItemDTO {
     private String nombre;
     
     private String idListaFK;
+    
+    private String tipo;
 
     public ListaItemDTO() {
     }
@@ -43,11 +45,20 @@ public class ListaItemDTO {
         this.idListaFK = idListaFK;
     }
 
-    @Override
-    public String toString() {
-        return "ListaItemDTO{" + "idItem=" + idItem + ", nombre=" + nombre + ", idListaFK=" + idListaFK + '}';
+    public String getTipo() {
+        return tipo;
     }
 
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    @Override
+    public String toString() {
+        return "ListaItemDTO{" + "idItem=" + idItem + ", nombre=" + nombre + ", idListaFK=" + idListaFK + ", tipo=" + tipo + '}';
+    }
+
+  
     
     
 }

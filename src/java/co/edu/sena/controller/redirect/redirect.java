@@ -84,6 +84,13 @@ public class redirect extends HttpServlet {
                 rd.forward(request, response);
 
                 break;
+                
+           case "/Listas":
+
+                rd = request.getRequestDispatcher("/pages/instructorTP/listas.jsp");
+                rd.forward(request, response);
+
+                break;
 
         }
 

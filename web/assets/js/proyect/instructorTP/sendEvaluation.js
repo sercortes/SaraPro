@@ -101,18 +101,23 @@ function send(data) {
         data,
         success: function (datas) {
 
-            console.log(datas)
-
             $('#cargas').removeClass('is-active');
 
-            if (datas) {
+            if (datas === 1) {
                 swal('', 'Evaluado', "success").then((value) => {
 
                     location.reload()
                 });
                 ;
-            } else {
+            } else if(datas === 2) {
                 swal('', 'Upsss', "error").then((value) => {
+
+                    location.reload()
+
+                });
+                ;
+            }else if(datas === 32) {
+                swal('', 'Producto ya ha sido evaluado', "info").then((value) => {
 
                     location.reload()
 

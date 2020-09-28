@@ -57,6 +57,7 @@
         <url-pattern>/Notify</url-pattern>
         <url-pattern>/ChangePass</url-pattern>
         <url-pattern>/getProductos</url-pattern>
+        <url-pattern>/Listas</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Selects</servlet-name>
@@ -95,6 +96,7 @@
         <url-pattern>/CreateItems</url-pattern>
         <url-pattern>/getList</url-pattern>
         <url-pattern>/CreateList</url-pattern>
+        <url-pattern>/getItems</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Evaluate</servlet-name>

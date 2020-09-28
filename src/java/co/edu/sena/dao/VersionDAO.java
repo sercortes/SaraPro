@@ -6,6 +6,7 @@
 package co.edu.sena.dao;
 
 
+import co.edu.sena.dto.InstructorDTO;
 import co.edu.sena.dto.VersioDTO;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import java.sql.Connection;
@@ -13,6 +14,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import co.edu.sena.util.ConexionSer;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -109,6 +112,27 @@ public class VersionDAO {
         }
 
     }
+    
+     public int getStatus(String idVersion) {
+        try {
+            int id = 0;
+            String sql = "SELECT id_version, id_estado from version where id_version = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, idVersion);
+            
+            rs = ps.executeQuery();
+            List<InstructorDTO> list = new ArrayList<InstructorDTO>();
+            InstructorDTO instructorDTO;
+            while (rs.next()) {
+                id = rs.getInt("id_estado");
+            }
+            return id;
+        } catch (Exception e) {
+            System.out.println(e);
+            return 0;
+        }
+    }
+    
     
       public void CloseAll(){
         ConexionSer.close(conn);

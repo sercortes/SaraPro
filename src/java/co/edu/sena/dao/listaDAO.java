@@ -35,7 +35,7 @@ public class listaDAO {
     }
     
     
-     public int insertReturnTwo(ListaDTO listaDTO) {
+     public int insertReturnTwo(ListaDTO listaDTO) throws Exception{
         int productoVirtual = 0;
         String sql = "INSERT INTO item_lista (des_item_lista, tipo_item) "
                 + "VALUES (?, ?)";
@@ -53,10 +53,10 @@ public class listaDAO {
             return productoVirtual;
         } catch (MySQLIntegrityConstraintViolationException e) {
             System.out.println(e);
-            return 0;
+            throw new Exception();
         } catch (Exception e) {
             System.out.println(e);
-            return 0;
+            throw new Exception();
         }
         
     }
@@ -119,7 +119,7 @@ public class listaDAO {
         }
     }
     
-         public int insertListaGeneral(ListaDTO listaDTO) {
+         public int insertListaGeneral(ListaDTO listaDTO) throws Exception{
         int productoVirtual = 0;
         String sql = "INSERT INTO lista_chequeo (nom_lista_chequeo, des_lista_chequeo, Tipo, id_funcionario)"
                 + "VALUES (?, ?, ?, ?)";
@@ -140,15 +140,15 @@ public class listaDAO {
             return productoVirtual;
         } catch (MySQLIntegrityConstraintViolationException e) {
             System.out.println(e);
-            return 0;
+            throw new Exception();
         } catch (Exception e) {
             System.out.println(e);
-            return 0;
+           throw new Exception();
         }
 
     }
          
-          public int insertDetallesLista(ListaItemDTO listaItemDTO) {
+          public int insertDetallesLista(ListaItemDTO listaItemDTO) throws Exception{
         int productoVirtual = 0;
         String sql = "INSERT INTO detalles_lista (id_lista_chequeo, id_item_lista)"
                 + "VALUES (?, ?)";
@@ -167,10 +167,10 @@ public class listaDAO {
             return productoVirtual;
         } catch (MySQLIntegrityConstraintViolationException e) {
             System.out.println(e);
-            return 0;
+            throw new Exception();
         } catch (Exception e) {
             System.out.println(e);
-            return 0;
+            throw new Exception();
         }
 
     }
@@ -224,6 +224,27 @@ public class listaDAO {
         }
     }
     
+      public ArrayList<ListaItemDTO> getItems() {
+        try {
+            String sql = "SELECT id_item_lista, des_item_lista, tipo_item FROM item_lista ORDER BY id_item_lista ASC LIMIT 50";
+            ps = conn.prepareStatement(sql);
+            
+            rs = ps.executeQuery();
+            List<ListaItemDTO> list = new ArrayList<ListaItemDTO>();
+            ListaItemDTO listaDTO;
+            while (rs.next()) {
+                listaDTO = new ListaItemDTO();
+                listaDTO.setIdItem(rs.getString("id_item_lista"));
+                listaDTO.setNombre(rs.getString("des_item_lista"));
+                list.add(listaDTO);
+            }
+            return (ArrayList<ListaItemDTO>) list;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+               
       public void CloseAll(){
         ConexionSer.close(conn);
         ConexionSer.close(ps);

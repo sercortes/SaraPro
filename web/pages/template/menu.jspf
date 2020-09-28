@@ -27,6 +27,15 @@
           </li>
           </c:if>
           
+          <c:if test="${idRol == 2 || idRol == 3 || idRol == 4}">
+          <li class="nav-item " id="getList">
+            <a class="nav-link" href="./Listas">
+              <i class="material-icons">playlist_add_check</i>
+              <p>Lista de chequeo</p>
+            </a>
+          </li>
+          </c:if>
+          
           <c:if test="${idRol == 1 }">
                 <li class="nav-item" id="notification">
                 <a class="nav-link" href="./Notify">
