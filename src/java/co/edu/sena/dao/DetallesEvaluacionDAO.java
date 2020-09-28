@@ -28,7 +28,7 @@ public class DetallesEvaluacionDAO {
         this.conn = conn;
     }
     
-    public boolean insertDetallesEvaluacion(detallesEvaluacionDTO deEvaluacionDTO) {
+    public boolean insertDetallesEvaluacion(detallesEvaluacionDTO deEvaluacionDTO) throws Exception{
         boolean estado = false;
         String sql = "INSERT INTO detalles_evaluacion (valorizacion, observacion, id_detalles_lista, "
                 + "id_evaluacion_general)"
@@ -48,10 +48,10 @@ public class DetallesEvaluacionDAO {
             return estado;
         } catch (MySQLIntegrityConstraintViolationException e) {
             System.out.println(e);
-            return false;
+            throw new Exception();
         } catch (Exception e) {
             System.out.println(e);
-            return false;
+            throw new Exception();
         }
 
     }

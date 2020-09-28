@@ -32,6 +32,10 @@
         <servlet-name>ManagementList</servlet-name>
         <servlet-class>co.edu.sena.controller.list.ManagementList</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Evaluate</servlet-name>
+        <servlet-class>co.edu.sena.controller.evaluateTC.Evaluate</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Start</servlet-name>
         <url-pattern>/Start</url-pattern>
@@ -91,6 +95,10 @@
         <url-pattern>/CreateItems</url-pattern>
         <url-pattern>/getList</url-pattern>
         <url-pattern>/CreateList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Evaluate</servlet-name>
+        <url-pattern>/Evaluate</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

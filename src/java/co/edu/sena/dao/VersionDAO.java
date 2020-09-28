@@ -42,7 +42,7 @@ public class VersionDAO {
         }
     }
     
-      public boolean updateStatus(VersioDTO versioDTO) {
+      public boolean updateStatus(VersioDTO versioDTO) throws Exception{
             try {
            
             String sql = "UPDATE version set id_estado = ?, fecha_publicacion = NOW() "
@@ -57,7 +57,7 @@ public class VersionDAO {
             return estado;
         } catch (Exception ex) {
             System.out.println("Error edit " + ex.getMessage());
-            return false;
+            throw new Exception();
         }
     }
      

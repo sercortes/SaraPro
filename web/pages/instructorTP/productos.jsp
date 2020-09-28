@@ -46,6 +46,8 @@
                     
                 </div>
             </div>
+                    
+                    <div id="cargas" class="loader loader-bouncing"></div>  
 
         </div>
     </div>
@@ -58,5 +60,6 @@
 <script src="./assets/js/plugins/jquery.dataTables.min.js"></script>
 <script src="./assets/js/proyect/instructorTP/getProductos.js" charset="utf-8"></script>
 <script src="./assets/js/proyect/instructorTP/evaluar.js" charset="utf-8"></script>
+<script src="./assets/js/proyect/instructorTP/sendEvaluation.js" charset="utf-8"></script>
 
 

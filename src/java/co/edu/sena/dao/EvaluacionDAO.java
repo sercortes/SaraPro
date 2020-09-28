@@ -31,7 +31,7 @@ public class EvaluacionDAO {
         this.conn = conn;
     }
     
-    public int insertReturn(EvaluacionDTO evaluacionDTO) {
+    public int insertReturn(EvaluacionDTO evaluacionDTO) throws Exception{
         int productoVirtual = 0;
         String sql = "INSERT INTO evaluacion_general (observacion, resultado, id_version, "
                 + "id_lista_chequeo, id_funcionario)"
@@ -56,10 +56,10 @@ public class EvaluacionDAO {
             return productoVirtual;
         } catch (MySQLIntegrityConstraintViolationException e) {
             System.out.println(e);
-            return 0;
+            throw new Exception();
         } catch (Exception e) {
             System.out.println(e);
-            return 0;
+            throw new Exception();
         }
 
     }

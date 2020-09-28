@@ -28,7 +28,7 @@ public class DetallesNotificacionDAO {
         this.conn = conn;
     }
    
-     public int insertReturnTwo(DetallesNotificacionDTO detallesNotificacionDTO) {
+     public int insertReturnTwo(DetallesNotificacionDTO detallesNotificacionDTO) throws Exception{
         int productoVirtual = 0;
         String sql = "INSERT INTO detalles_notificacion (id_notificacion, id_funcionario)"
                 + "VALUES (?, ?)";
@@ -46,10 +46,10 @@ public class DetallesNotificacionDAO {
             return productoVirtual;
         } catch (MySQLIntegrityConstraintViolationException e) {
             System.out.println(e);
-            return 0;
+            throw new Exception();
         } catch (Exception e) {
             System.out.println(e);
-            return 0;
+            throw new Exception();
         }
 
     }
