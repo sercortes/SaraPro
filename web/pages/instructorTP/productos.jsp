@@ -19,7 +19,7 @@
                     </div>
                     <div class="card-body table-responsive">
 
-                        <table id="example" class="table table-striped table-bordered">
+                        <table id="example" class="table table-hover table-borderless">
                             <thead class="gris text-center">
                                 <tr class="">
                                     <th scope="col">Nombre</th>

@@ -98,6 +98,20 @@ public class redirect extends HttpServlet {
                 rd.forward(request, response);
 
                 break;
+                
+            case "/Error500":
+
+                rd = request.getRequestDispatcher("/pages/general/error500.jsp");
+                rd.forward(request, response);
+
+                break;
+                
+            case "/Error404":
+
+                rd = request.getRequestDispatcher("/pages/general/error404.jsp");
+                rd.forward(request, response);
+
+                break;
 
         }
 

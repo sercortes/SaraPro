@@ -63,6 +63,8 @@
         <url-pattern>/getProductos</url-pattern>
         <url-pattern>/Listas</url-pattern>
         <url-pattern>/ProductsCoor</url-pattern>
+        <url-pattern>/Error404</url-pattern>
+        <url-pattern>/Error500</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Selects</servlet-name>
@@ -112,6 +114,14 @@
         <servlet-name>EvaluateCoor</servlet-name>
         <url-pattern>/EvaluateCoor</url-pattern>
     </servlet-mapping>
+        <error-page>
+        <error-code>404</error-code>
+        <location>/Error404</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/Error500</location>
+    </error-page>
     <session-config>
         <session-timeout>
             30

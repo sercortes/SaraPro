@@ -2032,6 +2032,7 @@ pre code {
   max-width: 100%;
   margin-bottom: 1rem;
   background-color: transparent;
+  border: 0.5px solid #ddd;
 }
 
 .table th,
@@ -17004,12 +17005,14 @@ legend {
 }
 
 a {
-  color: #9c27b0;
+  /*color: #9c27b0;*/
+  color: #fff;
 }
 
 a:hover,
 a:focus {
-  color: #89229b;
+      color: #ddd;
+   /*color: #89229b;*/
   text-decoration: none;
 }
 
@@ -17588,7 +17591,7 @@ html[dir="rtl"] .form-check .form-check-sign .check:before {
 .card .card-header-info .card-icon,
 .card .card-header-info:not(.card-header-icon):not(.card-header-text),
 .card .card-header-info .card-text {
-  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 188, 212, 0.4);
+   box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px #6c757d;
 }
 
 .card .card-header-success .card-icon,

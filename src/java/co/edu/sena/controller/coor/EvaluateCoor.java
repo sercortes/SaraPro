@@ -49,7 +49,8 @@ public class EvaluateCoor extends HttpServlet {
             throws ServletException, IOException {
         Gson gson = new Gson();
         request.setCharacterEncoding("UTF-8");
-       HttpSession sesion = request.getSession();
+       response.setContentType("application/json");
+        HttpSession sesion = request.getSession();
 
         int idUser = (Integer) sesion.getAttribute("idUser");
         String comentario = request.getParameter("comentario");
@@ -99,6 +100,16 @@ public class EvaluateCoor extends HttpServlet {
 
         try {
 
+           int estatus = versionDAO.getStatus(idVersion);
+
+            System.out.println("ESTADO " + estatus);
+
+            if (estatus != 5) {
+                System.out.println("ESTADO INCORRECTO");
+                new Gson().toJson(false, response.getWriter());
+                throw new Exception();
+            }
+            
             versionDAO.updateStatus(versioDTO);
 
             int idEvaluacion = evaluacionDAO.insertReturn(evaluacionDTO);

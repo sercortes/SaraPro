@@ -18,8 +18,8 @@
                     </div>
                     <div id="tabla" class="card-body table-responsive">
 
-                        <table id="example" class="table table-hover">
-                            <thead class="text-warning">
+                        <table id="example" class="table table-hover table-striped">
+                            <thead class="gris">
                                 <tr class="">
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Versión</th>
@@ -30,7 +30,7 @@
                                     <th scope="col">Corregir</th>
                                 </tr>
                             </thead>
-                            <tfoot class="text-warning">
+                            <tfoot class="gris">
                                 <tr>
                                     <th>Nombre</th>
                                     <th>Versión</th>

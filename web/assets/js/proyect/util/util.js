@@ -9,7 +9,7 @@ function footer(){
 
     let today = new Date();
     let month = today.toLocaleString('default', { month: 'long' })
-    let srt = today.getDay()+' '+month+' '+today.getFullYear()
+    let srt = today.getDate()+' '+month+' '+today.getFullYear()
     let fecha = document.getElementById('fecha');
     fecha.innerHTML += srt 
     

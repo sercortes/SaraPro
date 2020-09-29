@@ -16,15 +16,15 @@
                     </div>
                     <div class="card-body table-responsive">
                         
-                         <table id="example" class="table table-hover">
-                             <thead class="text-warning">
+                         <table id="example" class="table table-hover table-striped">
+                             <thead class="gris">
                                  <tr class="">
                                     <th scope="col">Fecha</th>
                                     <th scope="col">Estado</th>
                                     <th scope="col">Nombre</th>
                                 </tr>
                             </thead>
-                            <tfoot class="text-warning">
+                            <tfoot class="gris">
                                 <tr>
                                     <th>Fecha</th>
                                     <th>Estado</th>

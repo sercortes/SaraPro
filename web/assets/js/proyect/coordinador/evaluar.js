@@ -99,12 +99,14 @@ $(document).on('click', '#send', function(e){
                 ;
             }
                 
-            }, error: function (error) {
-
-               console.log(error)
-                location.reload()
-               
-            }
+            }, error: (function(){
+                swal('', 'error producto ya evaluado', "error").then((value) => {
+                    
+                    location.reload()
+                    
+                });
+                
+            })
         })
     
 })
