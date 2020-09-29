@@ -111,16 +111,6 @@ public class Start extends HttpServlet {
         }
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
     private void login(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         request.setCharacterEncoding("UTF-8");
@@ -316,6 +306,16 @@ public class Start extends HttpServlet {
     public String generatePassword() {
         return RandomStringUtils.random(10, 0, 20, true, true, "qw32rfHIJk9iQ8Ud7h0X".toCharArray());
     }
+
+        /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
 
   
 }

@@ -31,6 +31,10 @@ $(function () {
         if (item.idRol == 3) {
             color = 'warning'
         }
+         if (item.idRol == 4) {
+            color = 'success'
+        }
+        
         str += `<button type="button" class="btns${item.idRol} btn btn-${color}" value="${item.idRol}">${item.nombreRol}</button>`
     }
 
@@ -50,6 +54,10 @@ $(document).on('click', '.btns2', function () {
 
 $(document).on('click', '.btns3', function () {
     setMyRol(3)
+})
+
+$(document).on('click', '.btns4', function () {
+    setMyRol(4)
 })
 
 

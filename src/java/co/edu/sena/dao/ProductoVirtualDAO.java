@@ -164,7 +164,7 @@ public class ProductoVirtualDAO {
         }
     }
     
-      public ArrayList<ProductoVirtualDTO> getProductosVirtualesCoor(String areaCoor) {
+    public ArrayList<ProductoVirtualDTO> getProductosVirtualesCoor(String areaCoor) {
         try {
            String sql = "SELECT PV.*, V.*, f.id_area_centro, count(*) FROM producto_virtual PV "
                     + "INNER JOIN version V ON PV.id_p_virtual=V.id_p_virtual "
@@ -192,6 +192,7 @@ public class ProductoVirtualDAO {
                 versioDTO.setIdVersion(rs.getString("id_version"));
                 versioDTO.setNumVersion(rs.getString("num_version"));
                 versioDTO.setUrl(rs.getString("url_version"));
+                versioDTO.setFechaEnvio(rs.getDate("fecha_envio"));
                 
                 productoVirtualDTO.setVersioDTO(versioDTO);
                 list.add(productoVirtualDTO);
@@ -202,7 +203,8 @@ public class ProductoVirtualDAO {
             return null;
         }
     }
-      
+     
+    
       public ArrayList<ProductoVirtualDTO> getProductos() {
         try {
            String sql = "SELECT PV.*, V.*, f.id_area_centro, count(*) FROM producto_virtual PV "

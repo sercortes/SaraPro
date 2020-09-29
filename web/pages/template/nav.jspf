@@ -15,6 +15,9 @@
                  <c:if test="${idRol == 3 }">
                       Instructor Pegagógico
                   </c:if>
+                  <c:if test="${idRol == 4 }">
+                      Coordinador
+                  </c:if>
                       
               </a>
           </div>

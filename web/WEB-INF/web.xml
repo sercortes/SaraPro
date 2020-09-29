@@ -36,6 +36,10 @@
         <servlet-name>Evaluate</servlet-name>
         <servlet-class>co.edu.sena.controller.evaluateTC.Evaluate</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EvaluateCoor</servlet-name>
+        <servlet-class>co.edu.sena.controller.coor.EvaluateCoor</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Start</servlet-name>
         <url-pattern>/Start</url-pattern>
@@ -58,6 +62,7 @@
         <url-pattern>/ChangePass</url-pattern>
         <url-pattern>/getProductos</url-pattern>
         <url-pattern>/Listas</url-pattern>
+        <url-pattern>/ProductsCoor</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Selects</servlet-name>
@@ -78,6 +83,7 @@
         <url-pattern>/ProductosVirtuales</url-pattern>
         <url-pattern>/getAutoresPro</url-pattern>
         <url-pattern>/updatePassword</url-pattern>
+        <url-pattern>/ProductosVirtualesCoor</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>uploadProduct</servlet-name>
@@ -101,6 +107,10 @@
     <servlet-mapping>
         <servlet-name>Evaluate</servlet-name>
         <url-pattern>/Evaluate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EvaluateCoor</servlet-name>
+        <url-pattern>/EvaluateCoor</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

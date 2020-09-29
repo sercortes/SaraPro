@@ -74,6 +74,12 @@ public class Instructores extends HttpServlet {
                 
                 break;
                 
+         case "/ProductosVirtualesCoor":
+                
+                ProductosVirtualesCoor(request, response);
+                
+                break;
+                
         }
     }
 
@@ -161,8 +167,6 @@ public class Instructores extends HttpServlet {
                     lista = productoVirtualDAO.getProductosVirtualesTecnico(centroCoor);
                 }else if(idRol == 3){
                     lista = productoVirtualDAO.getProductosVirtualesPedagogico(centroCoor);
-                }else if(idRol == 4){
-                    lista = productoVirtualDAO.getProductosVirtualesCoor(centroCoor);
                 }
 
                 productoVirtualDAO.CloseAll();
@@ -188,7 +192,7 @@ public class Instructores extends HttpServlet {
         
     }
 
-    private void ProductosVirtualesCoor(HttpServletRequest request, HttpServletResponse response) throws IOException {
+     private void ProductosVirtualesCoor(HttpServletRequest request, HttpServletResponse response) throws IOException {
         
                 request.setCharacterEncoding("UTF-8");
                 

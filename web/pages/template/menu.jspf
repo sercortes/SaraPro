@@ -18,7 +18,7 @@
             </a>
           </li>
           
-           <c:if test="${idRol == 2 || idRol == 3 || idRol == 4}">
+           <c:if test="${idRol == 2 || idRol == 3}">
           <li class="nav-item " id="getProducts">
             <a class="nav-link" href="./getProductos">
               <i class="material-icons">fact_check</i>
@@ -27,7 +27,16 @@
           </li>
           </c:if>
           
-          <c:if test="${idRol == 2 || idRol == 3 || idRol == 4}">
+           <c:if test="${idRol == 4}">
+          <li class="nav-item " id="getProductsCoor">
+            <a class="nav-link" href="./ProductsCoor">
+              <i class="material-icons">fact_check</i>
+              <p>Productos pendientes</p>
+            </a>
+          </li>
+          </c:if>
+          
+          <c:if test="${idRol == 2 || idRol == 3}">
           <li class="nav-item " id="getList">
             <a class="nav-link" href="./Listas">
               <i class="material-icons">playlist_add_check</i>
