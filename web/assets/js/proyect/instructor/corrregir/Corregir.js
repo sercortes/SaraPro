@@ -39,7 +39,7 @@ function queryCorrecion() {
                         "mData": "versioDTO","mData": "evaluacionDTO", "mData":"nombre",
                         "mRender": function (data, type, row) {
                             return `<button nombreP="${row.nombre}" evaluador="${row.evaluacionDTO.nomFuncionario}" 
-                                    idlista="${row.evaluacionDTO.idListaChequeoFK}" type="button" id="${row.evaluacionDTO.idEvaluacion}" 
+                                     idLista="${row.evaluacionDTO.idListaChequeoFK}" type="button" id="${row.evaluacionDTO.idEvaluacion}" 
                                     value="${row.versioDTO.idVersion}" class="btn btn-info btnCorre">Corregir</button>`;
                         }
                     },
@@ -75,7 +75,7 @@ function queryCorrecion() {
     
     let nombreP = this.getAttribute('nombreP')
     let evaluador = this.getAttribute('evaluador')
-    let idLista = this.getAttribute('idlista')
+    let idListas = this.getAttribute('idLista')
    
     let data = {
         idEva:idE
@@ -88,10 +88,8 @@ function queryCorrecion() {
         url: "./getEvaluation",
         success: function (data) {
 
-
-        console.log(data)
             tittle(data, nombreP, evaluador)
-            getItemsEvaluation(idLista)
+            getItemsEvaluation(idListas)
             
         },
         error: function (data) {
@@ -109,6 +107,8 @@ function queryCorrecion() {
 
 function getItemsEvaluation(id){
     
+    console.log(id)
+    
     let datos = {
         id:id
     }
@@ -121,7 +121,7 @@ function getItemsEvaluation(id){
         success: function (data) {
 
             console.log(data)
-            if (data <= 0) {
+            if (data.length <= 0) {
                 queryEmphy()
                 return false
             }

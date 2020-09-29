@@ -96,7 +96,8 @@ public class NotificacionDAO {
        public ArrayList<ProductoVirtualDTO> getCorrecionByInstructor(String idInstructor) {
         try {
             String sql = "SELECT V.num_version, V.fecha_envio, V.id_version, V.url_version, V.id_p_virtual, " +
-                "max(E.id_evaluacion_general) 'id_evaluacion', E.fecha_evaluacion, E.id_funcionario, E.id_lista_chequeo, ES.nom_estado, count(*), " +
+                "max(E.id_evaluacion_general) 'id_evaluacion', max(E.fecha_evaluacion) 'E.fecha_evaluacion', "
+              + "max(E.id_funcionario) 'E.id_funcionario', max(E.id_lista_chequeo) 'IdLista', max(ES.nom_estado) 'ES.nom_estado', count(*), " +
                 "(select nom_p_virtual from producto_virtual P WHERE id_p_virtual = V.id_p_virtual) 'Nombre', " +
                 "(select concat(nom_funcionario, ' ', apellidos) from " +
                 "funcionario where id_funcionario = E.id_funcionario) 'Evaluador' " +
@@ -132,7 +133,7 @@ public class NotificacionDAO {
                 evaluacionDTO.setNomFuncionario(rs.getString("Evaluador"));
                 evaluacionDTO.setResultado(rs.getString("ES.nom_estado"));
                 evaluacionDTO.setFechaEvaluacion(rs.getDate("E.fecha_evaluacion"));
-                evaluacionDTO.setIdListaChequeoFK(rs.getString("E.id_lista_chequeo"));
+                evaluacionDTO.setIdListaChequeoFK(rs.getString("IdLista"));
                 
                 productoVirtualDTO.setEvaluacionDTO(evaluacionDTO);
                 productoVirtualDTO.setVersioDTO(versioDTO);
