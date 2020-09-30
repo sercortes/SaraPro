@@ -2,9 +2,13 @@
 
 <link rel="stylesheet" type="text/css" href="./assets/css/css-loader.css">
 
+<%@include file="/pages/template/validation.jspf"%>
+
 <%@include file="/pages/template/menu.jspf"%>   
 
 <%@include file="/pages/template/nav.jspf"%>
+
+<%@include file="/pages/template/validationRols/validationInstructor.jspf"%>
 
 <div class="content">
     <div class="container-fluid">

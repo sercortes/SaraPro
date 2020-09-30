@@ -40,6 +40,14 @@
         <servlet-name>EvaluateCoor</servlet-name>
         <servlet-class>co.edu.sena.controller.coor.EvaluateCoor</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegistrerUsers</servlet-name>
+        <servlet-class>co.edu.sena.controller.admin.RegistrerUsers</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CargeMasivo</servlet-name>
+        <servlet-class>co.edu.sena.controller.admin.CargeMasivo</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Start</servlet-name>
         <url-pattern>/Start</url-pattern>
@@ -63,6 +71,7 @@
         <url-pattern>/getProductos</url-pattern>
         <url-pattern>/Listas</url-pattern>
         <url-pattern>/ProductsCoor</url-pattern>
+        <url-pattern>/addUser</url-pattern>
         <url-pattern>/Error404</url-pattern>
         <url-pattern>/Error500</url-pattern>
     </servlet-mapping>
@@ -114,7 +123,7 @@
         <servlet-name>EvaluateCoor</servlet-name>
         <url-pattern>/EvaluateCoor</url-pattern>
     </servlet-mapping>
-        <error-page>
+    <error-page>
         <error-code>404</error-code>
         <location>/Error404</location>
     </error-page>
@@ -122,6 +131,14 @@
         <error-code>500</error-code>
         <location>/Error500</location>
     </error-page>
+    <servlet-mapping>
+        <servlet-name>RegistrerUsers</servlet-name>
+        <url-pattern>/newUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CargeMasivo</servlet-name>
+        <url-pattern>/RegisterManyUsers</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

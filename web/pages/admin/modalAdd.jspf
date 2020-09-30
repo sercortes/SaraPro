@@ -1,0 +1,125 @@
+
+
+<div class="modal fade" id="modalC" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTittle">Registro masivo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="card-body table-responsive">
+
+
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Centro de formación</label>
+
+                                <select class="form-control select"  id="centroFormacionTwo">
+
+                                </select>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label  class="col-md-12"  for="area" id="redlabel">Red de Conocimiento:</label>
+                                <select class="form-control select" id="reddeconocimientoTwo">
+
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <p>Roles de los usuarios</p>
+                            <div id="tipoUsu">
+                                <div class="form-check">
+                                    <label>
+                                        <input type="checkbox" id="Instructors" name="rols" value="1"> <span class="label-text">Instructor</span>
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label>
+                                        <input type="checkbox" id="tecnicos" name="rols" value="2"> <span class="label-text">Equipo técnico</span>
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label>
+                                        <input type="checkbox" id="pedagos" name="rols" value="3"> <span class="label-text">Equipo Pedagógico</span>
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <label>
+                                        <input type="checkbox" id="coordina" name="rols" value="4"> <span class="label-text">Coordinador</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="container">
+
+                        <div class="row justify-content-md-center">
+
+                            <div class="col-md-auto">
+
+                                <h5 class="pt-3">Adjuntar archivo</h5>
+                                <form id="formMasivo" action="CargaMasiva" method="POST" enctype="multipart/form-data">
+
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="" id="files" name="files" aria-describedby="inputGroupFileAddon04" >
+                                        </div>
+                                    </div>
+                                    
+                                </form>
+                                
+                            </div>
+
+                        </div>
+
+                    </div> <!-- cierree input type file -->
+
+
+
+                    <div class="container pt-3">
+
+                        <div class="row justify-content-md-center">
+
+                            <div class="col-md-auto">
+
+                                <div class="input-group">
+                                    <div class="custom-file float-right">
+
+                                        <button id="botonCargeMas" type="button" class="btn btn-primary">Enviar</button>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div> <!-- cierree input type file -->
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer" id="modalF">  
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+
+        </div>
+    </div>
+</div>

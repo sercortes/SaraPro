@@ -4,6 +4,10 @@
 
 <%@include file="/pages/template/nav.jspf"%>
 
+<%@include file="/pages/template/validation.jspf"%>
+
+<%@include file="/pages/template/validationRols/validationInstructor.jspf"%>
+
 <div class="content">
     <div class="container-fluid">
         <div class="row">

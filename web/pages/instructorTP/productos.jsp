@@ -6,6 +6,8 @@
 
 <%@include file="/pages/template/nav.jspf"%>
 
+<%@include file="/pages/template/validationRols/validationTP.jspf"%>
+
 <div class="content">
     <div class="container-fluid">
         <div class="row">
