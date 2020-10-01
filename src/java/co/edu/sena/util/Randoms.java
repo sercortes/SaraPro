@@ -23,7 +23,7 @@ public class Randoms {
         int random = rand.nextInt(maximo);
         System.out.println("YOUR NUMBER IS "+random);
         System.out.println("");
-        }while(i<60);
+        }while(i<12);
         
     }
     
