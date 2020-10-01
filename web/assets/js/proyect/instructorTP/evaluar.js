@@ -18,6 +18,7 @@ $(document).on('click', '.btnEvaluar', function (e) {
     $('#contenedorCalificacion').hide()
     
     $('#listas').show()
+    $('#crearLista').show()
 
 });
 
@@ -50,9 +51,9 @@ function getListas() {
                 ],
                 "language": {
                     "lengthMenu": "Mostrar _MENU_ x página",
-                    "zeroRecords": "No encontrados",
+                    "zeroRecords": "No hay elementos",
                     "info": "página _PAGE_ de _PAGES_",
-                    "infoEmpty": "No hay elementos",
+                    "infoEmpty": "No hay elementos, cree una lista de chequeo",
                     "infoFiltered": "(total _MAX_ )"
                 }
             })
@@ -77,6 +78,7 @@ $(document).on('click', '.calificar', function (e) {
     $('#listas').DataTable().clear().destroy();
     $('#listas').hide()
     $('#contenedorCalificacion').show()
+    $('#crearLista').hide()
     getItemsEvaluation(idLista)
 
 });
@@ -114,20 +116,29 @@ function drawItems(data) {
 
     for (var item of data) {
 
-        str += `<div class="row pt-4">
-                            <div class="col-md-6">
-                                ${item.nombre}
-                            </div>
-                            <div class="col-md-1">
-                                <div class="pt-2 align-middle">
-                                    <input type="checkbox" aria-label="Checkbox for following text input" value="${item.idListaFK}">
-                                </div>
-                            </div>
-                            <div class="col-md-5">
-                                  <textarea id="${item.idListaFK}" class="form-control" name="descripcion" id="descripcion_oa" rows="3" placeholder="Escriba una observación"></textarea>
-                            </div>
-                        </div>
-                        <hr>`
+//        str += `<div class="row pt-4">
+//                            <div class="col-md-6">
+//                                ${item.nombre}
+//                            </div>
+//                            <div class="col-md-1">
+//                                <div class="pt-2 align-middle">
+//                                    <input type="checkbox" aria-label="Checkbox for following text input" value="${item.idListaFK}">
+//                                </div>
+//                            </div>
+//                            <div class="col-md-5">
+//                                  <textarea id="${item.idListaFK}" class="form-control" name="descripcion" id="descripcion_oa" rows="3" placeholder="Escriba una observación"></textarea>
+//                            </div>
+//                        </div>
+//                        <hr>`
+
+        str += `<tr class="">
+                    <th class="" style="width:45% ;">${item.nombre}</th> 
+                    <th class="text-center" style="width:10% ;"><input type="checkbox" aria-label="Checkbox for following text input" value="${item.idListaFK}" class=""></th>
+                    <th class="" style="width:45% ;"><textarea id="${item.idListaFK}" class="form-control" name="descripcion" id="descripcion_oa" rows="3" placeholder="Escriba una observación"></textarea></th>
+                        </tr>`
+
+
+
     }
 
    

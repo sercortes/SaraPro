@@ -146,8 +146,8 @@ public class RegistrerUsers extends HttpServlet {
                 areaCentroDAO.insertRoles(item, Integer.toString(idUsuario));
             }
             
-//            DJCorreoHTML correoHTML = new DJCorreoHTML();
-//            correoHTML.mandarCorreo(email, "ACCESO A SARA PRO", pass);
+            DJCorreoHTML correoHTML = new DJCorreoHTML();
+            correoHTML.mandarCorreo(email, "ACCESO A SARA PRO", pass);
 
             conn.commit();
             System.out.println("Exito");

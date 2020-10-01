@@ -1,12 +1,12 @@
-$(function(){
-    
+$(function () {
+
     let menu = document.getElementById('addUser')
     menu.classList.add('active')
-    
-      tipoDocumento()
+
+    tipoDocumento()
     getCentros()
     getAreas()
-    
+
 })
 
 $("#boton1").click(function () {
@@ -39,25 +39,25 @@ $("#boton1").click(function () {
     let isTecnico = $('#tecnico').is(":checked")
     let isPedago = $('#pedago').is(":checked")
     let isCoor = $('#coordina').is(":checked")
-    
-    let data = {
-        nombre:nombre,
-        ape:apellido,
-        tipoIden:tipoIdenti,
-        id:numeroIdentificacion,
-        email:email,
-        centro:centroFormacion,
-        area:area,
-        numero:ipSena,
-        cargo:cargo
-    }
-    
-    let roles = []
-    
 
-$("input:checkbox[name=rol]:checked").each(function(){
-    roles.push($(this).val())
-});
+    let data = {
+        nombre: nombre,
+        ape: apellido,
+        tipoIden: tipoIdenti,
+        id: numeroIdentificacion,
+        email: email,
+        centro: centroFormacion,
+        area: area,
+        numero: ipSena,
+        cargo: cargo
+    }
+
+    let roles = []
+
+
+    $("input:checkbox[name=rol]:checked").each(function () {
+        roles.push($(this).val())
+    });
 
 
     console.log(data)
@@ -128,10 +128,10 @@ $("input:checkbox[name=rol]:checked").each(function(){
     }
 
     console.log('enviar')
-    
+
     $('#cargas').addClass('is-active');
     $('#boton1').prop('disabled', true);
-    
+
     $.ajax({
         type: "POST",
         url: "newUser?roles=" + roles,
@@ -140,30 +140,33 @@ $("input:checkbox[name=rol]:checked").each(function(){
 
             if (data === 1) {
                 swal('Ok', 'El usuario ha sido registrado', "success");
-            }else if(data === 2){
+                clean()
+            } else if (data === 2) {
                 swal('Ups', 'Este usuario ya ha sido registrado, correo o documento repetidos', "info");
-            }else if (data === 3) {
+            } else if (data === 3) {
                 swal('Error', 'Error', "error");
+                clean()
             }
-            
-            
-            $('#formProduct').trigger('reset')
-            $('#formMasivo').trigger('reset')
-            $('#cargas').removeClass('is-active');
-            $('#boton1').prop('disabled', false);
+
+            clean()
 
         },
         error: function (e) {
 
-              $('#formProduct').trigger('reset')
-              $('#formMasivo').trigger('reset')
-            $('#cargas').removeClass('is-active');
-            $('#boton1').prop('disabled', false);
+            clean()
 
         }
     });
 
 });
+
+function clean() {
+    $('#formProduct').trigger('reset')
+    $('#formMasivo').trigger('reset')
+    $('#cargas').removeClass('is-active');
+    $('#boton1').prop('disabled', false);
+
+}
 
 function cleanCheck() {
 
@@ -217,12 +220,11 @@ function getCentros() {
             }
 
             categoria.innerHTML = str;
-            
             let centro = document.getElementById('centroFormacionTwo');
-       
+
 
             centro.innerHTML = str;
-            
+
         },
         error: function (data) {
             console.log(data)
@@ -245,11 +247,10 @@ function getAreas() {
             }
 
             categoria.innerHTML = str;
-            
             let areas = document.getElementById('reddeconocimientoTwo');
-        
+
             areas.innerHTML = str;
-            
+
         },
         error: function (data) {
             console.log(data)

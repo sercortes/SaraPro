@@ -63,7 +63,7 @@ public class uploadProduct extends HttpServlet {
         int idUser = (Integer) request.getSession().getAttribute("idUser");
 
         ArrayList<InstructorDTO> autoresEmail = new ArrayList<>();
-//        DJCorreoHTML correoHTML = new DJCorreoHTML();
+        DJCorreoHTML correoHTML = new DJCorreoHTML();
 
         ArrayList<DetallesNotificacionDTO> detallesAutoresNotificacion = new ArrayList<>();
 
@@ -159,10 +159,10 @@ public class uploadProduct extends HttpServlet {
 
                 autoresEmail = autorDAO.getAutoresByVersion(Integer.toString(idVersion));
 
-//                for (InstructorDTO item : autoresEmail) {
-//                    System.out.println(item.toString());
-//                    correoHTML.NotificacionProducto(item.getCorreo(), productoVirtualDTO.getNombre(), "creado", productoVirtualDTO.getNombre());
-//                }
+                for (InstructorDTO item : autoresEmail) {
+                    System.out.println(item.toString());
+                    correoHTML.NotificacionProducto(item.getCorreo(), productoVirtualDTO.getNombre(), "creado", productoVirtualDTO.getNombre());
+                }
 
                 ArrayList<DetallesTemaDTO> listacategorias = new ArrayList<>();
                 DetallesTemaDTO detallesTemaDTO;

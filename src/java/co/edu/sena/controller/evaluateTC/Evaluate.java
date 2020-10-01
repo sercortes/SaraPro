@@ -31,6 +31,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import co.edu.sena.util.ConexionSer;
+import co.edu.sena.util.DJCorreoHTML;
 
 public class Evaluate extends HttpServlet {
 
@@ -89,7 +90,7 @@ public class Evaluate extends HttpServlet {
         AutorDAO autorDAO = new AutorDAO(conn);
         DetallesNotificacionDAO detallesNotificacionDAO = new DetallesNotificacionDAO(conn);
 
-//            DJCorreoHTML dJCorreoHTML = new DJCorreoHTML();
+            DJCorreoHTML dJCorreoHTML = new DJCorreoHTML();
         ArrayList<InstructorDTO> autores = new ArrayList<>();
         ArrayList<DetallesNotificacionDTO> listaDetallesNotify = new ArrayList<>();
 
@@ -146,6 +147,8 @@ public class Evaluate extends HttpServlet {
             System.out.println(notificacionDTO.toString());
 
             autores = autorDAO.getAutoresByVersion(idVersion);
+            
+            String nombrePV = autorDAO.getNamePV(versioDTO.getIdVersion());
 
             for (InstructorDTO item : autores) {
 
@@ -154,7 +157,7 @@ public class Evaluate extends HttpServlet {
                 detallesNotificacionDTO.setIdNotificacionFK(Integer.toString(idNotify));
                 listaDetallesNotify.add(detallesNotificacionDTO);
 
-//                    dJCorreoHTML.NotificacionProducto(item.getCorreo(), nombrePV, notificacionDTO.getDescripcionNotificacion(), nombrePV);
+                dJCorreoHTML.NotificacionProducto(item.getCorreo(), nombrePV, notificacionDTO.getDescripcionNotificacion(), nombrePV);
             }
 
             System.out.println(autores.toString());

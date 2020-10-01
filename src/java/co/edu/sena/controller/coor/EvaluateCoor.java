@@ -63,7 +63,7 @@ public class EvaluateCoor extends HttpServlet {
         ConexionSer conexionSer = new ConexionSer();
         Connection conn = conexionSer.getConnection();
 
-//         DJCorreoHTML dJCorreoHTML = new DJCorreoHTML();
+         DJCorreoHTML dJCorreoHTML = new DJCorreoHTML();
         ArrayList<InstructorDTO> autores = new ArrayList<>();
         ArrayList<DetallesNotificacionDTO> listaDetallesNotify = new ArrayList<>();
 
@@ -134,7 +134,7 @@ public class EvaluateCoor extends HttpServlet {
                 detallesNotificacionDTO.setIdNotificacionFK(Integer.toString(idNoti));
                 listaDetallesNotify.add(detallesNotificacionDTO);
 
-//                dJCorreoHTML.NotificacionProducto(item.getCorreo(), nombrePV, notificacionDTO.getDescripcionNotificacion(), nombrePV);
+                dJCorreoHTML.NotificacionProducto(item.getCorreo(), nombrePV, notificacionDTO.getDescripcionNotificacion(), nombrePV);
             }
 
             System.out.println(autores.toString());

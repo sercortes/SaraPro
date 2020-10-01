@@ -75,8 +75,19 @@ public class sendAgain extends HttpServlet {
                     connection.setAutoCommit(false);
                 }
 
+                //validate someone send correction before
                 productoVirtualDAO = new ProductoVirtualDAO(connection);
                 versionDAO = new VersionDAO(connection);
+
+                int estatus = versionDAO.getStatus(idVer);
+
+                System.out.println("ESTADO " + estatus);
+
+                if (estatus != 9 && estatus != 10) {
+                    System.out.println("Ya ha sido evaluado");
+                    new Gson().toJson(2, response.getWriter());
+                    throw new Exception();
+                }
 
                 versioDTO = productoVirtualDAO.getIdProductoVirtual(idVer);
 
@@ -102,7 +113,7 @@ public class sendAgain extends HttpServlet {
                         }
 
                         item.write(tempFile);
-                        
+
                         versioDTO.setUrl(SERVER_UPLOAD + idProducto + File.separator + tempFile.getName());
                         versioDTO.setNumVersion(Integer.toString(newVersion));
 
@@ -121,7 +132,7 @@ public class sendAgain extends HttpServlet {
 //                boolean estado2 = versionDAO.deleteEvaluations(idVer);
 
                 connection.commit();
-                new Gson().toJson(true, response.getWriter());
+                new Gson().toJson(1, response.getWriter());
 
             } catch (Exception e) {
 
@@ -132,7 +143,7 @@ public class sendAgain extends HttpServlet {
                     Logger.getLogger(sendAgain.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
-                new Gson().toJson(false, response.getWriter());
+                new Gson().toJson(0, response.getWriter());
 
             } finally {
                 versionDAO.CloseAll();

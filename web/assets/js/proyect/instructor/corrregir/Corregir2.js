@@ -12,16 +12,23 @@ function updateServlet(data, ver, verP) {
         cache: false,
         success: function (data) {
 
-            if (data) {
+        console.log(data)
+        
+            if (data === '1') {
                 swal('', 'Actualizado', "success").then((value) => {
                     location.reload()
                 });
                 ;
-            } else {
-                swal('', 'Seleccione un archivo', "error").then((value) => {
+            } else if (data === '20'){
+                swal('', 'El producto ya ha sido evaluado', "info").then((value) => {
                     location.reload()
                 });
                 ;
+            }else if(data === '0'){
+                 swal('', 'Error', "error").then((value) => {
+                    location.reload()
+                });
+                ;   
             }
 
             $('#SendFile').attr('disabled', false);
@@ -29,8 +36,6 @@ function updateServlet(data, ver, verP) {
 
         },
         error: function (e) {
-
-            location.reload()
 
         }
     });

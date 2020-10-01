@@ -15,15 +15,12 @@ $(function(){
         async: false,
         success: function (data) {
          
-         console.log(data)
             for (var item of data.sort()){
                     $('#SelectItems').append(`<option value="${item.idItem}">${item.nombre}</option>`);
             } 
             
         },
         error: function (e) {
-
-            console.log(e)
 
         }
     });

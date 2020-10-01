@@ -1,5 +1,7 @@
 <%@include file="/pages/template/head.jspf"%>
 
+<link rel="stylesheet" type="text/css" href="./assets/css/css-loader.css">
+
 <%@include file="/pages/template/validation.jspf"%>
 
 <%@include file="/pages/template/menu.jspf"%>   

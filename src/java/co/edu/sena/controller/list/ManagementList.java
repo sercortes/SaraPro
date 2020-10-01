@@ -208,8 +208,8 @@ public class ManagementList extends HttpServlet {
         ConexionSer conexions = new ConexionSer();
         listaDAO liDAO = new listaDAO(conexions.getConnection());
 
-        int rol = (Integer) request.getSession().getAttribute("idRol");
-        String centroCoor = (String) request.getSession().getAttribute("idAreaCentro");
+//        int rol = (Integer) request.getSession().getAttribute("idRol");
+//        String centroCoor = (String) request.getSession().getAttribute("idAreaCentro");
 
         ArrayList<ListaItemDTO> listas = liDAO.getItems();
 

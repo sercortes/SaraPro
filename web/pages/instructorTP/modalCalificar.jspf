@@ -31,26 +31,28 @@
                             </tr>
                         </tfoot>
                     </table>
+                    
+                    <a href='./Listas' class="btn btn-success float-right" id="crearLista">Nueva Lista</a>
 
                     <div id="contenedorCalificacion">
-
-                        <div class="row">
-                            <div class="col-md-5">
-                                Descripción del item
-                            </div>
-                            <div class="col-md-2">
-                                <div class="pl-5">
-                                    Cumple
-                                </div>
-                            </div>
-                            <div class="col-md-5">
-                                Observaciones
-                            </div>
-                        </div>
+                        
+                    <table id="dlkjskljs" class="table table-striped table-striped">
+                        <thead class="gris">
+                            <tr class="">
+                                <th scope="col">Descripción del item</th>
+                                <th scope="col">Cumple</th>
+                                <th scope="col">Observaciones</th>
+                            </tr>
+                        </thead>
+                        <thead id="calificacion" class="">
+                       
+                        </thead>
+                    </table>
+                        
                         <input type="hidden" id="idVersion" disabled>
                         <input type="hidden" id="idLista" disabled>
 
-                        <div id="calificacion">
+                        <div id="calificacions">
 
                         </div>
 
