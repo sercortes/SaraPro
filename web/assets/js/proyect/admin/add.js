@@ -147,16 +147,16 @@ $("input:checkbox[name=rol]:checked").each(function(){
             }
             
             
-            $('#formUser').trigger('reset')
-            $('#formUserToo').trigger('reset')
+            $('#formProduct').trigger('reset')
+            $('#formMasivo').trigger('reset')
             $('#cargas').removeClass('is-active');
             $('#boton1').prop('disabled', false);
 
         },
         error: function (e) {
 
-              $('#formUser').trigger('reset')
-              $('#formUserToo').trigger('reset')
+              $('#formProduct').trigger('reset')
+              $('#formMasivo').trigger('reset')
             $('#cargas').removeClass('is-active');
             $('#boton1').prop('disabled', false);
 
