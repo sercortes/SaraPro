@@ -20,12 +20,11 @@
   <link href="assets/css/index.css" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="assets/css/css-loader.css">
   
+  <script src="https://www.google.com/recaptcha/api.js"></script>
+
 </head>
 
 <body class="" id="bodyLogin">
-  <hr class="hiden">
-  <hr class="hiden">
-  <hr class="hiden">
   <div class="container h-100">
           
           
@@ -39,12 +38,12 @@
         </div>
         <div class="card-body table-responsive">
       
-          <form class="form-signin" action="Ingresar?url=user">
+            <form class="form-signin" action="Ingresar?url=user" id="formUp">
             <img class="mb-4 img-fluid" src="assets/img/sara/saraazul.png" alt="" >
             <label for="inputEmail" class="sr-only">Correo</label>
-            <input type="email" id="inputEmail" class="form-control" placeholder="usuario@misena.edu.co" required autofocus>
+            <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="usuario@misena.edu.co" required autofocus>
             <label for="inputPassword" class="sr-only">Contraseña</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="*********" required>
+            <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="*********" required>
             <div class="checkbox mb-3">
               <label>
                
@@ -54,8 +53,12 @@
             <c:if test="${not empty MESSAGE}">
                 <p class="text-danger text-center">${MESSAGE}</p>
             </c:if>
-            <p class="mt-5 mb-3 text-muted text-center">&copy; 2020 Públicado en el Datacenter</p>
-            <a class="text-muted text-center" href="./ForgotPassPage">Olvido Contraseña</a>
+                <p id="mensajes"></p>
+               <div class="g-recaptcha"
+			data-sitekey="6LcCvNMZAAAAABDL_85oti_-zBCfnp1hcfRVlpmW"></div>
+                  
+                <p class="mt-5 mb-3 text-muted text-center" id="datacenter">&copy; 2020 Públicado en el Datacenter</p>
+                <a class="text-muted text-center" href="./ForgotPassPage"><i id="iconss" class="material-icons">help_outline</i> Olvido Contraseña</a>
           </form>
         
 

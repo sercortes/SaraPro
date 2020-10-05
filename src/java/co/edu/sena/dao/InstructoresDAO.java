@@ -276,7 +276,7 @@ public class InstructoresDAO {
         }
     }
    
-   public boolean updateHashPassword(InstructorDTO instructorDTO) {
+   public boolean updateHashPassword(InstructorDTO instructorDTO) throws Exception{
             try {
            
             String sql = "UPDATE funcionario set link = md5(?) "
@@ -293,7 +293,7 @@ public class InstructoresDAO {
             return estado;
         } catch (Exception ex) {
             System.out.println("Error edit " + ex.getMessage());
-            return false;
+            throw new Exception();
         }
     }
    

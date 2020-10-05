@@ -244,7 +244,7 @@ public class DJCorreoHTML {
     }
 
     
-       public void RestartClave(String destinatario, String asunt, String hash, String id) {
+       public void RestartClave(String destinatario, String asunt, String hash, String id) throws Exception{
         String destinatarios = destinatario;
         String asunto = asunt;
         Session session = Session.getInstance(properties, null);
@@ -346,7 +346,8 @@ public class DJCorreoHTML {
             transport.close();
 
         } catch (Exception ex) {
-            ex.printStackTrace();
+            System.out.println(ex);
+            throw new Exception();
         }
     }
 

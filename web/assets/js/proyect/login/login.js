@@ -17,6 +17,11 @@ $(document).on('click', '#buttonEnter', function (e) {
         $('#inputPassword').focus().after("<div class='remove'><font color='red'>Ingrese una clave válida</font><div>")   
         return false
     }
+    
+    if (grecaptcha.getResponse().length == 0) {
+         $('#mensajes').focus().after("<div class='remove'><font color='red'>Complete la captcha</font><div>")   
+        return false
+    }
 
     let data = {
         user: emails,
@@ -29,6 +34,7 @@ $(document).on('click', '#buttonEnter', function (e) {
     $('#buttonEnter').attr('disabled', true)
     $('#cargas').addClass('is-active');
 
+    data.rec = grecaptcha.getResponse()
     enter(data)
 
 })
@@ -41,7 +47,7 @@ function enter(data) {
         data: data,
         success: function (data) {
 
-            if (data !== 0) {
+            if (data != 0 && data != 2) {
 
                 let datos = getRoles(data)
 
@@ -55,7 +61,14 @@ function enter(data) {
 
                 }
 
-            } else {
+            } else if(data == 2){
+                 $('#cargas').removeClass('is-active');
+                swal('', 'Captcha incorrecto', "info").then((value) => {
+
+                    window.location.replace('index.jsp')
+
+                });
+            }else {
 
                 $('#cargas').removeClass('is-active');
                 swal('', 'Usuario o contraseña incorrectos', "info").then((value) => {

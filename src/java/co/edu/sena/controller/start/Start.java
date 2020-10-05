@@ -10,6 +10,7 @@ import co.edu.sena.dto.InstructorDTO;
 import co.edu.sena.dto.RolDTO;
 import co.edu.sena.dao.CategoriaDAO;
 import co.edu.sena.dao.InstructoresDAO;
+import co.edu.sena.dto.Cabecera;
 import com.google.gson.Gson;
 import com.mysql.jdbc.StringUtils;
 import java.io.IOException;
@@ -23,6 +24,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.apache.commons.lang3.RandomStringUtils;
 import co.edu.sena.util.ConexionSer;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -112,47 +117,63 @@ public class Start extends HttpServlet {
 
     private void login(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-        if (request.getParameter("fallsx")!= null) {
-                  request.setCharacterEncoding("UTF-8");
+        if (request.getParameter("fallsx") != null) {
 
-        String correo = request.getParameter("user");
-        String clave = request.getParameter("pass");
+            request.setCharacterEncoding("UTF-8");
+            String correo = request.getParameter("user");
+            String clave = request.getParameter("pass");
+            String gRecaptchaResponse = request.getParameter("rec");
 
-        System.out.println(correo);
-        System.out.println(clave);
+            System.out.println("ClAVE");
+            System.out.println(gRecaptchaResponse);
 
-        HttpSession sesion = request.getSession();
+            Catcha catcha = new Catcha();
+            boolean verify = catcha.verify(gRecaptchaResponse);
+            System.out.println("VERIFICACION");
+            System.out.println(verify);
 
-        ConexionSer conexionSer = new ConexionSer();
-        InstructoresDAO instructoresDAO = new InstructoresDAO(conexionSer.getConnection());
-        InstructorDTO instructorDTO = instructoresDAO.login(correo, clave);
+            if (verify) {
 
-        response.setContentType("application/json");
+                System.out.println(correo);
+                System.out.println(clave);
 
-        if (StringUtils.isNullOrEmpty(instructorDTO.getIdFuncionario())) {
+                HttpSession sesion = request.getSession();
 
-            new Gson().toJson(0, response.getWriter());
+                ConexionSer conexionSer = new ConexionSer();
+                InstructoresDAO instructoresDAO = new InstructoresDAO(conexionSer.getConnection());
+                InstructorDTO instructorDTO = instructoresDAO.login(correo, clave);
+
+                response.setContentType("application/json");
+
+                if (StringUtils.isNullOrEmpty(instructorDTO.getIdFuncionario())) {
+
+                    new Gson().toJson(0, response.getWriter());
+
+                } else {
+
+                    instructorDTO.setIdCentroFK(instructoresDAO.getCentro(instructorDTO.getIdAreaCentroFK()));
+                    sesion.setAttribute("idUser", Integer.parseInt(instructorDTO.getIdFuncionario()));
+                    sesion.setAttribute("nomUser", instructorDTO.getNomFuncionario());
+                    sesion.setAttribute("idCentro", Integer.parseInt(instructorDTO.getIdCentroFK()));
+                    sesion.setAttribute("idAreaCentro", instructorDTO.getIdAreaCentroFK());
+
+                    System.out.println(instructorDTO.toString());
+
+                    new Gson().toJson(instructorDTO.getIdFuncionario(), response.getWriter());
+                }
+
+                instructoresDAO.CloseAll();
+
+            } else {
+                System.out.println("NO PASO EL CATCHA");
+                new Gson().toJson(2, response.getWriter());
+            }
 
         } else {
-
-            instructorDTO.setIdCentroFK(instructoresDAO.getCentro(instructorDTO.getIdAreaCentroFK()));
-            sesion.setAttribute("idUser", Integer.parseInt(instructorDTO.getIdFuncionario()));
-            sesion.setAttribute("nomUser", instructorDTO.getNomFuncionario());
-            sesion.setAttribute("idCentro", Integer.parseInt(instructorDTO.getIdCentroFK()));
-            sesion.setAttribute("idAreaCentro", instructorDTO.getIdAreaCentroFK());
-
-            System.out.println(instructorDTO.toString());
-
-            new Gson().toJson(instructorDTO.getIdFuncionario(), response.getWriter());
-        }
-
-        instructoresDAO.CloseAll();
-
-        }else{
             System.out.println("No evia parametros login");
-             new Gson().toJson(0, response.getWriter());
+            new Gson().toJson(0, response.getWriter());
         }
-  
+
     }
 
     private void getRoles(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -231,37 +252,78 @@ public class Start extends HttpServlet {
     private void ForgotPass(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, IOException {
 
         if (request.getParameter("falls") != null) {
-            
+
             System.out.println("REQUEST recover PASS");
-            
             request.setCharacterEncoding("UTF-8");
+            String gRecaptchaResponse = request.getParameter("rec");
+            System.out.println("ClAVE");
+            System.out.println(gRecaptchaResponse);
+            Catcha catcha = new Catcha();
+            boolean verify = catcha.verify(gRecaptchaResponse);
+            System.out.println("VERIFICACION");
+            System.out.println(verify);
 
-            String iden = request.getParameter("iden");
-            String pass = generatePassword();
+            if (verify) {
 
-            DJCorreoHTML dJCorreoHTML = new DJCorreoHTML();
+                ConexionSer conexionSer = new ConexionSer();
+                Connection conn = null;
 
-            InstructorDTO instructorDTO = new InstructorDTO();
-            instructorDTO.setNumDocumento(iden);
-            instructorDTO.setLinkHash(pass);
+                InstructoresDAO instructoresDAO = null;
 
-            System.out.println(instructorDTO.toString());
+                try {
 
-            ConexionSer conexions = new ConexionSer();
-            InstructoresDAO instructoresDAO = new InstructoresDAO(conexions.getConnection());
-            boolean estado = instructoresDAO.updateHashPassword(instructorDTO);
+                    String iden = request.getParameter("iden");
+                    String pass = generatePassword();
 
-            String correo = instructoresDAO.getEmail(iden);
+                    DJCorreoHTML dJCorreoHTML = new DJCorreoHTML();
+                    InstructorDTO instructorDTO = new InstructorDTO();
+                    instructorDTO.setNumDocumento(iden);
+                    instructorDTO.setLinkHash(pass);
 
-            dJCorreoHTML.RestartClave(correo, "Clave Sara Pro", pass, iden);
+                    System.out.println(instructorDTO.toString());
 
-            instructoresDAO.CloseAll();
-            response.setContentType("application/json");
-            new Gson().toJson(estado, response.getWriter());
-            
-        }else{
+                    conn = conexionSer.getConnection();
+
+                    if (conn.getAutoCommit()) {
+                        conn.setAutoCommit(false);
+                    }
+
+                    instructoresDAO = new InstructoresDAO(conn);
+                    boolean estado = instructoresDAO.updateHashPassword(instructorDTO);
+                    String correo = instructoresDAO.getEmail(iden);
+                    response.setContentType("application/json");
+
+                    if (estado) {
+                        dJCorreoHTML.RestartClave(correo, "Clave Sara Pro", pass, iden);
+                        conn.commit();
+                        System.out.println("Proceso exitoso");
+                        new Gson().toJson(1, response.getWriter());
+                    } else {
+                        conn.rollback();
+                        System.out.println("Usuario no existe");
+                        new Gson().toJson(3, response.getWriter());
+                    }
+                } catch (Exception ex) {
+                    System.out.println("ROLL");
+                    try {
+                        conn.rollback();
+                    } catch (SQLException ex1) {
+                        System.out.println(ex1);
+                    }
+                    System.out.println(ex);
+                    new Gson().toJson(4, response.getWriter());
+                } finally {
+                    instructoresDAO.CloseAll();
+                }
+
+            } else {
+                System.out.println("Error catcha");
+                new Gson().toJson(2, response.getWriter());
+            }
+
+        } else {
             System.out.println("No esta enviado parametros, olvido pass");
-            new Gson().toJson("OK", response.getWriter());
+            new Gson().toJson(3, response.getWriter());
         }
 
     }

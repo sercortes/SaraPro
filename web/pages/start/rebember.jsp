@@ -20,6 +20,7 @@
   <link href="assets/css/index.css" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="assets/css/css-loader.css">
   
+  <script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 
 <body class="" id="bodyLogin">
@@ -42,15 +43,22 @@
           <form class="form-signin" action="Ingresar?url=user">
             <img class="mb-4 img-fluid" src="assets/img/sara/saraazul.png" alt="" >
             <label for="inputEmail" class="sr-only">Identificación</label>
-            <input type="number" id="iden" class="form-control" placeholder="135466665" required autofocus>
+            <input type="number" id="iden" class="form-control" placeholder="Ingresa tu # identificación" required autofocus>
             <div class="checkbox mb-3">
               <label>
                
               </label>
             </div>
             <button id="buttonPass" class="btn btn-lg btn-primary btn-block" type="button">Ingresar</button>
+            <c:if test="${not empty MESSAGE}">
+                <p class="text-danger text-center">${MESSAGE}</p>
+            </c:if>
+                <p id="mensajes"></p>
+               <div class="g-recaptcha"
+			data-sitekey="6LcCvNMZAAAAABDL_85oti_-zBCfnp1hcfRVlpmW"></div>
+                
             <p class="mt-5 mb-3 text-muted text-center">&copy; 2020 Públicado en el Datacenter</p>
-            <a class="text-muted text-center" href="index.jsp">Ir a inicio</a>
+            <a class="text-muted text-center" href="index.jsp"><i id="iconss" class="material-icons">home</i> Ir a inicio</a>
           </form>
         
 
