@@ -6,6 +6,7 @@
 package co.edu.sena.dto;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  *
@@ -14,7 +15,7 @@ import java.sql.Date;
 public class NotificacionDTO {
     
     private String idNotificacion;
-    private Date FechaEnvio;
+    private Timestamp FechaEnvio;
     private String descripcionNotificacion;
     private String FKProductoVirtual;
     private String idTipoNotificacionFK;
@@ -22,10 +23,13 @@ public class NotificacionDTO {
 
     private ProductoVirtualDTO productoVirtualDTO;
     
+    private DetallesNotificacionDTO detallesNotificacionDTO;
+    private String idDetalleNotificacion;
+    
     public NotificacionDTO() {
     }
 
-    public NotificacionDTO(String idNotificacion, Date FechaEnvio, String descripcionNotificacion, String FKProductoVirtual, String idTipoNotificacionFK, String idFuncionarioFK) {
+    public NotificacionDTO(String idNotificacion, Timestamp FechaEnvio, String descripcionNotificacion, String FKProductoVirtual, String idTipoNotificacionFK, String idFuncionarioFK) {
         this.idNotificacion = idNotificacion;
         this.FechaEnvio = FechaEnvio;
         this.descripcionNotificacion = descripcionNotificacion;
@@ -42,11 +46,11 @@ public class NotificacionDTO {
         this.idNotificacion = idNotificacion;
     }
 
-    public Date getFechaEnvio() {
+    public Timestamp getFechaEnvio() {
         return FechaEnvio;
     }
 
-    public void setFechaEnvio(Date FechaEnvio) {
+    public void setFechaEnvio(Timestamp FechaEnvio) {
         this.FechaEnvio = FechaEnvio;
     }
 
@@ -90,10 +94,27 @@ public class NotificacionDTO {
         this.productoVirtualDTO = productoVirtualDTO;
     }
 
-    @Override
-    public String toString() {
-        return "NotificacionDTO{" + "idNotificacion=" + idNotificacion + ", FechaEnvio=" + FechaEnvio + ", descripcionNotificacion=" + descripcionNotificacion + ", FKProductoVirtual=" + FKProductoVirtual + ", idTipoNotificacionFK=" + idTipoNotificacionFK + ", idFuncionarioFK=" + idFuncionarioFK + ", productoVirtualDTO=" + productoVirtualDTO + '}';
+    public DetallesNotificacionDTO getDetallesNotificacionDTO() {
+        return detallesNotificacionDTO;
     }
 
+    public void setDetallesNotificacionDTO(DetallesNotificacionDTO detallesNotificacionDTO) {
+        this.detallesNotificacionDTO = detallesNotificacionDTO;
+    }
+
+    public String getIdDetalleNotificacion() {
+        return idDetalleNotificacion;
+    }
+
+    public void setIdDetalleNotificacion(String idDetalleNotificacion) {
+        this.idDetalleNotificacion = idDetalleNotificacion;
+    }
+
+    @Override
+    public String toString() {
+        return "NotificacionDTO{" + "idNotificacion=" + idNotificacion + ", FechaEnvio=" + FechaEnvio + ", descripcionNotificacion=" + descripcionNotificacion + ", FKProductoVirtual=" + FKProductoVirtual + ", idTipoNotificacionFK=" + idTipoNotificacionFK + ", idFuncionarioFK=" + idFuncionarioFK + ", productoVirtualDTO=" + productoVirtualDTO + ", detallesNotificacionDTO=" + detallesNotificacionDTO + ", idDetalleNotificacion=" + idDetalleNotificacion + '}';
+    }
+
+  
   
 }

@@ -24,6 +24,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import co.edu.sena.util.ConexionSer;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -92,6 +96,18 @@ public class Selects extends HttpServlet {
             case "/getNotificationsGeneral":
 
                 getNotificationsGeneral(request, response);
+
+                break;
+                
+           case "/getNotificationsGeneralBarra":
+
+                getNotificationsGeneralBarra(request, response);
+
+                break;
+                
+          case "/updateNotificationsInstructor":
+
+                updateNotificationsInstructor(request, response);
 
                 break;
 
@@ -230,12 +246,70 @@ public class Selects extends HttpServlet {
         new Gson().toJson(autores, response.getWriter());
         
     }
-    
+
+    private void getNotificationsGeneralBarra(HttpServletRequest request, HttpServletResponse response) throws IOException {
+           request.setCharacterEncoding("UTF-8");
+
+        ConexionSer conexions = new ConexionSer();
+        NotificacionDAO notificacionDAO = new NotificacionDAO(conexions.getConnection());
+
+         int idUser = (Integer) request.getSession().getAttribute("idUser");
+        
+        ArrayList<NotificacionDTO> autores = notificacionDAO.getNotificationGeneralBarra(Integer.toString(idUser));
+
+        notificacionDAO.CloseAll();
+        response.setContentType("application/json");
+        new Gson().toJson(autores, response.getWriter());
+    }
+
         @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 
-
+    private void updateNotificationsInstructor(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        
+        Connection conn = null;
+        NotificacionDAO notificacionDAO = null;
+        boolean estado = false;
+        try {
+            request.setCharacterEncoding("UTF-8");
+            
+            String data = request.getParameter("notificaciones");
+            System.out.println("SERGIO");
+            System.out.println(data);
+            String[] arreglo = data.split(",");
+            
+            ConexionSer conexions = new ConexionSer();
+            conn = conexions.getConnection();
+            
+            if (conn.getAutoCommit()) {
+                conn.setAutoCommit(false);
+            }
+            
+            notificacionDAO = new NotificacionDAO(conn);
+            
+            for(String item : arreglo){
+                estado = notificacionDAO.updateDetalleNotificacion(item);
+            }
+            
+            response.setContentType("application/json");
+            conn.commit();
+            new Gson().toJson(estado, response.getWriter());
+        } catch (Exception ex) {
+            System.out.println("ROLL BACK NOTTIFY");
+            try {
+                conn.rollback();
+            } catch (SQLException ex1) {
+                System.out.println(ex1);
+            }
+            System.out.println(ex);
+            new Gson().toJson(estado, response.getWriter());
+        }finally{
+            notificacionDAO.CloseAll();
+        }
+        
+    }
+    
     
 }

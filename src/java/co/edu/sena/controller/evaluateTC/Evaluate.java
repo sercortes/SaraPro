@@ -135,11 +135,11 @@ public class Evaluate extends HttpServlet {
             NotificacionDTO notificacionDTO = new NotificacionDTO();
             notificacionDTO = getNotificacionDTO(resp, notificacionDTO, roll);
 
-            if (!resp) {
+//            if (!resp) {
                 notificacionDTO.setFKProductoVirtual(Integer.toString(idEvaluacion));
-            } else {
-                notificacionDTO.setFKProductoVirtual(idVersion);
-            }
+//            } else {
+//                notificacionDTO.setFKProductoVirtual(idVersion);
+//            }
 
             notificacionDTO.setIdFuncionarioFK(idUser);
             int idNotify = notificacionDAO.insertReturnTwo(notificacionDTO);
@@ -244,7 +244,7 @@ public class Evaluate extends HttpServlet {
             } else {
                 throw new Exception();
             }
-            notificacionDTO.setIdTipoNotificacionFK("1");
+            notificacionDTO.setIdTipoNotificacionFK("2");
 
         }
 

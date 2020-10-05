@@ -243,6 +243,37 @@ public class ProductoVirtualDAO {
             return null;
         }
     }
+      
+     public int getSizeTecnico(String idAreaCentro) throws Exception{
+        
+             int number = 0;
+
+        String sql = "SELECT count(*) 'size' FROM producto_virtual PV " +
+                    "INNER JOIN version V ON PV.id_p_virtual=V.id_p_virtual " +
+                    "INNER JOIN autor a ON V.id_version = a.id_version " +
+                    "INNER JOIN funcionario f ON a.id_funcionario=f.id_funcionario " +
+                    "WHERE V.id_estado = 3 AND f.id_area_centro = 9 " +
+                    "GROUP BY(PV.id_p_virtual)";
+        
+        try{
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, idAreaCentro);
+            
+           rs = ps.executeQuery();
+            while (rs.next()) {
+
+                number = rs.getInt("size");
+
+            }
+            return number;  
+        } catch(MySQLIntegrityConstraintViolationException e){
+            System.out.println("D"+e+"D");
+            throw new Exception();
+        }catch(Exception e){
+            System.out.println(e);
+            throw new Exception();
+        }
+    }
     
     
      public void CloseAll(){

@@ -177,14 +177,9 @@ public class EvaluateCoor extends HttpServlet {
 
     }
 
-    public NotificacionDTO getNoti(NotificacionDTO notificacionDTO, boolean estado, int idEval, String idver) {
-        if (!estado) {
-            notificacionDTO.setFKProductoVirtual(Integer.toString(idEval));
-            notificacionDTO.setIdTipoNotificacionFK("2");
-        } else {
-            notificacionDTO.setFKProductoVirtual(idver);
-            notificacionDTO.setIdTipoNotificacionFK("1");
-        }
+ public NotificacionDTO getNoti(NotificacionDTO notificacionDTO, boolean estado, int idEval, String idver) {
+        notificacionDTO.setFKProductoVirtual(Integer.toString(idEval));
+        notificacionDTO.setIdTipoNotificacionFK("2");
         return notificacionDTO;
     }
 

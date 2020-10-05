@@ -76,7 +76,7 @@ public class EvaluacionDAO {
             while (rs.next()) {
                 
                 evaluacionDTO.setIdEvaluacion(rs.getString("E.id_evaluacion_general"));
-                evaluacionDTO.setFechaEvaluacion(rs.getDate("E.fecha_evaluacion"));
+                evaluacionDTO.setFechaEvaluacion(rs.getTimestamp("E.fecha_evaluacion"));
                 evaluacionDTO.setObservacion(rs.getString("E.observacion"));
                 evaluacionDTO.setIdListaChequeoFK(rs.getString("E.id_lista_chequeo"));
 

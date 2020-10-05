@@ -132,7 +132,7 @@ public class NotificacionDAO {
                 evaluacionDTO.setIdEvaluacion(rs.getString("id_evaluacion"));
                 evaluacionDTO.setNomFuncionario(rs.getString("Evaluador"));
                 evaluacionDTO.setResultado(rs.getString("ES.nom_estado"));
-                evaluacionDTO.setFechaEvaluacion(rs.getDate("E.fecha_evaluacion"));
+                evaluacionDTO.setFechaEvaluacion(rs.getTimestamp("E.fecha_evaluacion"));
                 evaluacionDTO.setIdListaChequeoFK(rs.getString("IdLista"));
                 
                 productoVirtualDTO.setEvaluacionDTO(evaluacionDTO);
@@ -163,7 +163,7 @@ public class NotificacionDAO {
             NotificacionDTO notificacionDTO;
             while (rs.next()) {
                 notificacionDTO = new NotificacionDTO();
-                notificacionDTO.setFechaEnvio(rs.getDate("E.fecha_evaluacion"));
+                notificacionDTO.setFechaEnvio(rs.getTimestamp("E.fecha_evaluacion"));
                 notificacionDTO.setDescripcionNotificacion(rs.getString("N.conte_notificacion"));
                 
                 notificacionDTO.setProductoVirtualDTO(new ProductoVirtualDTO(rs.getString("Nombre")));
@@ -176,6 +176,57 @@ public class NotificacionDAO {
         }
     }
        
+           public ArrayList<NotificacionDTO> getNotificationGeneralBarra(String idInstructor) {
+        try {
+            String sql = "SELECT (SELECT pv.nom_p_virtual from version v " +
+                "INNER JOIN producto_virtual pv ON v.id_p_virtual=pv.id_p_virtual WHERE v.id_version = E.id_version) 'Nombre', " +
+                "N.*, E.*, DN.id_detalles_notificacion " +
+                "FROM notificacion N " +
+                "INNER JOIN detalles_notificacion DN ON N.id_notificacion=DN.id_notificacion " +
+                "INNER JOIN evaluacion_general E ON N.ides_proceso=E.id_evaluacion_general " +
+                "where DN.id_funcionario = ? AND N.id_tipo_notificacion = 2 AND DN.estadoN = 0 ORDER BY E.fecha_evaluacion DESC";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, idInstructor);
+            
+            rs = ps.executeQuery();
+            List<NotificacionDTO> list = new ArrayList<NotificacionDTO>();
+            NotificacionDTO notificacionDTO;
+            while (rs.next()) {
+                notificacionDTO = new NotificacionDTO();
+                notificacionDTO.setFechaEnvio(rs.getTimestamp("E.fecha_evaluacion"));
+                notificacionDTO.setDescripcionNotificacion(rs.getString("N.conte_notificacion"));
+                notificacionDTO.setIdDetalleNotificacion(rs.getString("DN.id_detalles_notificacion"));
+                
+                notificacionDTO.setProductoVirtualDTO(new ProductoVirtualDTO(rs.getString("Nombre")));
+                list.add(notificacionDTO);
+            }
+            return (ArrayList<NotificacionDTO>) list;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+           
+            public boolean updateDetalleNotificacion(String detalleNotificacion) throws Exception{
+            try {
+           
+            String sql = "UPDATE detalles_notificacion set estadoN = ? "
+                    + "WHERE id_detalles_notificacion = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            
+            ps.setString(1, "1");
+            ps.setString(2, detalleNotificacion);
+            
+            int rows = ps.executeUpdate();
+            boolean estado = rows > 0;
+            return estado;
+        } catch (Exception ex) {
+            System.out.println("Error edit " + ex.getMessage());
+            throw new Exception();
+        }
+    }
+       
+         
       public void CloseAll(){
           ConexionSer.close(conn);
         ConexionSer.close(ps);

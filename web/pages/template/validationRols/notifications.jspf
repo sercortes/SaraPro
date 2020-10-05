@@ -1,0 +1,5 @@
+
+
+<c:if test="${idRol == 1 }">
+    <script src="./assets/js/proyect/notification/instructor.js" charset="utf-8"></script>
+</c:if>

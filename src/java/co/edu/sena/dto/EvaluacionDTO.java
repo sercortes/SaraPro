@@ -6,6 +6,7 @@
 package co.edu.sena.dto;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  *
@@ -14,7 +15,7 @@ import java.sql.Date;
 public class EvaluacionDTO {
     
     private String idEvaluacion;
-    private Date FechaEvaluacion;
+    private Timestamp FechaEvaluacion;
     private String observacion;
     private String resultado;
     private String idVersionFK;
@@ -26,7 +27,7 @@ public class EvaluacionDTO {
     public EvaluacionDTO() {
     }
 
-    public EvaluacionDTO(String idEvaluacion, Date FechaEvaluacion, String observacion, String resultado, String idVersionFK, String idListaChequeoFK, String idFuncionario) {
+    public EvaluacionDTO(String idEvaluacion, Timestamp FechaEvaluacion, String observacion, String resultado, String idVersionFK, String idListaChequeoFK, String idFuncionario) {
         this.idEvaluacion = idEvaluacion;
         this.FechaEvaluacion = FechaEvaluacion;
         this.observacion = observacion;
@@ -44,11 +45,11 @@ public class EvaluacionDTO {
         this.idEvaluacion = idEvaluacion;
     }
 
-    public Date getFechaEvaluacion() {
+    public Timestamp getFechaEvaluacion() {
         return FechaEvaluacion;
     }
 
-    public void setFechaEvaluacion(Date FechaEvaluacion) {
+    public void setFechaEvaluacion(Timestamp FechaEvaluacion) {
         this.FechaEvaluacion = FechaEvaluacion;
     }
 

@@ -18,6 +18,8 @@
                     </div>
                     <div class="card-body table-responsive">
 
+                        
+                        <c:if test="${idRol == 1 }">
                         <div class="row">
                             
                             <div class="col-lg-3 col-md-6 col-sm-6">
@@ -76,7 +78,8 @@
                             </div>
 
                         </div>
-
+                        </c:if>
+                           <c:if test="${idRol == 2 || idRol == 3}">
                         <div class="row">
 
 
@@ -119,7 +122,34 @@
                             
                             
                         </div>
-
+                        </c:if>
+                        
+                         <c:if test="${idRol == 4}">
+                        <div class="row">
+                            
+                             <div class="col-lg-3 col-md-6 col-sm-6">
+                                <div class="card card-stats">
+                                    <div class="card-header card-header-warning card-header-icon">
+                                        <a href="./ProductsCoor">
+                                            <div class="card-icon">
+                                                <i class="material-icons">rate_review</i>
+                                            </div>
+                                            <p class="card-category">Productos x Calificar</p>
+                                        </a>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="stats">
+                                            <i class="material-icons">error</i> Califique los p.v pendientes
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            
+                        </div>
+                        </c:if>
+                        
                     </div>
                 </div>
             </div>

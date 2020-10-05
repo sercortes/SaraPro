@@ -86,6 +86,8 @@
         <url-pattern>/getEvaluation</url-pattern>
         <url-pattern>/getItemsList</url-pattern>
         <url-pattern>/getItemsCalificados</url-pattern>
+        <url-pattern>/getNotificationsGeneralBarra</url-pattern>
+        <url-pattern>/updateNotificationsInstructor</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Instructores</servlet-name>

@@ -13,9 +13,10 @@ function queryNotification() {
         async: false,
         url: "./getNotificationsGeneral",
         success: function (data) {
-
+            
             $('#example').dataTable({
                 "processing": true,
+                "order": [[ 0, "ASC" ]],
                 "aaData": data,
                 "columns": [
                     {"data": "FechaEnvio"},
