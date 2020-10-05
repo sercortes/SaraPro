@@ -142,7 +142,7 @@ public class DJCorreoHTML {
     }
 
 
-    public void NotificacionProducto(String destinatario, String asunt, String estado, String nombrep) {
+    public void NotificacionProducto(String destinatario, String asunt, String estado, String nombrep) throws Exception{
         String destinatarios = destinatario;
         String asunto = asunt;
         Session session = Session.getInstance(properties, null);
@@ -239,7 +239,8 @@ public class DJCorreoHTML {
             transport.close();
 
         } catch (Exception ex) {
-            ex.printStackTrace();
+            System.out.println(ex);
+            throw new Exception();
         }
     }
 

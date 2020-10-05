@@ -90,7 +90,7 @@ public class Evaluate extends HttpServlet {
         AutorDAO autorDAO = new AutorDAO(conn);
         DetallesNotificacionDAO detallesNotificacionDAO = new DetallesNotificacionDAO(conn);
 
-            DJCorreoHTML dJCorreoHTML = new DJCorreoHTML();
+        DJCorreoHTML dJCorreoHTML = new DJCorreoHTML();
         ArrayList<InstructorDTO> autores = new ArrayList<>();
         ArrayList<DetallesNotificacionDTO> listaDetallesNotify = new ArrayList<>();
 
@@ -105,7 +105,7 @@ public class Evaluate extends HttpServlet {
                 new Gson().toJson(3, response.getWriter());
                 throw new Exception();
             }
-            
+
             System.out.println(evaluacionDTO.toString());
 
             int idEvaluacion = evaluacionDAO.insertReturn(evaluacionDTO);
@@ -147,8 +147,10 @@ public class Evaluate extends HttpServlet {
             System.out.println(notificacionDTO.toString());
 
             autores = autorDAO.getAutoresByVersion(idVersion);
-            
+
             String nombrePV = autorDAO.getNamePV(versioDTO.getIdVersion());
+
+            System.out.println(autores.toString());
 
             for (InstructorDTO item : autores) {
 
@@ -159,8 +161,6 @@ public class Evaluate extends HttpServlet {
 
                 dJCorreoHTML.NotificacionProducto(item.getCorreo(), nombrePV, notificacionDTO.getDescripcionNotificacion(), nombrePV);
             }
-
-            System.out.println(autores.toString());
 
             for (DetallesNotificacionDTO item : listaDetallesNotify) {
                 detallesNotificacionDAO.insertReturnTwo(item);

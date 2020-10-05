@@ -129,7 +129,7 @@ public class uploadProduct extends HttpServlet {
                 readFiles(versioDTO, multiparts, folder);
 
                 System.out.println(versioDTO.toString());
-                
+
                 int idVersion = versionDAO.insertReturn(versioDTO);
 
                 ArrayList<AutorDTO> listaAutores = new ArrayList<>();
@@ -159,11 +159,6 @@ public class uploadProduct extends HttpServlet {
 
                 autoresEmail = autorDAO.getAutoresByVersion(Integer.toString(idVersion));
 
-                for (InstructorDTO item : autoresEmail) {
-                    System.out.println(item.toString());
-                    correoHTML.NotificacionProducto(item.getCorreo(), productoVirtualDTO.getNombre(), "creado", productoVirtualDTO.getNombre());
-                }
-
                 ArrayList<DetallesTemaDTO> listacategorias = new ArrayList<>();
                 DetallesTemaDTO detallesTemaDTO;
                 String[] arreglotemas = categorias.split(",");
@@ -183,25 +178,27 @@ public class uploadProduct extends HttpServlet {
                     System.out.println(item.toString());
                 }
 
-                NotificacionDTO notificacionDTO = new NotificacionDTO();
-                notificacionDTO.setDescripcionNotificacion("Nuevo Producto virtual");
-                notificacionDTO.setFKProductoVirtual(Integer.toString(idVersion));
-                notificacionDTO.setIdFuncionarioFK(Integer.toString(idUser));
-
-                System.out.println(notificacionDTO.toString());
-
-                int idNotificacion = notificacionDAO.insertReturn(notificacionDTO);
+//                NotificacionDTO notificacionDTO = new NotificacionDTO();
+//                notificacionDTO.setDescripcionNotificacion("Nuevo Producto virtual");
+//                notificacionDTO.setFKProductoVirtual(Integer.toString(idVersion));
+//                notificacionDTO.setIdFuncionarioFK(Integer.toString(idUser));
+//                System.out.println(notificacionDTO.toString());
+//
+//                int idNotificacion = notificacionDAO.insertReturn(notificacionDTO);
+//                for (InstructorDTO item : autoresEmail) {
+//                    DetallesNotificacionDTO detallesNotifiDTO = new DetallesNotificacionDTO();
+//                    detallesNotifiDTO.setIdFuncionarioFK(item.getIdFuncionario());
+//                    detallesNotifiDTO.setIdNotificacionFK(Integer.toString(idNotificacion));
+//                    detallesAutoresNotificacion.add(detallesNotifiDTO);
+//                }
+//                for (DetallesNotificacionDTO item : detallesAutoresNotificacion) {
+//                    detallesNotificacionDAO.insertReturn(item);
+//                    System.out.println(item.toString());
+//                }
 
                 for (InstructorDTO item : autoresEmail) {
-                    DetallesNotificacionDTO detallesNotifiDTO = new DetallesNotificacionDTO();
-                    detallesNotifiDTO.setIdFuncionarioFK(item.getIdFuncionario());
-                    detallesNotifiDTO.setIdNotificacionFK(Integer.toString(idNotificacion));
-                    detallesAutoresNotificacion.add(detallesNotifiDTO);
-                }
-
-                for (DetallesNotificacionDTO item : detallesAutoresNotificacion) {
-                    detallesNotificacionDAO.insertReturn(item);
                     System.out.println(item.toString());
+                    correoHTML.NotificacionProducto(item.getCorreo(), productoVirtualDTO.getNombre(), "creado", productoVirtualDTO.getNombre());
                 }
 
                 conn.commit();
@@ -248,9 +245,9 @@ public class uploadProduct extends HttpServlet {
 
                 if (tempFile.getParentFile().mkdirs()) {
                     item.write(tempFile);
-                }else{
+                } else {
                     System.out.println("Error escritura archivo");
-                    System.out.println("ya existe el folder "+folder);
+                    System.out.println("ya existe el folder " + folder);
                     throw new Exception();
                     // item.write(tempFile);
                 }
@@ -260,7 +257,7 @@ public class uploadProduct extends HttpServlet {
 
             }
         }
-        
+
         return versioDTO;
 
     }

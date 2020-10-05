@@ -135,12 +135,12 @@ public class sendAgain extends HttpServlet {
                 new Gson().toJson(1, response.getWriter());
 
             } catch (Exception e) {
-
+                System.out.println(e);
                 try {
                     System.out.println("ROLLL");
                     connection.rollback();
                 } catch (SQLException ex) {
-                    Logger.getLogger(sendAgain.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println(ex);
                 }
 
                 new Gson().toJson(0, response.getWriter());
