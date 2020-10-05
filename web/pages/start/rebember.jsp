@@ -34,28 +34,23 @@
     <div class="col-lg-4 col-md-4">
       <div class="card">
         <div class="card-header card-header-info">
-          <h4 class="card-title">Acceder </h4>
+          <h4 class="card-title">Recuperar contraseña</h4>
           <p class="card-category"></p>
         </div>
         <div class="card-body table-responsive">
       
           <form class="form-signin" action="Ingresar?url=user">
             <img class="mb-4 img-fluid" src="assets/img/sara/saraazul.png" alt="" >
-            <label for="inputEmail" class="sr-only">Correo</label>
-            <input type="email" id="inputEmail" class="form-control" placeholder="usuario@misena.edu.co" required autofocus>
-            <label for="inputPassword" class="sr-only">Contraseña</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="*********" required>
+            <label for="inputEmail" class="sr-only">Identificación</label>
+            <input type="number" id="iden" class="form-control" placeholder="135466665" required autofocus>
             <div class="checkbox mb-3">
               <label>
                
               </label>
             </div>
-            <button id="buttonEnter" class="btn btn-lg btn-primary btn-block" type="button">Ingresar</button>
-            <c:if test="${not empty MESSAGE}">
-                <p class="text-danger text-center">${MESSAGE}</p>
-            </c:if>
+            <button id="buttonPass" class="btn btn-lg btn-primary btn-block" type="button">Ingresar</button>
             <p class="mt-5 mb-3 text-muted text-center">&copy; 2020 Públicado en el Datacenter</p>
-            <a class="text-muted text-center" href="./ForgotPassPage">Olvido Contraseña</a>
+            <a class="text-muted text-center" href="index.jsp">Ir a inicio</a>
           </form>
         
 
@@ -75,7 +70,7 @@
   <script src="assets/js/plugins/sweetalert2.js"></script>
   <script src="assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
   <script src="assets/js/plugins/bootstrap-notify.js"></script>
-  <script src="assets/js/proyect/login/login.js" charset="UTF-8"></script>
+  <script src="assets/js/proyect/login/rebemberPass.js" charset="UTF-8"></script>
 
 
 </html>

@@ -22,6 +22,9 @@ import javax.mail.internet.MimeMultipart;
 public class DJCorreoHTML {
 
     Properties properties = new Properties();
+    
+    private final String urlClave = "http://sarapro.datasena.com:8080/sarapro-pruebasfinales/ResetPass";
+    private final String urlClaveT = "http://localhost:8080/SaraPro/ResetPass";
 
     // La configuración para enviar correo
     public DJCorreoHTML() {
@@ -278,7 +281,7 @@ public class DJCorreoHTML {
                     + "        <div align=\"center\">\n"
                     + "            <font size=\"4\" face=\"Candara\" style=\"color:#FFFFFF;\" >     \n"
                     + "            Estimado Funcionario, ¿ha olvidado su contraseña?. por favor ingrese al siguiente enlace.<b>"
-                    + "            <form action=\"http://sarapro.datasena.com:8080/sarapro-pruebasfinales/ResetPass\" method=\"POST\" >"
+                    + "            <form action=\""+this.urlClaveT+"\" method=\"POST\" >"
                     + "            <input type=\"hidden\" value=\""+hash+"\" name=\"hash\">"
                     + "            <input type=\"hidden\" value=\""+id+"\" name=\"id\">"
                     + "            <button type=\"submit\"  style=\"text-decoration:none;display:inline-block;font-family:Oracle Sans,sans-serif\" target=\"_blank\"><span class=\"il\">Restablecer</span> <span class=\"il\">contraseña</span></button>"

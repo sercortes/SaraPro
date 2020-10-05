@@ -78,6 +78,13 @@ public class redirect extends HttpServlet {
 
                 break;
                 
+           case "/ForgotPassPage":
+
+                rd = request.getRequestDispatcher("/pages/start/rebember.jsp");
+                rd.forward(request, response);
+
+                break;
+                
            case "/getProductos":
 
                 rd = request.getRequestDispatcher("/pages/instructorTP/productos.jsp");

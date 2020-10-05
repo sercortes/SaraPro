@@ -5,7 +5,6 @@
  */
 package co.edu.sena.controller.start;
 
-
 import co.edu.sena.util.DJCorreoHTML;
 import co.edu.sena.dto.InstructorDTO;
 import co.edu.sena.dto.RolDTO;
@@ -47,9 +46,9 @@ public class Start extends HttpServlet {
             case "/RedirectRol":
 
                 RedirectRol(request, response);
-                
+
                 break;
-                
+
             case "/Logout":
 
                 Logout(request, response);
@@ -113,7 +112,8 @@ public class Start extends HttpServlet {
 
     private void login(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-        request.setCharacterEncoding("UTF-8");
+        if (request.getParameter("fallsx")!= null) {
+                  request.setCharacterEncoding("UTF-8");
 
         String correo = request.getParameter("user");
         String clave = request.getParameter("pass");
@@ -130,28 +130,33 @@ public class Start extends HttpServlet {
         response.setContentType("application/json");
 
         if (StringUtils.isNullOrEmpty(instructorDTO.getIdFuncionario())) {
-            
+
             new Gson().toJson(0, response.getWriter());
-            
+
         } else {
-            
+
             instructorDTO.setIdCentroFK(instructoresDAO.getCentro(instructorDTO.getIdAreaCentroFK()));
             sesion.setAttribute("idUser", Integer.parseInt(instructorDTO.getIdFuncionario()));
             sesion.setAttribute("nomUser", instructorDTO.getNomFuncionario());
             sesion.setAttribute("idCentro", Integer.parseInt(instructorDTO.getIdCentroFK()));
             sesion.setAttribute("idAreaCentro", instructorDTO.getIdAreaCentroFK());
-            
+
             System.out.println(instructorDTO.toString());
-            
+
             new Gson().toJson(instructorDTO.getIdFuncionario(), response.getWriter());
         }
-        
+
         instructoresDAO.CloseAll();
 
+        }else{
+            System.out.println("No evia parametros login");
+             new Gson().toJson(0, response.getWriter());
+        }
+  
     }
 
     private void getRoles(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        
+
         request.setCharacterEncoding("UTF-8");
         ConexionSer conexionSer = new ConexionSer();
         String idFuncionario = request.getParameter("idFuncionario");
@@ -160,37 +165,37 @@ public class Start extends HttpServlet {
         instructoresDAO.CloseAll();
         response.setContentType("application/json");
         new Gson().toJson(lista, response.getWriter());
-        
+
     }
 
     private void setRolOne(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, ServletException, IOException {
-        
+
         request.setCharacterEncoding("UTF-8");
         HttpSession sesion = request.getSession();
-        
+
         if (sesion.getAttribute("idUser") == null) {
-            
+
             request.getRequestDispatcher("index.jsp").forward(request, response);
-            
-        }else{
-        
-        ConexionSer conexionSer = new ConexionSer();
-        InstructoresDAO instructoresDAO = new InstructoresDAO(conexionSer.getConnection());
-        int idFun = (Integer) sesion.getAttribute("idUser");
-        String rol = instructoresDAO.getRol(Integer.toString(idFun));
-        System.out.println("ROL");
-        System.out.println(rol);
-        sesion.setAttribute("idRol", Integer.parseInt(rol));
-        instructoresDAO.CloseAll();
-        
-        request.getRequestDispatcher("pages/home.jsp").forward(request, response);
-            
+
+        } else {
+
+            ConexionSer conexionSer = new ConexionSer();
+            InstructoresDAO instructoresDAO = new InstructoresDAO(conexionSer.getConnection());
+            int idFun = (Integer) sesion.getAttribute("idUser");
+            String rol = instructoresDAO.getRol(Integer.toString(idFun));
+            System.out.println("ROL");
+            System.out.println(rol);
+            sesion.setAttribute("idRol", Integer.parseInt(rol));
+            instructoresDAO.CloseAll();
+
+            request.getRequestDispatcher("pages/home.jsp").forward(request, response);
+
         }
-        
+
     }
 
     private void setMyRol(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, ServletException, IOException {
-        
+
         request.setCharacterEncoding("UTF-8");
 
         HttpSession sesion = request.getSession();
@@ -202,7 +207,6 @@ public class Start extends HttpServlet {
         sesion.setAttribute("idRol", Integer.parseInt(rol));
 
         request.getRequestDispatcher("pages/home.jsp").forward(request, response);
-         
 
     }
 
@@ -213,12 +217,12 @@ public class Start extends HttpServlet {
         HttpSession sesion = request.getSession();
 
         if (sesion.getAttribute("idRol") == null) {
-            
+
             request.getRequestDispatcher("index.jsp").forward(request, response);
-            
+
         } else {
 
-            request.getRequestDispatcher("pages/home.jsp").forward(request, response);          
+            request.getRequestDispatcher("pages/home.jsp").forward(request, response);
 
         }
 
@@ -226,30 +230,40 @@ public class Start extends HttpServlet {
 
     private void ForgotPass(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, IOException {
 
-        request.setCharacterEncoding("UTF-8");
+        if (request.getParameter("falls") != null) {
+            
+            System.out.println("REQUEST recover PASS");
+            
+            request.setCharacterEncoding("UTF-8");
 
-        String iden = request.getParameter("iden");
-        String pass = generatePassword();
+            String iden = request.getParameter("iden");
+            String pass = generatePassword();
 
-        DJCorreoHTML dJCorreoHTML = new DJCorreoHTML();
+            DJCorreoHTML dJCorreoHTML = new DJCorreoHTML();
 
-        InstructorDTO instructorDTO = new InstructorDTO();
-        instructorDTO.setNumDocumento(iden);
-        instructorDTO.setLinkHash(pass);
+            InstructorDTO instructorDTO = new InstructorDTO();
+            instructorDTO.setNumDocumento(iden);
+            instructorDTO.setLinkHash(pass);
 
-        System.out.println(instructorDTO.toString());
+            System.out.println(instructorDTO.toString());
 
-        ConexionSer conexions = new ConexionSer();
-        InstructoresDAO instructoresDAO = new InstructoresDAO(conexions.getConnection());
-        boolean estado = instructoresDAO.updateHashPassword(instructorDTO);
+            ConexionSer conexions = new ConexionSer();
+            InstructoresDAO instructoresDAO = new InstructoresDAO(conexions.getConnection());
+            boolean estado = instructoresDAO.updateHashPassword(instructorDTO);
 
-        String correo = instructoresDAO.getEmail(iden);
+            String correo = instructoresDAO.getEmail(iden);
 
-        dJCorreoHTML.RestartClave(correo, "Clave Sara Pro", pass, iden);
+            dJCorreoHTML.RestartClave(correo, "Clave Sara Pro", pass, iden);
 
-        instructoresDAO.CloseAll();
-        response.setContentType("application/json");
-        new Gson().toJson(estado, response.getWriter());
+            instructoresDAO.CloseAll();
+            response.setContentType("application/json");
+            new Gson().toJson(estado, response.getWriter());
+            
+        }else{
+            System.out.println("No esta enviado parametros, olvido pass");
+            new Gson().toJson("OK", response.getWriter());
+        }
+
     }
 
     private void ResetPass(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -260,43 +274,42 @@ public class Start extends HttpServlet {
 
         ConexionSer conexions = new ConexionSer();
         InstructoresDAO instructoresDAO = new InstructoresDAO(conexions.getConnection());
-        
+
         int id = instructoresDAO.isEnableReset(iden, hash);
-        
+
         System.out.println(hash);
         System.out.println(iden);
         System.out.println(id);
-        
+
         HttpSession session = request.getSession();
         String mensaje = "";
-        
-        if (id!=0) {
+
+        if (id != 0) {
             instructoresDAO.resetPass(iden);
             mensaje = "Tu contraseña ha sido restaurada por tu identificación. Muchas Gracias.";
-            response.sendRedirect("start/passok.jsp");
-        }else{
+            response.sendRedirect("index.jsp");
+        } else {
             mensaje = "Enlace vencido. Muchas Gracias.";
-            response.sendRedirect("start/passok.jsp");
+            response.sendRedirect("index.jsp");
         }
-        
+
         session.setAttribute("MESSAGE", mensaje);
         instructoresDAO.CloseAll();
 
     }
-    
-      private void Logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-          
-                request.getSession().removeAttribute("idUser");
-                request.getSession().removeAttribute("nomUser");
-                request.getSession().removeAttribute("idCentro");
-                request.getSession().removeAttribute("idAreaCentro");
-                request.getSession().removeAttribute("idRol");
-                request.getSession().invalidate();
-                
-                request.getRequestDispatcher("index.jsp").forward(request, response);
-          
-    }
 
+    private void Logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        request.getSession().removeAttribute("idUser");
+        request.getSession().removeAttribute("nomUser");
+        request.getSession().removeAttribute("idCentro");
+        request.getSession().removeAttribute("idAreaCentro");
+        request.getSession().removeAttribute("idRol");
+        request.getSession().invalidate();
+
+        request.getRequestDispatcher("index.jsp").forward(request, response);
+
+    }
 
     public boolean isValid(String email) {
         String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
@@ -307,7 +320,7 @@ public class Start extends HttpServlet {
         return RandomStringUtils.random(10, 0, 20, true, true, "qw32rfHIJk9iQ8Ud7h0X".toCharArray());
     }
 
-        /**
+    /**
      * Returns a short description of the servlet.
      *
      * @return a String containing servlet description
@@ -317,5 +330,4 @@ public class Start extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-  
 }

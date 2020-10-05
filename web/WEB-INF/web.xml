@@ -74,6 +74,7 @@
         <url-pattern>/addUser</url-pattern>
         <url-pattern>/Error404</url-pattern>
         <url-pattern>/Error500</url-pattern>
+        <url-pattern>/ForgotPassPage</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Selects</servlet-name>
