@@ -11,7 +11,7 @@ function queryProducts() {
 
     $.ajax({
         type: 'POST',
-        async: false,
+        async: true,
         url: "./Productos",
         success: function (data) {
 
@@ -31,7 +31,7 @@ function queryProducts() {
             console.log(arrayF)
 
             $('#example').dataTable({
-                "processing": true,
+                "processing": false,
                 "aaData": arrayF,
                 "columns": [
                     {"data": "nombre"},

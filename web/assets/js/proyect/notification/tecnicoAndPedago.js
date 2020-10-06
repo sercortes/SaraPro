@@ -18,7 +18,7 @@ function barraNotification() {
 
     $.ajax({
         type: 'POST',
-        async: false,
+        async: true,
         url: "./getSizeNotification",
         success: function (data) {
 

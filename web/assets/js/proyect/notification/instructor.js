@@ -20,7 +20,7 @@ function barraNotification() {
 
     $.ajax({
         type: 'POST',
-        async: false,
+        async: true,
         url: "./getNotificationsGeneralBarra",
         success: function (data) {
 
