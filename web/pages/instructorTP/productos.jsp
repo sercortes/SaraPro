@@ -66,4 +66,6 @@
 <script src="./assets/js/proyect/instructorTP/evaluar.js" charset="utf-8"></script>
 <script src="./assets/js/proyect/instructorTP/sendEvaluation.js" charset="utf-8"></script>
 
+<%@include file="/pages/template/validationRols/notifications.jspf"%>
+
 

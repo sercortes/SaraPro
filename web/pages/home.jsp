@@ -160,6 +160,9 @@
 
 <%@include file="/pages/template/foot.jspf"%>
 <%@include file="/pages/template/footer.jspf"%>
+<%@include file="/pages/template/validationRols/notifications.jspf"%>
+
+
 <script>
     let menu = document.getElementById('Inicio')
     menu.classList.add('active')

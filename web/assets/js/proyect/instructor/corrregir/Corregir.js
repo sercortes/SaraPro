@@ -23,6 +23,7 @@ function queryCorrecion() {
              $('#example').dataTable({
                 "processing": true,
                 "aaData": datas,
+                "order": [[ 2, "ASC" ]],
                 "columns": [
                     {"data": "nombre"},
                     {"data": "versioDTO.numVersion"},

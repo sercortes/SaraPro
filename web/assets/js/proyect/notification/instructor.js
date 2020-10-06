@@ -1,12 +1,22 @@
 var arrayNotify = []
 
 $(function () {
-
-    barraNotification()
-
+    
+//    setTimeout(() => {
+//        barraNotification()
+//    },
+//       3000 
+//    );
+    
+    setInterval(() => {
+        barraNotification()
+    }, 10000)
+    
 })
 
 function barraNotification() {
+    
+    console.log('consulta')
 
     $.ajax({
         type: 'POST',
@@ -18,9 +28,9 @@ function barraNotification() {
                 queryEmphy()
                 return false
             }
-            
+
             generateListNav(data)
-            
+
         }
 
     })
@@ -54,7 +64,7 @@ $('#campana').on('hidden.bs.dropdown', function () {
 
 })
 
-function queryEmphy(){
+function queryEmphy() {
     document.getElementById('numberNotifications').innerHTML = 0
     document.getElementById('barraN').innerHTML = '<a class="dropdown-item" href="#">No hay notificaciones</a>'
 }
@@ -70,7 +80,7 @@ function generateListNav(data) {
         arrayNotify.push(item.idDetalleNotificacion)
     }
     barra.innerHTML = str
-    
+
 }
 
 

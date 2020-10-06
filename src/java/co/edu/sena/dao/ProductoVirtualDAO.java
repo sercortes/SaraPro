@@ -244,7 +244,7 @@ public class ProductoVirtualDAO {
         }
     }
       
-     public int getSizeTecnico(String idAreaCentro) throws Exception{
+     public int getSizeTecnico(String idAreaCentro) {
         
              int number = 0;
 
@@ -252,7 +252,7 @@ public class ProductoVirtualDAO {
                     "INNER JOIN version V ON PV.id_p_virtual=V.id_p_virtual " +
                     "INNER JOIN autor a ON V.id_version = a.id_version " +
                     "INNER JOIN funcionario f ON a.id_funcionario=f.id_funcionario " +
-                    "WHERE V.id_estado = 3 AND f.id_area_centro = 9 " +
+                    "WHERE V.id_estado = 3 AND f.id_area_centro = ? " +
                     "GROUP BY(PV.id_p_virtual)";
         
         try{
@@ -268,10 +268,72 @@ public class ProductoVirtualDAO {
             return number;  
         } catch(MySQLIntegrityConstraintViolationException e){
             System.out.println("D"+e+"D");
-            throw new Exception();
+            return 0;
         }catch(Exception e){
             System.out.println(e);
-            throw new Exception();
+            return 0;
+        }
+    }
+     
+      public int getSizePedagogo(String idAreaCentro) {
+        
+             int number = 0;
+
+        String sql = "SELECT count(*) 'size' FROM producto_virtual PV " +
+                    "INNER JOIN version V ON PV.id_p_virtual=V.id_p_virtual " +
+                    "INNER JOIN autor a ON V.id_version = a.id_version " +
+                    "INNER JOIN funcionario f ON a.id_funcionario=f.id_funcionario " +
+                    "WHERE V.id_estado = 4 AND f.id_area_centro = ? " +
+                    "GROUP BY(PV.id_p_virtual)";
+        
+        try{
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, idAreaCentro);
+            
+           rs = ps.executeQuery();
+            while (rs.next()) {
+
+                number = rs.getInt("size");
+
+            }
+            return number;  
+        } catch(MySQLIntegrityConstraintViolationException e){
+            System.out.println("D"+e+"D");
+            return 0;
+        }catch(Exception e){
+            System.out.println(e);
+            return 0;
+        }
+    }
+      
+      public int getSizeCoor(String idAreaCentro) {
+        
+             int number = 0;
+
+        String sql = "SELECT count(*) 'size' FROM producto_virtual PV " +
+                    "INNER JOIN version V ON PV.id_p_virtual=V.id_p_virtual " +
+                    "INNER JOIN autor a ON V.id_version = a.id_version " +
+                    "INNER JOIN funcionario f ON a.id_funcionario=f.id_funcionario " +
+                    "WHERE V.id_estado = 5 AND f.id_area_centro = ? " +
+                    "GROUP BY(PV.id_p_virtual)";
+        
+        try{
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, idAreaCentro);
+            
+           rs = ps.executeQuery();
+            while (rs.next()) {
+
+                number = rs.getInt("size");
+
+            }
+            return number;  
+        } catch(MySQLIntegrityConstraintViolationException e){
+            System.out.println("D"+e+"D");
+            return 0;
+        }catch(Exception e){
+            System.out.println(e);
+            return 0;
         }
     }
     

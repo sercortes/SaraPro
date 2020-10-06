@@ -13,6 +13,4 @@
 
   <script src="./assets/js/proyect/util/util.js"></script>
   
-  <%@include file="/pages/template/validationRols/notifications.jspf"%>
-
 </html>

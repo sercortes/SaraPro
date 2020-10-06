@@ -98,6 +98,7 @@
         <url-pattern>/getAutoresPro</url-pattern>
         <url-pattern>/updatePassword</url-pattern>
         <url-pattern>/ProductosVirtualesCoor</url-pattern>
+        <url-pattern>/getSizeNotification</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>uploadProduct</servlet-name>

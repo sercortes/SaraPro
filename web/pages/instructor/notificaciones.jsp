@@ -51,5 +51,6 @@
 
 <script src="./assets/js/plugins/jquery.dataTables.min.js"></script>
 <script src="./assets/js/proyect/instructor/notification.js" charset="utf-8"></script>
+<%@include file="/pages/template/validationRols/notifications.jspf"%>
 
 

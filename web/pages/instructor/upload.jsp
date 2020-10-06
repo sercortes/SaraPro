@@ -237,5 +237,6 @@
 <script src="./assets/js/plugins/jquery.quicksearch.js" charset="utf-8"></script>
 <script src="./assets/js/proyect/instructor/upload/upload.js" charset="utf-8"></script>
 <script src="./assets/js/proyect/instructor/upload/send.js" charset="utf-8"></script>
+<%@include file="/pages/template/validationRols/notifications.jspf"%>
 
 

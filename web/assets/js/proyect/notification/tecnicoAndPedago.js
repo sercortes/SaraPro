@@ -7,7 +7,7 @@ $(function () {
 //    },
 //        3000
 //    );
-
+    
     setInterval(() => {
         barraNotification()
     }, 10000)
@@ -48,7 +48,7 @@ function generateListNav(data) {
     document.getElementById('numberNotifications').innerHTML = data
     let barra = document.getElementById('barraN')
 
-    let str = `<a class="dropdown-item" href="./ProductsCoor">Hay ${data} producto por evaluar</a>`
+    let str = `<a class="dropdown-item" href="./getProductos">Hay ${data} producto por evaluar</a>`
 
     barra.innerHTML = str
 

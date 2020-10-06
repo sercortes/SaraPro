@@ -3,3 +3,11 @@
 <c:if test="${idRol == 1 }">
     <script src="./assets/js/proyect/notification/instructor.js" charset="utf-8"></script>
 </c:if>
+    
+<c:if test="${idRol == 2 || idRol == 3}">
+    <script src="./assets/js/proyect/notification/tecnicoAndPedago.js" charset="utf-8"></script>
+</c:if>
+    
+<c:if test="${idRol == 4}">
+    <script src="./assets/js/proyect/notification/coordinador.js" charset="utf-8"></script>
+</c:if>

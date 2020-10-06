@@ -66,5 +66,6 @@
 
 
 <script src="./assets/js/proyect/instructor/pass/pass.js" charset="utf-8"></script>
+<%@include file="/pages/template/validationRols/notifications.jspf"%>
 
 

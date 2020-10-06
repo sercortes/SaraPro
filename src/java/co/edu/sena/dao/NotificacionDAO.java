@@ -108,7 +108,7 @@ public class NotificacionDAO {
                 "INNER JOIN estado ES ON V.id_estado=ES.id_estado " +
                 "WHERE V.id_estado IN (9,10) AND E.resultado = 0  " +
                 "AND F.id_funcionario = ? " +
-                "group by  V.id_p_virtual";
+                "group by V.id_p_virtual";
             ps = conn.prepareStatement(sql);
             ps.setString(1, idInstructor);
             

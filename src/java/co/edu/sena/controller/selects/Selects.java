@@ -45,7 +45,9 @@ public class Selects extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String direccion = request.getServletPath();
+        if (request.getSession().getAttribute("idUser")!= null) {
+            
+             String direccion = request.getServletPath();
 
         switch (direccion) {
 
@@ -110,9 +112,16 @@ public class Selects extends HttpServlet {
                 updateNotificationsInstructor(request, response);
 
                 break;
-
-
+ 
         }
+            
+        }else{
+            
+            System.out.println("No Valores de sesión Clase Selects");
+            
+        }
+        
+      
 
     }
 
@@ -248,7 +257,8 @@ public class Selects extends HttpServlet {
     }
 
     private void getNotificationsGeneralBarra(HttpServletRequest request, HttpServletResponse response) throws IOException {
-           request.setCharacterEncoding("UTF-8");
+       
+        request.setCharacterEncoding("UTF-8");
 
         ConexionSer conexions = new ConexionSer();
         NotificacionDAO notificacionDAO = new NotificacionDAO(conexions.getConnection());
@@ -260,6 +270,7 @@ public class Selects extends HttpServlet {
         notificacionDAO.CloseAll();
         response.setContentType("application/json");
         new Gson().toJson(autores, response.getWriter());
+        
     }
 
         @Override

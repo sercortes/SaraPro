@@ -66,4 +66,6 @@
 <script src="./assets/js/proyect/coordinador/getProductos.js" charset="utf-8"></script>
 <script src="./assets/js/proyect/coordinador/evaluar.js" charset="utf-8"></script>
 
+<%@include file="/pages/template/validationRols/notifications.jspf"%>
+
 

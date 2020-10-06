@@ -123,4 +123,6 @@
 <script src="./assets/js/proyect/instructorTP/listas/lista.js" charset="utf-8"></script>
 <script src="./assets/js/proyect/instructorTP/listas/lista2.js" charset="utf-8"></script>
 
+<%@include file="/pages/template/validationRols/notifications.jspf"%>
+
 
