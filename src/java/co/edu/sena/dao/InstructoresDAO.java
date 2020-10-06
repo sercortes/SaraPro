@@ -37,8 +37,8 @@ public class InstructoresDAO {
      public InstructorDTO login(String usuario, String pass) {
 
         try {
-            String sql = "SELECT * FROM funcionario WHERE correo = ? AND contraseña "
-                    + "= md5(?) AND id_estado = 1 limit 1";
+            String sql = "SELECT id_funcionario, nom_funcionario, id_area_centro FROM funcionario WHERE correo = ? AND contraseña "
+                    + "= md5(?) AND id_estado = 1 LIMIT 1";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, usuario);
             ps.setString(2, pass);

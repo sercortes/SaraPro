@@ -23,7 +23,7 @@ public class DJCorreoHTML {
 
     Properties properties = new Properties();
     
-    private final String urlClave = "http://sarapro.datasena.com:8080/sarapro-pruebasfinales/ResetPass";
+    private final String urlClave = "http://sarapro.datasena.com:8080/SaraPro/ResetPass";
     private final String urlClaveT = "http://localhost:8080/SaraPro/ResetPass";
 
     // La configuración para enviar correo
@@ -282,7 +282,7 @@ public class DJCorreoHTML {
                     + "        <div align=\"center\">\n"
                     + "            <font size=\"4\" face=\"Candara\" style=\"color:#FFFFFF;\" >     \n"
                     + "            Estimado Funcionario, ¿ha olvidado su contraseña?. por favor ingrese al siguiente enlace.<b>"
-                    + "            <form action=\""+this.urlClaveT+"\" method=\"POST\" >"
+                    + "            <form action=\""+this.urlClave+"\" method=\"POST\" >"
                     + "            <input type=\"hidden\" value=\""+hash+"\" name=\"hash\">"
                     + "            <input type=\"hidden\" value=\""+id+"\" name=\"id\">"
                     + "            <button type=\"submit\"  style=\"text-decoration:none;display:inline-block;font-family:Oracle Sans,sans-serif\" target=\"_blank\"><span class=\"il\">Restablecer</span> <span class=\"il\">contraseña</span></button>"
@@ -361,78 +361,3 @@ public class DJCorreoHTML {
 }
 
 
-
-
-
-
-//    public void mensajeContrasena(String destinatario, String asunt) {
-//        String destinatarios = destinatario;
-//        String asunto = asunt;
-//        Session session = Session.getInstance(properties, null);
-//
-//        try {
-//            MimeMessage mimeMessage = new MimeMessage(session);
-//            mimeMessage.setFrom(new InternetAddress("sarapro.emails@gmail.com", "Sara Pro"));
-//            InternetAddress[] internetAddresses = {new InternetAddress(
-//                destinatarios)};
-//            mimeMessage.setRecipients(Message.RecipientType.TO,
-//                    internetAddresses);
-//            // Agregar el asunto al correo
-//            mimeMessage.setSubject(asunto);
-//            // Crear el multipart para agregar la parte del mensaje anterior
-//            Multipart multipart = new MimeMultipart();
-//            // Leer la plantilla
-//
-//            StringBuffer msjHTML = new StringBuffer("<html>\n"
-//                    + "    <body>\n"
-//                    + "        <div align=\"center\">\n"
-//                    + "            <img src=\"ConfirmacionCon/img/saraBlue.png\">              \n"
-//                    + "        </div>\n"
-//                    + "        <div align=\"center\">\n"
-//                    + "            <font size=\"6\" face=\"Candara\">     \n"
-//                    + "            Estimado usuario, le informamos que su contraseña ha sido modificada correctamente"
-//                    + "            <br>\n"
-//                    + "            si usted no ha realizado este cambio. Contáctese con el administrador del sistema."
-//                    + "        </div>\n"
-//                    + "    </body>\n"
-//                    + "</html>");
-//
-//            // Url del directorio donde estan las imagenes
-//            String urlImagenes = "ConfirmacionCon/img";
-//            File directorio = new File(urlImagenes);
-//            // Obtener los nombres de las imagenes en el directorio
-//            String[] imagenesDirectorio = directorio.list();
-//            // Creo la parte del mensaje HTML
-//            MimeBodyPart mimeBodyPart = new MimeBodyPart();
-//            mimeBodyPart.setContent(msjHTML.toString(), "text/html");
-//            // Validar que el directorio si tenga las imagenes
-//            if (imagenesDirectorio != null) {
-//                for (int count = 0; count < imagenesDirectorio.length; count++) {
-//                    MimeBodyPart imagePart = new MimeBodyPart();
-//                    imagePart.setHeader("Content-ID", "<"
-//                            + imagenesDirectorio[count] + ">");
-//                    imagePart.setDisposition(MimeBodyPart.INLINE);
-//                    imagePart.attachFile(urlImagenes
-//                            + imagenesDirectorio[count]);
-//                    multipart.addBodyPart(imagePart);
-//                }
-//            } else {
-//                System.out.println("No hay imagenes en el directorio");
-//            }
-//
-//            // Agregar la parte del mensaje HTML al multiPart
-//            multipart.addBodyPart(mimeBodyPart);
-//
-//            // Agregar el multipart al cuerpo del mensaje
-//            mimeMessage.setContent(multipart);
-//
-//            // Enviar el mensaje
-//            Transport transport = session.getTransport("smtp");
-//            transport.connect("sarapro.emails@gmail.com", "SaraPro2020_R");
-//            transport.sendMessage(mimeMessage, mimeMessage.getAllRecipients());
-//            transport.close();
-//
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        }
-//    }
