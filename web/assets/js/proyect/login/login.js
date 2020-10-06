@@ -47,7 +47,7 @@ function enter(data) {
         data: data,
         success: function (data) {
 
-            if (data != 0 && data != 2) {
+            if (data != 0 && data != -1) {
 
                 let datos = getRoles(data)
 
@@ -61,7 +61,7 @@ function enter(data) {
 
                 }
 
-            } else if(data == 2){
+            } else if(data == -1){
                  $('#cargas').removeClass('is-active');
                 swal('', 'Captcha incorrecto', "info").then((value) => {
 

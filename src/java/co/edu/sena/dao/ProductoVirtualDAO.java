@@ -248,12 +248,11 @@ public class ProductoVirtualDAO {
         
              int number = 0;
 
-        String sql = "SELECT count(*) 'size' FROM producto_virtual PV " +
+        String sql = "SELECT count(DISTINCT PV.id_p_virtual) 'size' FROM producto_virtual PV " +
                     "INNER JOIN version V ON PV.id_p_virtual=V.id_p_virtual " +
                     "INNER JOIN autor a ON V.id_version = a.id_version " +
                     "INNER JOIN funcionario f ON a.id_funcionario=f.id_funcionario " +
-                    "WHERE V.id_estado = 3 AND f.id_area_centro = ? " +
-                    "GROUP BY(PV.id_p_virtual)";
+                    "WHERE V.id_estado = 3 AND f.id_area_centro = ? GROUP BY V.id_estado";
         
         try{
             ps = conn.prepareStatement(sql);
@@ -279,12 +278,11 @@ public class ProductoVirtualDAO {
         
              int number = 0;
 
-        String sql = "SELECT count(*) 'size' FROM producto_virtual PV " +
+        String sql = "SELECT count(DISTINCT PV.id_p_virtual) 'size' FROM producto_virtual PV " +
                     "INNER JOIN version V ON PV.id_p_virtual=V.id_p_virtual " +
                     "INNER JOIN autor a ON V.id_version = a.id_version " +
                     "INNER JOIN funcionario f ON a.id_funcionario=f.id_funcionario " +
-                    "WHERE V.id_estado = 4 AND f.id_area_centro = ? " +
-                    "GROUP BY(PV.id_p_virtual)";
+                    "WHERE V.id_estado = 4 AND f.id_area_centro = ? GROUP BY V.id_estado";
         
         try{
             ps = conn.prepareStatement(sql);
@@ -310,12 +308,11 @@ public class ProductoVirtualDAO {
         
              int number = 0;
 
-        String sql = "SELECT count(*) 'size' FROM producto_virtual PV " +
+        String sql = "SELECT count(DISTINCT PV.id_p_virtual) 'size' FROM producto_virtual PV " +
                     "INNER JOIN version V ON PV.id_p_virtual=V.id_p_virtual " +
                     "INNER JOIN autor a ON V.id_version = a.id_version " +
                     "INNER JOIN funcionario f ON a.id_funcionario=f.id_funcionario " +
-                    "WHERE V.id_estado = 5 AND f.id_area_centro = ? " +
-                    "GROUP BY(PV.id_p_virtual)";
+                    "WHERE V.id_estado = 5 AND f.id_area_centro = ? GROUP BY V.id_estado";
         
         try{
             ps = conn.prepareStatement(sql);

@@ -166,7 +166,7 @@ public class Start extends HttpServlet {
 
             } else {
                 System.out.println("NO PASO EL CATCHA");
-                new Gson().toJson(2, response.getWriter());
+                new Gson().toJson(-1, response.getWriter());
             }
 
         } else {

@@ -45,6 +45,7 @@ function generateTable(data){
 
             $('#example').dataTable({
                 "processing": true,
+                "order": [[ 3, "asc" ]],
                 "aaData": arrayF,
                 "columns": [
                     {"data": "nombre"},

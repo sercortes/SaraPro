@@ -10,7 +10,7 @@ function queryProducts() {
 
     $.ajax({
         type: 'POST',
-        async: false,
+        async: true,
         url: "./ProductosVirtualesCoor",
         success: function (data) {
      
@@ -44,6 +44,7 @@ function generateTable(data){
             }
 
             $('#example').dataTable({
+                "order": [[ 3, "asc" ]],
                 "processing": true,
                 "aaData": arrayF,
                 "columns": [
