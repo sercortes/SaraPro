@@ -63,7 +63,9 @@ public class ProductoVirtualDAO {
         
    public ArrayList<ProductoVirtualDTO> getProductosVirtualesTecnico(String centroCoor) {
         try {
-            String sql = "SELECT PV.*, V.*, f.id_area_centro, count(*) FROM producto_virtual PV "
+            String sql = "SELECT PV.nom_p_virtual, PV.des_p_virtual, PV.palabras_clave, "
+                    + "V.id_version, V.num_version, V.url_version, V.fecha_envio, "
+                    + "f.id_area_centro, count(*) FROM producto_virtual PV "
                     + "INNER JOIN version V ON PV.id_p_virtual=V.id_p_virtual "
                     + "INNER JOIN autor a ON V.id_version = a.id_version "
                     + "INNER JOIN funcionario f ON a.id_funcionario=f.id_funcionario "
@@ -128,7 +130,9 @@ public class ProductoVirtualDAO {
    
     public ArrayList<ProductoVirtualDTO> getProductosVirtualesPedagogico(String areaCoor) {
         try {
-             String sql = "SELECT PV.*, V.*, f.id_area_centro, count(*) FROM producto_virtual PV "
+            String sql = "SELECT PV.nom_p_virtual, PV.des_p_virtual, PV.palabras_clave, "
+                    + "V.id_version, V.num_version, V.url_version, V.fecha_envio, "
+                    + "f.id_area_centro, count(*) FROM producto_virtual PV "
                     + "INNER JOIN version V ON PV.id_p_virtual=V.id_p_virtual "
                     + "INNER JOIN autor a ON V.id_version = a.id_version "
                     + "INNER JOIN funcionario f ON a.id_funcionario=f.id_funcionario "
@@ -166,7 +170,9 @@ public class ProductoVirtualDAO {
     
     public ArrayList<ProductoVirtualDTO> getProductosVirtualesCoor(String areaCoor) {
         try {
-           String sql = "SELECT PV.*, V.*, f.id_area_centro, count(*) FROM producto_virtual PV "
+            String sql = "SELECT PV.nom_p_virtual, PV.des_p_virtual, PV.palabras_clave, "
+                    + "V.id_version, V.num_version, V.url_version, V.fecha_envio, "
+                    + "f.id_area_centro, count(*) FROM producto_virtual PV "
                     + "INNER JOIN version V ON PV.id_p_virtual=V.id_p_virtual "
                     + "INNER JOIN autor a ON V.id_version = a.id_version "
                     + "INNER JOIN funcionario f ON a.id_funcionario=f.id_funcionario "
