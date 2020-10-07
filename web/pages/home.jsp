@@ -108,7 +108,7 @@
                                             <div class="card-icon">
                                                 <i class="material-icons">rate_review</i>
                                             </div>
-                                            <p class="card-category">Productos x Calificar</p>
+                                            <p class="card-category">Productos Por Calificar</p>
                                         </a>
                                     </div>
                                     <div class="card-footer">
@@ -134,7 +134,7 @@
                                             <div class="card-icon">
                                                 <i class="material-icons">rate_review</i>
                                             </div>
-                                            <p class="card-category">Productos x Calificar</p>
+                                            <p class="card-category">Productos Por Calificar</p>
                                         </a>
                                     </div>
                                     <div class="card-footer">
