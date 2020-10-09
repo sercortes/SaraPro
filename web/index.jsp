@@ -58,7 +58,7 @@
 			data-sitekey="6LcCvNMZAAAAABDL_85oti_-zBCfnp1hcfRVlpmW"></div>
                   
                 <p class="mt-5 mb-3 text-muted text-center" id="datacenter">&copy; 2020 Públicado en el Datacenter</p>
-                <a class="text-muted text-center" href="./ForgotPassPage"><i id="iconss" class="material-icons">help_outline</i> Olvido Contraseña</a>
+                <a class="text-muted text-center" href="./ForgotPassPage"><i id="iconss" class="material-icons">help_outline</i>¿Olvidó Contraseña?</a>
           </form>
         
 

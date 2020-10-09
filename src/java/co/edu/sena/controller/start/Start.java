@@ -337,7 +337,7 @@ public class Start extends HttpServlet {
         ConexionSer conexions = new ConexionSer();
         InstructoresDAO instructoresDAO = new InstructoresDAO(conexions.getConnection());
 
-        int id = instructoresDAO.isEnableReset(iden, hash);
+        long id = instructoresDAO.isEnableReset(iden, hash);
 
         System.out.println(hash);
         System.out.println(iden);

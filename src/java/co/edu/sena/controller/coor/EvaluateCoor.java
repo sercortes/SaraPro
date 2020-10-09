@@ -71,7 +71,7 @@ public class EvaluateCoor extends HttpServlet {
         evaluacionDTO.setObservacion(comentario);
         evaluacionDTO.setResultado(resultado);
         evaluacionDTO.setIdVersionFK(idVersion);
-        evaluacionDTO.setIdListaChequeoFK("11");
+        evaluacionDTO.setIdListaChequeoFK("17");
         evaluacionDTO.setIdFuncionario(Integer.toString(idUser));
 
         System.out.println(evaluacionDTO.toString());

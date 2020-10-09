@@ -298,10 +298,10 @@ public class InstructoresDAO {
     }
    
      
-        public int isEnableReset(String iden, String hash){
+        public long isEnableReset(String iden, String hash){
      
              try {
-                int id = 0;
+                long id = 0;
             String sql = "SELECT num_documento FROM funcionario WHERE num_documento = ? AND link = md5(?) limit 1";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, iden);
