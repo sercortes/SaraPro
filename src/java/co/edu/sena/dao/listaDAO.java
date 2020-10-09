@@ -180,7 +180,7 @@ public class listaDAO {
             String sql = "SELECT It.*, De.* FROM lista_chequeo Lc " +
                     "INNER JOIN detalles_lista De ON Lc.id_lista_chequeo=De.id_lista_chequeo " +
                     "INNER JOIN item_lista It ON De.id_item_lista=It.id_item_lista " +
-                    "WHERE Lc.id_lista_chequeo = ? ";
+                    "WHERE Lc.id_lista_chequeo = ? ORDER BY De.id_detalles_lista ASC";
             ps = conn.prepareStatement(sql);
             ps.setString(1, idLista);
             

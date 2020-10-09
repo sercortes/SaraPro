@@ -21,12 +21,13 @@ $(document).on('click', '#send', function (e){
             nombre:nombre,
             descripcion:descripcion
         }
-        
+
         arregloItem = arregloItem.sort()
+
          $('#cargas').addClass('is-active')
          $('#send').attr('disabled', true)
                 
-        createList(data, arregloItem)
+        createList(data, arregloItems)
     
 })
 

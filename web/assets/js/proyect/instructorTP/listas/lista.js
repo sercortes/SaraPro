@@ -1,3 +1,5 @@
+var arregloItems = []
+
 $(function(){
     
     let menu = document.getElementById('getList')
@@ -56,10 +58,13 @@ $(function(){
         afterSelect: function (val) {
             this.qs1.cache();
             this.qs2.cache();
+            arregloItems.push(val.toString())
         },
         afterDeselect: function (val) {
             this.qs1.cache();
             this.qs2.cache();
+            var busqueda2 = arregloItems.indexOf(val.toString())
+            arregloItems.splice(busqueda2, 1);
         }
     });
     
