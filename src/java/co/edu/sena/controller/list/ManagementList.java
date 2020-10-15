@@ -205,6 +205,7 @@ public class ManagementList extends HttpServlet {
     private void getItems(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, IOException {
 
         request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         ConexionSer conexions = new ConexionSer();
         listaDAO liDAO = new listaDAO(conexions.getConnection());
 

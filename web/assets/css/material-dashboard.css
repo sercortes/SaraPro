@@ -1,3 +1,10 @@
+.bill-row{
+    width: 5%;
+    color: red;
+}
+#bill-row{
+    width: 5%;
+}
 #iconss{
     vertical-align: -6px;
 }

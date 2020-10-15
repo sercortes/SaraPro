@@ -18,7 +18,7 @@
             <div class="col-lg-12 col-md-12">
                 <div class="card">
                     <div class="card-header card-header-warning">
-                        <h4 class="card-title">Crear listas de chequeo</h4>
+                        <h4 class="card-title">Crear lista de chequeo</h4>
                         <p class="card-category"></p>
                         <input type="hidden" value="${idUser}" id="webpagelink">
                     </div>

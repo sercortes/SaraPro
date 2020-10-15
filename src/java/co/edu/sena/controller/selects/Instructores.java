@@ -12,6 +12,7 @@ import co.edu.sena.dao.CategoriaDAO;
 import co.edu.sena.dao.CategoriasTemasDAO;
 import co.edu.sena.dao.InstructoresDAO;
 import co.edu.sena.dao.ProductoVirtualDAO;
+import co.edu.sena.dto.ProductoVirtualDTO;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -164,13 +165,14 @@ public class Instructores extends HttpServlet {
     private void ProductosVirtuales(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
 
         ConexionSer conexions = new ConexionSer();
         ProductoVirtualDAO productoVirtualDAO = new ProductoVirtualDAO(conexions.getConnection());
 
         String centroCoor = (String) request.getSession().getAttribute("idAreaCentro");
         int idRol = (Integer) request.getSession().getAttribute("idRol");
-        System.out.println("Lista con rol " + idRol);
+        System.out.println("Lista P.V con rol " + idRol);
         ArrayList<?> lista = null;
 
         if (idRol == 2) {

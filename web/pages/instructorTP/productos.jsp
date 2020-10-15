@@ -23,7 +23,7 @@
                     </div>
                     <div class="card-body table-responsive">
 
-                        <table id="example" class="table table-hover table-borderless">
+                        <table id="example" class="table table-hover table-striped table-borderless">
                             <thead class="gris text-center">
                                 <tr class="">
                                     <th scope="col">Nombre</th>
@@ -62,7 +62,9 @@
 <%@include file="/pages/template/footer.jspf"%>
 
 <script src="./assets/js/plugins/jquery.dataTables.min.js"></script>
+
 <script src="./assets/js/proyect/instructorTP/getProductos.js" charset="utf-8"></script>
+
 <script src="./assets/js/proyect/instructorTP/evaluar.js" charset="utf-8"></script>
 <script src="./assets/js/proyect/instructorTP/sendEvaluation.js" charset="utf-8"></script>
 
