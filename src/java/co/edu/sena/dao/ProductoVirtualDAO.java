@@ -340,7 +340,60 @@ public class ProductoVirtualDAO {
         }
     }
     
+       public ArrayList<ProductoVirtualDTO> getProductosLoser() {
+        try {
+            String sql = "SELECT PV.nom_p_virtual, "
+                    + "V.id_version, V.num_version, V.fecha_envio, V.fecha_vigencia, "
+                    + "count(*) FROM producto_virtual PV "
+                    + "INNER JOIN version V ON PV.id_p_virtual=V.id_p_virtual "
+                    + "WHERE V.id_estado IN (9,10) AND V.fecha_vigencia <= NOW() "
+                    + "GROUP BY(PV.id_p_virtual)";
+            ps = conn.prepareStatement(sql);
+            
+            rs = ps.executeQuery();
+            List<ProductoVirtualDTO> list = new ArrayList<ProductoVirtualDTO>();
+            ProductoVirtualDTO productoVirtualDTO;
+            VersioDTO versioDTO;
+            while (rs.next()) {
+                productoVirtualDTO = new ProductoVirtualDTO();
+                
+                productoVirtualDTO.setNombre(rs.getString("nom_p_virtual"));
+                
+                versioDTO = new VersioDTO();
+                versioDTO.setIdVersion(rs.getString("id_version"));
+                versioDTO.setNumVersion(rs.getString("num_version"));
+                versioDTO.setFechaVigencia(rs.getTimestamp("fecha_vigencia"));
+                
+                productoVirtualDTO.setVersioDTO(versioDTO);
+                list.add(productoVirtualDTO);
+            }
+            return (ArrayList<ProductoVirtualDTO>) list;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
     
+       public boolean disabledStatus(VersioDTO versioDTO) throws Exception{
+            try {
+           
+            String sql = "UPDATE version set id_estado = ?, fecha_publicacion = NOW(), fecha_vigencia = NOW() "
+                    + "WHERE id_version = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            
+            ps.setString(1, versioDTO.getIdEstadoFK());
+            ps.setTimestamp(2, versioDTO.getFechaVigencia());
+            ps.setString(3, versioDTO.getIdVersion());
+            
+            int rows = ps.executeUpdate();
+            boolean estado = rows > 0;
+            return estado;
+        } catch (Exception ex) {
+            System.out.println("Error edit " + ex.getMessage());
+            throw new Exception();
+        }
+    }
+       
      public void CloseAll(){
          ConexionSer.close(conn);
         ConexionSer.close(ps);
