@@ -48,6 +48,10 @@
         <servlet-name>CargeMasivo</servlet-name>
         <servlet-class>co.edu.sena.controller.admin.CargeMasivo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CheckServlet</servlet-name>
+        <servlet-class>co.edu.sena.controller.start.CheckServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Start</servlet-name>
         <url-pattern>/Start</url-pattern>
@@ -142,6 +146,10 @@
     <servlet-mapping>
         <servlet-name>CargeMasivo</servlet-name>
         <url-pattern>/RegisterManyUsers</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckServlet</servlet-name>
+        <url-pattern>/CheckServletSSS</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
