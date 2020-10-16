@@ -5,6 +5,7 @@ $(document).on('click', '.sendEvaluation', function (e) {
 
     let aprobados = $("input[type='radio']:checked").val()
     let observacion = $('#observacion').val()
+    let fechaLimite = document.getElementById('fechaLimite').value
 
     let itemsE = []
     let cc = 0
@@ -67,23 +68,47 @@ $(document).on('click', '.sendEvaluation', function (e) {
         $('#noAprueba').prop('checked', false)
         return false
     }
+    
+    if (noAprobado && fechaLimite === '') {
+        $('#tituloAprobar').focus().after("<div class='remove'><font color='red'>Fecha Limite</font><div>")   
+        swal('', 'Selecione una fecha limite!', "info")
+        return false
+    }
+    
+    if (aprobado && fechaLimite === '') {
+        fechaLimite = 'No'
+    }
 
-    console.log('enviar')
+    let fechaActual = new Date().getTime()
+    let fechaIngresada = new Date(fechaLimite).getTime()
 
-    console.log(itemsE)
-    console.log(resultado)
-    console.log(aprobados)
-    console.log(observacion)
+    if (fechaIngresada<=fechaActual) {
+        $('#tituloAprobar').focus().after("<div class='remove'><font color='red'>Seleccione una fecha válida</font><div>")   
+        swal('', 'Selecione una fecha válida!', "info")
+        return false
+    }
+    
+//    let fechaActualTwo = new Date().getTime()+604800000
+   let today = new Date()
+   let fechaActualTwo = new Date(today.getFullYear(), today.getMonth(), today.getDate()+7);
 
+    if (fechaIngresada<=fechaActualTwo) {
+        $('#tituloAprobar').focus().after("<div class='remove'><font color='red'>Recuerde dejar 7 días para la correción</font><div>")   
+        swal('', 'Recuerde dejar 7 días para la correción!', "info")
+        return false
+    }
+    
+    
     let data = {
         'resultado': resultado,
         'idLista': idLista,
         'version': idVersion,
         'observacion': observacion,
+        'fechaLimite': fechaLimite,
         'detallesEvaluacion': JSON.stringify(itemsE)
     }
 
-        send(data)
+       send(data)
 
        $('#evaluate').attr('disabled',true)
        $('#cargas').addClass('is-active');
@@ -91,8 +116,6 @@ $(document).on('click', '.sendEvaluation', function (e) {
 })
 
 function send(data) {
-
-
 
     $.ajax({
         type: 'POST',
@@ -133,3 +156,23 @@ function send(data) {
     })
 
 }
+
+$(document).on('click', '#noAprueba',function(e){
+    
+    let checkBox = document.getElementById('noAprueba')
+    
+    if (checkBox.checked) {
+        $('#fechaDiv').show();
+    }
+    
+})
+
+$(document).on('click', '#Aprueba',function(e){
+    
+    let checkBox = document.getElementById('Aprueba')
+    
+    if (checkBox.checked) {
+        $('#fechaDiv').hide()
+    }
+    
+})

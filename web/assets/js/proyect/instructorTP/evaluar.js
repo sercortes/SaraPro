@@ -19,6 +19,8 @@ $(document).on('click', '.btnEvaluar', function (e) {
     
     $('#listas').show()
     $('#crearLista').show()
+    
+    $('#fechaDiv').hide()
 
 });
 

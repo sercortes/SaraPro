@@ -68,6 +68,11 @@
                                     <input class="checkbox" id="noAprueba" name="aprueba" type="radio" value="off">
                                     <label class="form-check-label pl-1" for="defaultCheck3">No</label>
                                 </div>
+                                
+                                <div class="form-check" id="fechaDiv">
+                                    <input class="checkbox" id="fechaLimite" name="fechaLimite" type="date">
+                                    <label class="form-check-label pl-1" for="defaultCheck3">Fecha limite correción</label>
+                                </div>
 
                             </div>
 

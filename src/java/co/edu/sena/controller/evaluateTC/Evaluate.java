@@ -32,6 +32,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import co.edu.sena.util.ConexionSer;
 import co.edu.sena.util.DJCorreoHTML;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import static java.time.temporal.TemporalAdjusters.lastDayOfYear;
 
 public class Evaluate extends HttpServlet {
 
@@ -61,6 +66,9 @@ public class Evaluate extends HttpServlet {
         String idlista = request.getParameter("idLista");
         String idVersion = request.getParameter("version");
         String observacion = request.getParameter("observacion");
+        String fechaLimite = request.getParameter("fechaLimite");
+
+        System.out.println(fechaLimite);
 
         int res = Integer.parseInt(resultado);
         boolean resp = (res == 1) ? true : false;
@@ -90,7 +98,7 @@ public class Evaluate extends HttpServlet {
         AutorDAO autorDAO = new AutorDAO(conn);
         DetallesNotificacionDAO detallesNotificacionDAO = new DetallesNotificacionDAO(conn);
 
-        DJCorreoHTML dJCorreoHTML = new DJCorreoHTML();
+//        DJCorreoHTML dJCorreoHTML = new DJCorreoHTML();
         ArrayList<InstructorDTO> autores = new ArrayList<>();
         ArrayList<DetallesNotificacionDTO> listaDetallesNotify = new ArrayList<>();
 
@@ -128,15 +136,33 @@ public class Evaluate extends HttpServlet {
             VersioDTO versioDTO = new VersioDTO();
             versioDTO = getVersioDTO(resp, versioDTO, roll);
             versioDTO.setIdVersion(idVersion);
-            versionDAO.updateStatus(versioDTO);
+
+            if (resp) {
+                LocalDate now = LocalDate.now();
+                LocalDate lastday = now.with(lastDayOfYear());
+                Timestamp timestamp = Timestamp.valueOf(lastday.atStartOfDay());
+                timestamp.setHours(23);
+                timestamp.setMinutes(59);
+                timestamp.setSeconds(0);
+                versioDTO.setFechaVigencia(timestamp);
+            } else {
+                Date fechaAc = Date.valueOf(fechaLimite);
+                Timestamp ts = new Timestamp(fechaAc.getTime());
+                ts.setHours(23);
+                ts.setMinutes(59);
+                ts.setSeconds(0);
+                versioDTO.setFechaVigencia(ts);
+            }
 
             System.out.println(versioDTO.toString());
+
+            versionDAO.updateStatus(versioDTO);
 
             NotificacionDTO notificacionDTO = new NotificacionDTO();
             notificacionDTO = getNotificacionDTO(resp, notificacionDTO, roll);
 
 //            if (!resp) {
-                notificacionDTO.setFKProductoVirtual(Integer.toString(idEvaluacion));
+            notificacionDTO.setFKProductoVirtual(Integer.toString(idEvaluacion));
 //            } else {
 //                notificacionDTO.setFKProductoVirtual(idVersion);
 //            }
@@ -159,7 +185,7 @@ public class Evaluate extends HttpServlet {
                 detallesNotificacionDTO.setIdNotificacionFK(Integer.toString(idNotify));
                 listaDetallesNotify.add(detallesNotificacionDTO);
 
-                dJCorreoHTML.NotificacionProducto(item.getCorreo(), nombrePV, notificacionDTO.getDescripcionNotificacion(), nombrePV);
+//                dJCorreoHTML.NotificacionProducto(item.getCorreo(), nombrePV, notificacionDTO.getDescripcionNotificacion(), nombrePV);
             }
 
             for (DetallesNotificacionDTO item : listaDetallesNotify) {

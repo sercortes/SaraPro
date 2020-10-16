@@ -6,6 +6,8 @@
 package co.edu.sena.dto;
 
 import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.LocalDate;
 
 /**
  *
@@ -17,7 +19,7 @@ public class VersioDTO {
     private Date fechaEnvio;
     private Date fechaPublicacion;
     private String numVersion;
-    private Date fechaVigencia;
+    private Timestamp fechaVigencia;
     private String url;
     private String intrucionesInstalacion;
     private String requeInstalacion;
@@ -30,7 +32,7 @@ public class VersioDTO {
     public VersioDTO() {
     }
 
-    public VersioDTO(String idVersion, Date fechaEnvio, Date fechaPublicacion, String numVersion, Date fechaVigencia, String url, String instalacion, String requeInstalacion, String idProductoVirtualFK, String idEstadoFK) {
+    public VersioDTO(String idVersion, Date fechaEnvio, Date fechaPublicacion, String numVersion, Timestamp fechaVigencia, String url, String instalacion, String requeInstalacion, String idProductoVirtualFK, String idEstadoFK) {
         this.idVersion = idVersion;
         this.fechaEnvio = fechaEnvio;
         this.fechaPublicacion = fechaPublicacion;
@@ -79,11 +81,11 @@ public class VersioDTO {
         this.numVersion = numVersion;
     }
 
-    public Date getFechaVigencia() {
+    public Timestamp getFechaVigencia() {
         return fechaVigencia;
     }
 
-    public void setFechaVigencia(Date fechaVigencia) {
+    public void setFechaVigencia(Timestamp fechaVigencia) {
         this.fechaVigencia = fechaVigencia;
     }
 

@@ -48,12 +48,13 @@ public class VersionDAO {
       public boolean updateStatus(VersioDTO versioDTO) throws Exception{
             try {
            
-            String sql = "UPDATE version set id_estado = ?, fecha_publicacion = NOW() "
+            String sql = "UPDATE version set id_estado = ?, fecha_publicacion = NOW(), fecha_vigencia = ? "
                     + "WHERE id_version = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             
             ps.setString(1, versioDTO.getIdEstadoFK());
-            ps.setString(2, versioDTO.getIdVersion());
+            ps.setTimestamp(2, versioDTO.getFechaVigencia());
+            ps.setString(3, versioDTO.getIdVersion());
             
             int rows = ps.executeUpdate();
             boolean estado = rows > 0;
