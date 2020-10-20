@@ -28,6 +28,7 @@ public class VersioDTO {
     private String idEstadoFK;
     
     private String idTipoNotificacion;
+    private String diasFaltantes;
 
     public VersioDTO() {
     }
@@ -145,9 +146,19 @@ public class VersioDTO {
         this.idTipoNotificacion = idTipoNotificacion;
     }
 
+    public String getDiasFaltantes() {
+        return diasFaltantes;
+    }
+
+    public void setDiasFaltantes(String diasFaltantes) {
+        this.diasFaltantes = diasFaltantes;
+    }
+
     @Override
     public String toString() {
-        return "VersioDTO{" + "idVersion=" + idVersion + ", fechaEnvio=" + fechaEnvio + ", fechaPublicacion=" + fechaPublicacion + ", numVersion=" + numVersion + ", fechaVigencia=" + fechaVigencia + ", url=" + url + ", intrucionesInstalacion=" + intrucionesInstalacion + ", requeInstalacion=" + requeInstalacion + ", idProductoVirtualFK=" + idProductoVirtualFK + ", idEstadoFK=" + idEstadoFK + ", idTipoNotificacion=" + idTipoNotificacion + '}';
+        return "VersioDTO{" + "idVersion=" + idVersion + ", fechaEnvio=" + fechaEnvio + ", fechaPublicacion=" + fechaPublicacion + ", numVersion=" + numVersion + ", fechaVigencia=" + fechaVigencia + ", url=" + url + ", intrucionesInstalacion=" + intrucionesInstalacion + ", requeInstalacion=" + requeInstalacion + ", idProductoVirtualFK=" + idProductoVirtualFK + ", idEstadoFK=" + idEstadoFK + ", idTipoNotificacion=" + idTipoNotificacion + ", diasFaltantes=" + diasFaltantes + '}';
     }
+    
+    
     
 }
