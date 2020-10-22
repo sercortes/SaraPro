@@ -123,7 +123,7 @@ public class NotificacionDAO {
                 productoVirtualDTO.setNombre(rs.getString("Nombre"));
                 
                 versioDTO = new VersioDTO();
-                versioDTO.setFechaEnvio(rs.getDate("V.fecha_envio"));
+                versioDTO.setFechaEnvio(rs.getTimestamp("V.fecha_envio"));
                 versioDTO.setIdVersion(rs.getString("V.id_version"));
                 versioDTO.setNumVersion(rs.getString("V.num_version"));
                 versioDTO.setUrl(rs.getString("V.url_version"));

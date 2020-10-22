@@ -23,6 +23,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import co.edu.sena.util.ConexionSer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -66,6 +68,12 @@ public class Instructores extends HttpServlet {
                 case "/getAutoresPro":
 
                     getAutoresPro(request, response);
+
+                    break;
+                    
+                case "/getProductoVirtualIndividual":
+
+                    getProductoVirtualIndividual(request, response);
 
                     break;
 
@@ -247,6 +255,29 @@ public class Instructores extends HttpServlet {
 
     }
 
+    private void getProductoVirtualIndividual(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        
+        try {
+            request.setCharacterEncoding("UTF-8");
+            response.setCharacterEncoding("UTF-8");
+            
+            ConexionSer conexions = new ConexionSer();
+            ProductoVirtualDAO productoVirtualDAO = new ProductoVirtualDAO(conexions.getConnection());
+            
+            String idVersio = request.getParameter("id");
+            
+            ProductoVirtualDTO productoVirtualDTO = productoVirtualDAO.getProductoVirtualIndividual(idVersio);
+            
+            productoVirtualDAO.CloseAll();
+            response.setContentType("application/json");
+            new Gson().toJson(productoVirtualDTO, response.getWriter());
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        
+    }
+    
+    
     /**
      * Returns a short description of the servlet.
      *
@@ -256,5 +287,6 @@ public class Instructores extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 
 }

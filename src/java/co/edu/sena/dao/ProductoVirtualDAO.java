@@ -63,13 +63,15 @@ public class ProductoVirtualDAO {
         
    public ArrayList<ProductoVirtualDTO> getProductosVirtualesTecnico(String centroCoor) {
         try {
-            String sql = "SELECT PV.nom_p_virtual, PV.des_p_virtual, PV.palabras_clave, "
-                    + "V.id_version, V.num_version, V.url_version, V.fecha_envio, "
-                    + "f.id_area_centro, count(*) FROM producto_virtual PV "
-                    + "INNER JOIN version V ON PV.id_p_virtual=V.id_p_virtual "
-                    + "INNER JOIN autor a ON V.id_version = a.id_version "
-                    + "INNER JOIN funcionario f ON a.id_funcionario=f.id_funcionario "
-                    + "WHERE V.id_estado = 3 AND f.id_area_centro = ? GROUP BY(PV.id_p_virtual)";
+            String sql = "SELECT PV.nom_p_virtual, PV.des_p_virtual, PV.palabras_clave, PV.id_p_virtual, "
+                    + "V.id_version, V.num_version, V.fecha_envio, V.id_p_virtual, f.id_area_centro, "
+                    + "(select GROUP_CONCAT(\" \",nom_funcionario, \" \", apellidos) from funcionario fu INNER JOIN "
+                    + "autor a ON fu.id_funcionario = a.id_funcionario where id_version = V.id_version) autores, "
+                    + "count(*) FROM producto_virtual PV \n" +
+                    "INNER JOIN version V ON PV.id_p_virtual=V.id_p_virtual " +
+                    "INNER JOIN autor a ON V.id_version = a.id_version " +
+                    "INNER JOIN funcionario f ON a.id_funcionario=f.id_funcionario " +
+                    "WHERE V.id_estado = 3 AND f.id_area_centro = ? GROUP BY(PV.id_p_virtual)";
             ps = conn.prepareStatement(sql);
             ps.setString(1, centroCoor);
             
@@ -87,8 +89,10 @@ public class ProductoVirtualDAO {
                 versioDTO = new VersioDTO();
                 versioDTO.setIdVersion(rs.getString("id_version"));
                 versioDTO.setNumVersion(rs.getString("num_version"));
-                versioDTO.setUrl(rs.getString("url_version"));
-                versioDTO.setFechaEnvio(rs.getDate("fecha_envio"));
+//                versioDTO.setUrl(rs.getString("url_version"));
+                versioDTO.setFechaEnvio(rs.getTimestamp("fecha_envio"));
+                
+                versioDTO.setAutores(rs.getString("autores"));
                 
                 productoVirtualDTO.setVersioDTO(versioDTO);
                 list.add(productoVirtualDTO);
@@ -97,6 +101,46 @@ public class ProductoVirtualDAO {
         } catch (Exception e) {
             System.out.println(e);
             return null;
+        }
+    }
+   
+    public ProductoVirtualDTO getProductoVirtualIndividual(String ver) throws Exception{
+        
+
+        String sql = "SELECT P.id_p_virtual, P.des_p_virtual, P.palabras_clave, "
+                + "V.fecha_envio, V.num_version, V.url_version, V.id_p_virtual, V.inst_instalacion, V.reqst_instalacion " 
+                + "FROM producto_virtual P INNER JOIN version V ON P.id_p_virtual = V.id_p_virtual "
+                + "WHERE V.id_version = ? LIMIT 1";
+        
+        try{
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, ver);
+            
+           rs = ps.executeQuery();
+           ProductoVirtualDTO productoVirtualDTO = new ProductoVirtualDTO();
+           VersioDTO versioDTO;
+            while (rs.next()) {
+                
+                productoVirtualDTO.setDescripcion(rs.getString("des_p_virtual"));
+                productoVirtualDTO.setPalabrasClave(rs.getString("palabras_clave"));
+                
+                versioDTO = new VersioDTO();
+                versioDTO.setNumVersion(rs.getString("num_version"));
+                versioDTO.setUrl(rs.getString("url_version"));
+                versioDTO.setFechaEnvio(rs.getTimestamp("fecha_envio"));
+                versioDTO.setIntrucionesInstalacion(rs.getString("inst_instalacion"));
+                versioDTO.setRequeInstalacion(rs.getString("reqst_instalacion"));
+                
+                productoVirtualDTO.setVersioDTO(versioDTO);
+
+            }
+            return productoVirtualDTO;  
+        } catch(MySQLIntegrityConstraintViolationException e){
+            System.out.println("D"+e+"D");
+            throw new Exception();
+        }catch(Exception e){
+            System.out.println(e);
+            throw new Exception();
         }
     }
    
@@ -156,7 +200,7 @@ public class ProductoVirtualDAO {
                 versioDTO.setIdVersion(rs.getString("id_version"));
                 versioDTO.setNumVersion(rs.getString("num_version"));
                 versioDTO.setUrl(rs.getString("url_version"));
-                versioDTO.setFechaEnvio(rs.getDate("fecha_envio"));
+                versioDTO.setFechaEnvio(rs.getTimestamp("fecha_envio"));
                 
                 productoVirtualDTO.setVersioDTO(versioDTO);
                 list.add(productoVirtualDTO);
@@ -198,7 +242,7 @@ public class ProductoVirtualDAO {
                 versioDTO.setIdVersion(rs.getString("id_version"));
                 versioDTO.setNumVersion(rs.getString("num_version"));
                 versioDTO.setUrl(rs.getString("url_version"));
-                versioDTO.setFechaEnvio(rs.getDate("fecha_envio"));
+                versioDTO.setFechaEnvio(rs.getTimestamp("fecha_envio"));
                 
                 productoVirtualDTO.setVersioDTO(versioDTO);
                 list.add(productoVirtualDTO);

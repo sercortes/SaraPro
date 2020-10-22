@@ -2,15 +2,15 @@ var arrayNotify = []
 
 $(function () {
 
-//    setTimeout(() => {
-//        barraNotification()
-//    },
-//        3000
-//    );
-    
-    setInterval(() => {
+    setTimeout(() => {
         barraNotification()
-    }, 10000)
+    },
+        1000
+    );
+    
+//    setInterval(() => {
+//        barraNotification()
+//    }, 10000)
 
 })
 
