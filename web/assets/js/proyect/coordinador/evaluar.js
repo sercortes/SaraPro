@@ -16,6 +16,7 @@ $(document).on('click', '.btnEvaluar', function(e){
     
     $('#modalTittle').text(Nombre)
 
+    $('#modalDetails').modal('hide')
     $('#modalC').modal('show')
 
     

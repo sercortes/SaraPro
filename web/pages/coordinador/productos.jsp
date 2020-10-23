@@ -23,15 +23,14 @@
                     </div>
                     <div class="card-body table-responsive">
 
-                        <table id="example" class="table table-striped table-bordered">
+                          <table id="example" class="table table-hover table-striped table-borderless">
                             <thead class="gris text-center">
                                 <tr class="">
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Autores</th>
                                     <th scope="col">Palabras clave</th>
                                     <th scope="col">Fecha Envío</th>
-                                    <th scope="col">Opciones</th>
-                                    <th scope="col">Evaluar</th>
+                                    <th scope="col">Detalles</th>
                                 </tr>
                             </thead>
                             <tfoot class="gris text-center">
@@ -40,8 +39,7 @@
                                     <th>Autores</th>
                                     <th>Palabras clave</th>
                                     <th>Fecha Envío</th>
-                                    <th>Opciones</th>
-                                    <th>Evaluar</th>
+                                    <th>Detalles</th>
                                 </tr>
                             </tfoot>
                         </table>
@@ -52,11 +50,13 @@
             </div>
                     
                     <div id="cargas" class="loader loader-bouncing"></div>  
+                    <input type="hidden" value="${idUser}" id="webpageuser">
 
         </div>
     </div>
 </div>
 <%@include file="/pages/coordinador/modalCalificar.jspf"%>
+<%@include file="/pages/coordinador/modalDetails.jspf"%>
 
 <%@include file="/pages/template/foot.jspf"%>
 <%@include file="/pages/template/footer.jspf"%>
@@ -64,7 +64,10 @@
 <script src="./assets/js/plugins/jquery.dataTables.min.js"></script>
 
 <script src="./assets/js/proyect/coordinador/getProductos.js" charset="utf-8"></script>
+<script src="./assets/js/proyect/coordinador/DetailsPV.js" charset="utf-8"></script>
+
 <script src="./assets/js/proyect/coordinador/evaluar.js" charset="utf-8"></script>
+
 
 <%@include file="/pages/template/validationRols/notifications.jspf"%>
 

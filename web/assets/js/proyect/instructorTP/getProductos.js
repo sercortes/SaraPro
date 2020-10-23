@@ -14,8 +14,6 @@ function queryProducts() {
         url: "./ProductosVirtuales",
         success: function (data) {
 
-            console.log(data)
-            
             generateTable(data)
 
         }

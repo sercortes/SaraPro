@@ -10,6 +10,12 @@
 
 <%@include file="/pages/template/validationRols/validationTP.jspf"%>
 
+<style>
+    .modal {
+  overflow-y:auto;
+}
+</style>
+
 <div class="content">
     <div class="container-fluid">
         <div class="row">

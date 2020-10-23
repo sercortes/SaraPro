@@ -198,14 +198,11 @@ public class Instructores extends HttpServlet {
     private void getAutoresPro(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, IOException {
 
         request.setCharacterEncoding("UTF-8");
-
+        response.setCharacterEncoding("UTF-8");
         ConexionSer conexions = new ConexionSer();
         AutorDAO autorDAO = new AutorDAO(conexions.getConnection());
-
         String idVersio = request.getParameter("id");
-
         ArrayList<?> autores = autorDAO.getAutoresByVersion(idVersio);
-
         autorDAO.CloseAll();
         response.setContentType("application/json");
         new Gson().toJson(autores, response.getWriter());
@@ -215,6 +212,7 @@ public class Instructores extends HttpServlet {
     private void ProductosVirtualesCoor(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
 
         ConexionSer conexions = new ConexionSer();
         ProductoVirtualDAO productoVirtualDAO = new ProductoVirtualDAO(conexions.getConnection());
