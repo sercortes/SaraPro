@@ -104,6 +104,7 @@
         <url-pattern>/ProductosVirtualesCoor</url-pattern>
         <url-pattern>/getSizeNotification</url-pattern>
         <url-pattern>/getProductoVirtualIndividual</url-pattern>
+        <url-pattern>/getDerechosAutor</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>uploadProduct</servlet-name>

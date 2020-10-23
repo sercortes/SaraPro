@@ -79,10 +79,10 @@
                                         <label for="exampleFormControlSelect1">Formato del Archivo</label>
                                         <select class="form-control" name="formatoArchivo" id="formato">
                                             <option value="" selected="selected">Seleccionar...</option>
-                                            <option value="4">Audios</option>
+                                            <option value="1">Vídeo</option>
                                             <option value="2">Documento</option>
                                             <option value="3">Imagen</option>
-                                            <option value="1">Vídeo</option>
+                                            <option value="4">Audios</option>
                                         </select>
                                     </div>
 
@@ -102,80 +102,13 @@
 
                             <h5 class="pt-3">Derechos de Autor</h5>
 
-                            <div class="row">
+                            <div class="row" id="derechosA">
 
-
-                                <div class="form-group col-md-4">
-
-
-                                    <div class="form-check">
-                                        <input class="checkbox" id="r" name="derechosAutor" type="radio" value="r">
-                                        <img class="img-fluid pl-2 pb-1" src="./assets/img/sara/form/1.png">
-                                        <label class="form-check-label" for="defaultCheck1">
-                                            Reconocimiento: El material creado por un autor puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos.
-                                        </label>
-                                    </div>
-
-
-                                </div>
-
-                                <div class="form-group col-md-4">
-
-                                    <div class="form-check">
-                                        <input class="checkbox" id="rs" name="derechosAutor" type="radio" value="rs">
-                                         <img class="img-fluid pl-2 pb-1" src="./assets/img/sara/form/1.png">
-                                        <img class="img-fluid pb-1" src="./assets/img/sara/form/2.png">
-                                        <label class="form-check-label" for="exampleRadios1">
-                                            Reconocimiento - Sin obra derivada: El material creado por un autor puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos. No se pueden realizar obras derivadas.                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="form-group col-md-4">
-
-                                    <div class="form-check">
-                                        <input class="checkbox" id="rn" name="derechosAutor" type="radio" value="rn">
-                                         <img class="img-fluid pl-2 pb-1" src="./assets/img/sara/form/1.png">
-                                        <img class="img-fluid pb-1" src="./assets/img/sara/form/3.png">
-                                        <label class="form-check-label" for="defaultCheck3">
-                                            Reconocimiento - No comercial: El material creado por un autor puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos. No se puede obtener ningún beneficio comercial.
-                                        </label>
-                                    </div>
-
-                                </div>
+                                
 
                             </div>
 
-                            <div class="row">
-
-                                <div class="form-group col-md-4">
-
-                                    <div class="form-check">
-                                        <input class="checkbox" id="rsn" name="derechosAutor" type="radio" value="rsn">
-                                         <img class="img-fluid pl-2 pb-1" src="./assets/img/sara/form/1.png">
-                                        <img class="img-fluid pb-1" src="./assets/img/sara/form/2.png">
-                                        <img class="img-fluid pb-1" src="./assets/img/sara/form/3.png">
-                                        <label class="form-check-label" for="defaultCheck5">
-                                            Reconocimiento - Sin obra derivada - No comercial : El material creado por un autor puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos. No se puede obtener ningún beneficio comercial. No se pueden realizar obras derivadas.
-                                        </label>
-                                    </div>
-
-                                </div>
-
-                                <div class="form-group col-md-4">
-
-                                    <div class="form-check">
-                                        <input class="checkbox" id="rnc" name="derechosAutor" type="radio" value="rnc">
-                                            <img class="img-fluid pl-2 pb-1" src="./assets/img/sara/form/1.png">
-                                        <img class="img-fluid pb-1" src="./assets/img/sara/form/4.png">
-                                        <img class="img-fluid pb-1" src="./assets/img/sara/form/3.png">
-                                        <label class="form-check-label" for="defaultCheck4">
-                                            Reconocimiento - No comercial - Compartir igual : El material creado por un autor puede ser distribuido, copiado y exhibido por terceros si se muestra en los créditos. No se puede obtener ningún beneficio comercial y las obras derivadas tienen que estar bajo los mismos términos de licencia que el trabajo original.
-                                        </label>
-                                    </div>
-
-                                </div>
-
-                            </div> <!-- derechos de autor -->
+                           
                             
                             <div class="container">
 
@@ -212,7 +145,7 @@
                                         </div>
                          
                                     </div>
-
+                                    
                                 </div>
 
                             </div> <!-- cierree input type file -->

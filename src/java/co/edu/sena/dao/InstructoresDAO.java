@@ -8,6 +8,7 @@ package co.edu.sena.dao;
 import co.edu.sena.dto.AreaDTO;
 import co.edu.sena.dto.AutorDTO;
 import co.edu.sena.dto.CentroDTO;
+import co.edu.sena.dto.DerechosAutorDTO;
 import co.edu.sena.dto.InstructorDTO;
 import co.edu.sena.dto.RolDTO;
 import co.edu.sena.dto.TipoDocumento;
@@ -249,6 +250,29 @@ public class InstructoresDAO {
                 list.add(areaDTO);
             }
             return (ArrayList<AreaDTO>) list;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+      
+       
+        public ArrayList<DerechosAutorDTO> getDerechosAutor() {
+        try {
+            String sql = "SELECT id_derecho, nombre, descripcion, imagen FROM derechos_autor";
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            List<DerechosAutorDTO> list = new ArrayList<DerechosAutorDTO>();
+            DerechosAutorDTO derechosAutorDTO;
+            while (rs.next()) {
+                derechosAutorDTO = new DerechosAutorDTO();
+                derechosAutorDTO.setIdDerecho(rs.getString("id_derecho"));
+                derechosAutorDTO.setNombre(rs.getString("nombre"));
+                derechosAutorDTO.setDescripcion(rs.getString("descripcion"));
+                derechosAutorDTO.setImagen(rs.getString("imagen"));
+                list.add(derechosAutorDTO);
+            }
+            return (ArrayList<DerechosAutorDTO>) list;
         } catch (Exception e) {
             System.out.println(e);
             return null;

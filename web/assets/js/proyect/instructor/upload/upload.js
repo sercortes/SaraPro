@@ -5,13 +5,47 @@ $(function(){
    
     autores()
     categorias()
+    derechosA()
     
 })
+
+function derechosA(){
+    
+        $.ajax({
+        type: 'POST',
+        async: true,
+        url:'./getDerechosAutor',
+        success: function(data){
+
+            let str = ``
+            
+            for(var item of data){
+                str+= `<div class="form-group col-md-4">
+                                    <div class="form-check">
+                                        <input class="checkbox" id="r" name="derechosAutor" type="radio" value="${item.idDerecho}">
+                                        <img class="img-fluid pl-2 pb-1" src="${item.imagen}">
+                                        <label class="form-check-label text-justify pr-5" for="defaultCheck1">
+                                           ${item.nombre}:${item.descripcion}
+                                        </label>
+                                    </div>
+                                </div>`
+            }
+            document.getElementById('derechosA').innerHTML = str
+            
+        },
+        error: function(data){
+            console.log('sergio')
+            window.location.replace("./RedirectRol")
+        }
+    })
+    
+}
 
     function categorias(){
         
          $.ajax({
         type: 'POST',
+        async: true,
         url:'./Categorias',
         success: function(data){
 
@@ -106,7 +140,7 @@ $(function(){
         $.ajax({
             type: 'POST',
             url: "./TemasCategorias",
-            async: false,
+            async: true,
             data:{
                 id:tema
             },

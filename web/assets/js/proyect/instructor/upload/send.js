@@ -76,15 +76,6 @@ function clean(){
         $('#formProduct').trigger('reset')
 }
 
-document.getElementById('formProduct').addEventListener('change', e => {
-
-    e.preventDefault()
-     if (!validate(e)) {
-        return false
-    }
-
-})
-
 function validate (e){
     
     e.preventDefault()

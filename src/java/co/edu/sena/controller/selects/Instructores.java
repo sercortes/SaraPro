@@ -94,6 +94,12 @@ public class Instructores extends HttpServlet {
                     getSizeNotification(request, response);
 
                     break;
+                    
+               case "/getDerechosAutor":
+
+                    getDerechosAutor(request, response);
+
+                    break;
 
             }
         } else {
@@ -275,6 +281,17 @@ public class Instructores extends HttpServlet {
         
     }
     
+    private void getDerechosAutor(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, IOException {
+        
+        request.setCharacterEncoding("UTF-8");
+        ConexionSer conexions = new ConexionSer();
+        InstructoresDAO instructoresDAO = new InstructoresDAO(conexions.getConnection());
+        ArrayList<?> aprendices = instructoresDAO.getDerechosAutor();
+        instructoresDAO.CloseAll();
+        response.setContentType("application/json");
+        new Gson().toJson(aprendices, response.getWriter());
+        
+    }
     
     /**
      * Returns a short description of the servlet.
@@ -285,6 +302,5 @@ public class Instructores extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-
+    
 }

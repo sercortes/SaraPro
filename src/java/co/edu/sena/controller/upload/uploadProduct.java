@@ -69,7 +69,7 @@ public class uploadProduct extends HttpServlet {
         ArrayList<InstructorDTO> autoresEmail = new ArrayList<>();
         DJCorreoHTML correoHTML = new DJCorreoHTML();
 
-        ArrayList<DetallesNotificacionDTO> detallesAutoresNotificacion = new ArrayList<>();
+//        ArrayList<DetallesNotificacionDTO> detallesAutoresNotificacion = new ArrayList<>();
 
         String folder = "";
 
