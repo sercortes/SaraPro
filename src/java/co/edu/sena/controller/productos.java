@@ -11,6 +11,7 @@ import co.edu.sena.dao.CategoriaDAO;
 import co.edu.sena.dao.CategoriasTemasDAO;
 import co.edu.sena.dao.InstructoresDAO;
 import co.edu.sena.dao.ProductoVirtualDAO;
+import co.edu.sena.dto.ProductoVirtualDTO;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -55,12 +56,10 @@ public class productos extends HttpServlet {
     private void Productos(HttpServletRequest request, HttpServletResponse response) throws IOException {
         
                 request.setCharacterEncoding("UTF-8");
-                
+                response.setCharacterEncoding("UTF-8");
                 ConexionSer conexions = new ConexionSer();
                 ProductoVirtualDAO productoVirtualDAO = new ProductoVirtualDAO(conexions.getConnection());
-                
-                ArrayList<?> lista = productoVirtualDAO.getProductos();
-
+                ArrayList<ProductoVirtualDTO> lista = productoVirtualDAO.getProductos();
                 productoVirtualDAO.CloseAll();
                 response.setContentType("application/json");
                 new Gson().toJson(lista, response.getWriter());

@@ -1,0 +1,46 @@
+
+
+<div class="modal fade" id="modalDetails" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTittleD">Detalles</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="col-md-12">
+
+                    <p id="description"></p>
+                    <p id="palabrasC"></p>
+                    <p id="fechaE"></p>
+                    <p id="numeroV"></p>
+                    <p id="instrc"></p>
+                    <p id="reqInstrc"></p>
+
+                    <table id="example" class="table table-hover table-striped table-borderless">
+                        <thead class="gris text-center">
+                            <tr class="">
+                                <th scope="col">Autores</th>
+                            </tr>
+                        </thead>
+                        <tbody id="auto">
+                        </tbody>
+                    </table>
+
+                    <div id="download">
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer" id="modalDF">        
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+
+        </div>
+    </div>
+</div>
