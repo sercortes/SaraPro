@@ -5,6 +5,7 @@
  */
 package co.edu.sena.dao;
 
+import co.edu.sena.dto.DerechosAutorDTO;
 import co.edu.sena.dto.ProductoVirtualDTO;
 import co.edu.sena.dto.VersioDTO;
 import co.edu.sena.util.ConexionSer;
@@ -103,10 +104,40 @@ public class ProductoVirtualDAO {
         }
     }
 
+      public DerechosAutorDTO getDerechosAutor(String id) throws Exception {
+
+        String sql = "SELECT nombre, descripcion, imagen from derechos_autor where id_derecho = ? LIMIT 1";
+
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, id);
+
+            rs = ps.executeQuery();
+            DerechosAutorDTO derechosAutorDTO = new DerechosAutorDTO();
+            while (rs.next()) {
+
+                derechosAutorDTO.setNombre(rs.getString("nombre"));
+                derechosAutorDTO.setDescripcion(rs.getString("descripcion"));
+                derechosAutorDTO.setImagen(rs.getString("imagen"));
+                
+            }
+            return derechosAutorDTO;
+        } catch (MySQLIntegrityConstraintViolationException e) {
+            System.out.println("D" + e + "D");
+            throw new Exception();
+        } catch (Exception e) {
+            System.out.println(e);
+            throw new Exception();
+        }
+    }
+
+    
+    
     public ProductoVirtualDTO getProductoVirtualIndividual(String ver) throws Exception {
 
-        String sql = "SELECT P.id_p_virtual, P.des_p_virtual, P.palabras_clave, "
-                + "V.fecha_envio, V.num_version, V.url_version, V.id_p_virtual, V.inst_instalacion, V.reqst_instalacion "
+        String sql = "SELECT P.id_p_virtual, P.des_p_virtual, P.palabras_clave, P.derechosdeautor, "
+                + "V.fecha_envio, V.num_version, V.url_version, V.id_p_virtual, "
+                + "V.inst_instalacion, V.reqst_instalacion "
                 + "FROM producto_virtual P INNER JOIN version V ON P.id_p_virtual = V.id_p_virtual "
                 + "WHERE V.id_version = ? LIMIT 1";
 
@@ -121,6 +152,7 @@ public class ProductoVirtualDAO {
 
                 productoVirtualDTO.setDescripcion(rs.getString("des_p_virtual"));
                 productoVirtualDTO.setPalabrasClave(rs.getString("palabras_clave"));
+                productoVirtualDTO.setDerechosAutor(rs.getString("derechosdeautor"));
 
                 versioDTO = new VersioDTO();
                 versioDTO.setNumVersion(rs.getString("num_version"));

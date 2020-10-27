@@ -63,6 +63,7 @@
 </div>
 <%@include file="/pages/instructorTP/modalCalificar.jspf"%>
 <%@include file="/pages/instructorTP/modalDetails.jspf"%>
+<%@include file="/pages/instructorTP/modalDownload.jspf"%>
 
 <%@include file="/pages/template/foot.jspf"%>
 <%@include file="/pages/template/footer.jspf"%>

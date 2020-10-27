@@ -23,8 +23,8 @@ function derechosA(){
                 str+= `<div class="form-group col-md-4">
                                     <div class="form-check">
                                         <input class="checkbox" id="r" name="derechosAutor" type="radio" value="${item.idDerecho}">
-                                        <img class="img-fluid pl-2 pb-1" src="${item.imagen}">
-                                        <label class="form-check-label text-justify pr-5" for="defaultCheck1">
+                                        <img class="img-fluid pl-3" src="${item.imagen}">
+                                        <label class="form-check-label text-justify" for="defaultCheck1">
                                            ${item.nombre}:${item.descripcion}
                                         </label>
                                     </div>

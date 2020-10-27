@@ -31,9 +31,22 @@ public class VersionDAO {
         this.conn = conn;
     }
     
-     public boolean deleteEvaluations(String id) {
+//     public boolean deleteEvaluations(String id) {
+//        try {
+//            String sql = "DELETE FROM evaluacion_general WHERE id_version = ?";
+//            PreparedStatement ps = conn.prepareStatement(sql);
+//            ps.setString(1, id);
+//            int rows = ps.executeUpdate();
+//            boolean estado = rows > 0;
+//            return estado;
+//        } catch (Exception ex) {
+//            System.out.println(ex.getMessage());
+//            return false;
+//        }
+//    }
+     public boolean updateEvaluations(String id) {
         try {
-            String sql = "DELETE FROM evaluacion_general WHERE id_version = ?";
+            String sql = "UPDATE evaluacion_general set estado = 0 WHERE id_version = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, id);
             int rows = ps.executeUpdate();

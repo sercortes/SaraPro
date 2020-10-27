@@ -96,8 +96,7 @@ public class NotificacionDAO {
        public ArrayList<ProductoVirtualDTO> getCorrecionByInstructor(String idInstructor) {
         try {
             String sql = "SELECT V.num_version, V.fecha_envio, V.id_version, V.url_version, V.id_p_virtual, " +
-                "max(E.id_evaluacion_general) 'id_evaluacion', max(E.fecha_evaluacion) 'E.fecha_evaluacion', "
-              + "max(E.id_funcionario) 'E.id_funcionario', max(E.id_lista_chequeo) 'IdLista', max(ES.nom_estado) 'ES.nom_estado', count(*), " +
+                "E.*, ES.nom_estado, count(*), " +
                 "(select nom_p_virtual from producto_virtual P WHERE id_p_virtual = V.id_p_virtual) 'Nombre', " +
                 "(select concat(nom_funcionario, ' ', apellidos) from " +
                 "funcionario where id_funcionario = E.id_funcionario) 'Evaluador' " +
@@ -106,7 +105,7 @@ public class NotificacionDAO {
                 "INNER JOIN autor A ON V.id_version = A.id_version  " +
                 "INNER JOIN funcionario F ON A.id_funcionario = F.id_funcionario " +
                 "INNER JOIN estado ES ON V.id_estado=ES.id_estado " +
-                "WHERE V.id_estado IN (9,10) AND E.resultado = 0  " +
+                "WHERE V.id_estado IN (9,10) AND E.resultado = 0  AND E.estado = 1 " +
                 "AND F.id_funcionario = ? " +
                 "group by V.id_p_virtual";
             ps = conn.prepareStatement(sql);
@@ -129,11 +128,11 @@ public class NotificacionDAO {
                 versioDTO.setUrl(rs.getString("V.url_version"));
                 
                 evaluacionDTO = new EvaluacionDTO();
-                evaluacionDTO.setIdEvaluacion(rs.getString("id_evaluacion"));
+                evaluacionDTO.setIdEvaluacion(rs.getString("id_evaluacion_general"));
                 evaluacionDTO.setNomFuncionario(rs.getString("Evaluador"));
                 evaluacionDTO.setResultado(rs.getString("ES.nom_estado"));
                 evaluacionDTO.setFechaEvaluacion(rs.getTimestamp("E.fecha_evaluacion"));
-                evaluacionDTO.setIdListaChequeoFK(rs.getString("IdLista"));
+                evaluacionDTO.setIdListaChequeoFK(rs.getString("id_lista_chequeo"));
                 
                 productoVirtualDTO.setEvaluacionDTO(evaluacionDTO);
                 productoVirtualDTO.setVersioDTO(versioDTO);

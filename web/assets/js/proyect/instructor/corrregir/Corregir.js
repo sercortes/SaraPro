@@ -108,6 +108,7 @@ function queryCorrecion() {
 
 function getItemsEvaluation(id){
     
+    console.log('lista')
     console.log(id)
     
     let datos = {

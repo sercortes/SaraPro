@@ -57,6 +57,7 @@
 </div>
 <%@include file="/pages/coordinador/modalCalificar.jspf"%>
 <%@include file="/pages/coordinador/modalDetails.jspf"%>
+<%@include file="/pages/instructorTP/modalDownload.jspf"%>
 
 <%@include file="/pages/template/foot.jspf"%>
 <%@include file="/pages/template/footer.jspf"%>

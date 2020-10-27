@@ -11,6 +11,7 @@ import co.edu.sena.dao.CategoriaDAO;
 import co.edu.sena.dao.CategoriasTemasDAO;
 import co.edu.sena.dao.InstructoresDAO;
 import co.edu.sena.dao.ProductoVirtualDAO;
+import co.edu.sena.dto.DerechosAutorDTO;
 import co.edu.sena.dto.ProductoVirtualDTO;
 import com.google.gson.Gson;
 import java.io.IOException;
@@ -22,6 +23,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import co.edu.sena.util.ConexionSer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -44,11 +47,11 @@ public class productos extends HttpServlet {
                 
                 break;
                 
-//         case "/getAutoresPro":
-//                
-//                getAutoresPro(request, response);
-//                
-//                break;                
+         case "/getDerechoAutor":
+                
+                getDerechoAutor(request, response);
+                
+                break;                
                 
         }
     }
@@ -75,5 +78,24 @@ public class productos extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private void getDerechoAutor(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, IOException {
+        
+        try {
+            request.setCharacterEncoding("UTF-8");
+            response.setCharacterEncoding("UTF-8");
+            ConexionSer conexions = new ConexionSer();
+            ProductoVirtualDAO productoVirtualDAO = new ProductoVirtualDAO(conexions.getConnection());
+            DerechosAutorDTO derechosAutorDTO = productoVirtualDAO.getDerechosAutor(request.getParameter("id"));
+            productoVirtualDAO.CloseAll();
+            response.setContentType("application/json");
+            new Gson().toJson(derechosAutorDTO, response.getWriter());
+        } catch (Exception ex) {
+            
+            System.out.println(ex);
+            
+        }
+        
+    }
     
 }

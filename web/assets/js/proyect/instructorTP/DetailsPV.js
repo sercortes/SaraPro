@@ -46,10 +46,56 @@ function informePV(data) {
     $('#instrc').text('Instrucciones Instalación : ' + data.versioDTO.intrucionesInstalacion)
     $('#reqInstrc').text('Requerimientos Instalación : ' + data.versioDTO.requeInstalacion)
 
-    document.getElementById('download').innerHTML =
-            `<a target="_blank" class="float-right" href="${data.versioDTO.url}" download="">
-             <img src="./assets/img/download.png" class="img-fluid" alt="Responsive image"></a>`
+    getDerechos(data.derechosAutor, data.versioDTO.url)
+    
+    
+}
 
+$(document).on('click', '.btnDown', function(){
+    
+    $('#modalDownload').modal({
+        backdrop: 'static',
+        keyboard: false
+    })
+    
+    $('#modalDownload').modal('show')
+    
+})
+
+function getDerechos(id, url){
+    
+     $.ajax({
+        type: 'POST',
+        async: true,
+        url: "./getDerechoAutor",
+        data: {
+            id: id
+        },
+        success: function (data) {
+
+        $('#tituloDerechos').text('Derechos de Autor:'+data.nombre)
+        $('#descripcionDerechos').text(data.descripcion)
+            document.getElementById('derechosAutor').innerHTML  = 
+                    `<img src="${data.imagen}" class="img-fluid text-center" alt="Responsive image"></a>`
+    
+        document.getElementById('download').innerHTML =
+            `<a class="p-4 pl-2 btnDown" href="#">
+             <img src="./assets/img/download.png" class="img-fluid" alt="Responsive image"></a>`
+            
+        $('#tituloD').text(data.nombre)
+        $('#desD').text(data.descripcion)
+        document.getElementById('imagenDA').innerHTML  = 
+                `<img src="${data.imagen}" class="img-fluid" alt="Responsive image"></a>`
+        document.getElementById('modalDownloadF').innerHTML = 
+                `<a target="_blank" class="btn btn-primary float-right" href="${url}" download="">Descargar</a>`
+
+        },
+        error: function (data) {
+
+
+        }
+    })
+            
 }
 
 function getAutores(id, nombre) {

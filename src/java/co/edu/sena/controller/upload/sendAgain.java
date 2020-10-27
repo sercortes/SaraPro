@@ -40,13 +40,13 @@ import org.apache.commons.io.FileUtils;
  */
 public class sendAgain extends HttpServlet {
 
-    private final String UPLOAD_DIRECTORY = "C:\\glassfish4\\glassfish\\domains\\domain1\\docroot\\files";
-    private final String SERVER_UPLOAD = "http://sarapro.datasena.com:8080/files/";
-    private static final long serialVersionUID = 1L;
-    
-//    private final String UPLOAD_DIRECTORY = "/home/equipo/servers2/glassfish4/glassfish/domains/domain1/docroot/files/";
-//    private final String SERVER_UPLOAD = "http://192.168.0.6:8080/files/";
+//    private final String UPLOAD_DIRECTORY = "C:\\glassfish4\\glassfish\\domains\\domain1\\docroot\\files";
+//    private final String SERVER_UPLOAD = "http://sarapro.datasena.com:8080/files/";
 //    private static final long serialVersionUID = 1L;
+    
+    private final String UPLOAD_DIRECTORY = "/home/equipo/servers2/glassfish4/glassfish/domains/domain1/docroot/files/";
+    private final String SERVER_UPLOAD = "http://192.168.0.6:8080/files/";
+    private static final long serialVersionUID = 1L;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -128,7 +128,8 @@ public class sendAgain extends HttpServlet {
                 }
 
                 versionDAO.updateProductoVirtual(versioDTO);
-//                boolean estado2 = versionDAO.deleteEvaluations(idVer);
+                boolean estado2 = versionDAO.updateEvaluations(idVer);
+                System.out.println("EVALUACION ACTUALIZADA "+estado2);
 
                 connection.commit();
                 new Gson().toJson(1, response.getWriter());

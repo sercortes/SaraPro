@@ -92,7 +92,7 @@ $(document).on('click', '.sendEvaluation', function (e) {
    let today = new Date()
    let fechaActualTwo = new Date(today.getFullYear(), today.getMonth(), today.getDate()+7);
 
-    if (fechaIngresada<=fechaActualTwo) {
+    if (!aprobado && fechaIngresada<=fechaActualTwo) {
         $('#tituloAprobar').focus().after("<div class='remove'><font color='red'>Recuerde dejar 7 días para la correción</font><div>")   
         swal('', 'Recuerde dejar 7 días para la correción!', "info")
         return false
