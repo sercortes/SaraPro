@@ -226,7 +226,7 @@ public class listaDAO {
     
       public ArrayList<ListaItemDTO> getItems() {
         try {
-            String sql = "SELECT id_item_lista, des_item_lista, tipo_item FROM item_lista ORDER BY id_item_lista ASC LIMIT 50";
+            String sql = "SELECT id_item_lista, des_item_lista, tipo_item FROM item_lista ORDER BY id_item_lista DESC LIMIT 50";
             ps = conn.prepareStatement(sql);
             
             rs = ps.executeQuery();

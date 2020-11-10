@@ -57,7 +57,7 @@
                         <div class="row justify-content-md-center">
 
                             <div class="col-md-auto">
-                                <p id="tituloAprobar">El contenido apueba</p>
+                                <p id="tituloAprobar">¿El producto es aprobado?</p>
                                 <div class="form-check">
                                     <input class="checkbox" id="Aprueba" name="aprueba" type="radio" value="on">
                                     <label class="form-check-label pl-1" for="defaultCheck3">Si</label>

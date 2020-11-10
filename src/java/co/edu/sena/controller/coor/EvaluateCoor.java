@@ -183,11 +183,6 @@ public class EvaluateCoor extends HttpServlet {
         return notificacionDTO;
     }
 
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
     public String getStatus(String apro, String rtecnico, String rpedago) {
         String res = "";
         boolean estado = Boolean.parseBoolean(apro);
@@ -216,4 +211,9 @@ public class EvaluateCoor extends HttpServlet {
         return respuesta;
     }
 
+        @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+    
 }

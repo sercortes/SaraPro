@@ -98,7 +98,7 @@ public class Evaluate extends HttpServlet {
         AutorDAO autorDAO = new AutorDAO(conn);
         DetallesNotificacionDAO detallesNotificacionDAO = new DetallesNotificacionDAO(conn);
 
-//        DJCorreoHTML dJCorreoHTML = new DJCorreoHTML();
+        DJCorreoHTML dJCorreoHTML = new DJCorreoHTML();
         ArrayList<InstructorDTO> autores = new ArrayList<>();
         ArrayList<DetallesNotificacionDTO> listaDetallesNotify = new ArrayList<>();
 
@@ -185,7 +185,7 @@ public class Evaluate extends HttpServlet {
                 detallesNotificacionDTO.setIdNotificacionFK(Integer.toString(idNotify));
                 listaDetallesNotify.add(detallesNotificacionDTO);
 
-//                dJCorreoHTML.NotificacionProducto(item.getCorreo(), nombrePV, notificacionDTO.getDescripcionNotificacion(), nombrePV);
+                dJCorreoHTML.NotificacionProducto(item.getCorreo(), nombrePV, notificacionDTO.getDescripcionNotificacion(), nombrePV);
             }
 
             for (DetallesNotificacionDTO item : listaDetallesNotify) {
