@@ -30,8 +30,20 @@
                         </tbody>
                     </table>
 
-                    <div id="download">
-
+                        <p id="tituloDerechos"></p>
+                    <div class="row">
+                        <div id="" class="col-md-8">
+                            <p id="descripcionDerechos" class="text-justify"></p>
+                            <div id="derechosAutor">
+                                
+                            </div>
+                        </div>
+                        <div id="" class="col-md-4">
+                            
+                            <div id="download" class="pt-4">
+                                
+                            </div>
+                        </div>
                     </div>
                 </div>
 

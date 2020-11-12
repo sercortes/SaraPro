@@ -71,7 +71,7 @@ public class ProductoVirtualDAO {
                     + "INNER JOIN version V ON PV.id_p_virtual=V.id_p_virtual "
                     + "INNER JOIN autor a ON V.id_version = a.id_version "
                     + "INNER JOIN funcionario f ON a.id_funcionario=f.id_funcionario "
-                    + "WHERE V.id_estado = 3 AND f.id_area_centro = ? GROUP BY(PV.id_p_virtual)";
+                    + "WHERE V.id_estado = 3 AND f.id_area_centro = ? GROUP BY(PV.id_p_virtual) ORDER BY V.fecha_envio DESC";
             ps = conn.prepareStatement(sql);
             ps.setString(1, centroCoor);
 
@@ -211,7 +211,7 @@ public class ProductoVirtualDAO {
                     + "INNER JOIN version V ON PV.id_p_virtual=V.id_p_virtual "
                     + "INNER JOIN autor a ON V.id_version = a.id_version "
                     + "INNER JOIN funcionario f ON a.id_funcionario=f.id_funcionario "
-                    + "WHERE V.id_estado = 4 AND f.id_area_centro = ? GROUP BY(PV.id_p_virtual)";
+                    + "WHERE V.id_estado = 4 AND f.id_area_centro = ? GROUP BY(PV.id_p_virtual) ORDER BY V.fecha_envio DESC";
             ps = conn.prepareStatement(sql);
             ps.setString(1, areaCoor);
 

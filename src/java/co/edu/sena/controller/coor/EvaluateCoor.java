@@ -42,6 +42,8 @@ public class EvaluateCoor extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+            System.out.println("Cargue masivo no soporta GET");
+            response.sendRedirect(request.getContextPath() + "/Home");
     }
 
     @Override

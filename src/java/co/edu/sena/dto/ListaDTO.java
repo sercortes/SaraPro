@@ -17,6 +17,7 @@ public class ListaDTO {
     
     private String nombre;
     private String creador;
+    private String descripcionGeneral;
 
     public ListaDTO() {
     }
@@ -67,9 +68,17 @@ public class ListaDTO {
         this.creador = creador;
     }
 
+    public String getDescripcionGeneral() {
+        return descripcionGeneral;
+    }
+
+    public void setDescripcionGeneral(String descripcionGeneral) {
+        this.descripcionGeneral = descripcionGeneral;
+    }
+
     @Override
     public String toString() {
-        return "ListaDTO{" + "idLista=" + idLista + ", descripcion=" + descripcion + ", tipoItem=" + tipoItem + ", nombre=" + nombre + ", creador=" + creador + '}';
+        return "ListaDTO{" + "idLista=" + idLista + ", descripcion=" + descripcion + ", tipoItem=" + tipoItem + ", nombre=" + nombre + ", creador=" + creador + ", descripcionGeneral=" + descripcionGeneral + '}';
     }
     
     

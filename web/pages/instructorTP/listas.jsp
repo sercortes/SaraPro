@@ -47,7 +47,7 @@
 
 
                                 </div>
-                                
+
                                 <div class="col-md-6">
 
                                     <div class="form-group">
@@ -61,25 +61,19 @@
 
                                 </div>
 
-
-
                                 <div class="col-md-6">
-
-
 
                                     <hr style="visibility: hidden">
 
-                                    <div class="form-group">
+                                    <div class="form-group col-md-12">
                                         <label for="exampleFormControlInput1">Items</label>
                                         <select required  id="SelectItems" class="autoresMultiselect"  multiple='multiple' title="Busca un autor..">
                                         </select>
                                     </div>
 
-
                                 </div>
 
                             </div> <!-- cierre forrmulario -->
-
 
                             <div class="container pt-3">
 
@@ -87,13 +81,11 @@
 
                                     <div class="col-md-12">
 
-
                                         <div class="custom-file float-right">
 
                                             <button id="send" type="button" class="btn btn-primary float-right">Guardar</button>
 
                                         </div>
-
 
                                     </div>
 
@@ -105,12 +97,77 @@
 
                         </form>
 
+                        <hr class="pt-2">
+
+                        <div class="container"> <!-- container cargue masivo-->
+
+                            <div class="row justify-content-md-center">
+
+                                <div class="col-md-auto">
+
+                                    <h5 class="pt-3">Adjuntar archivo</h5>
+                                    
+                                      <div class="row">
+                            <div class="col-lg-12">
+                                <p>Descargar la siguiente plantilla
+                                    <a class="btn btn-primary btn-sm" href="./assets/files/FormatoListasChequeo.xls">
+                                        <i class="material-icons md-48">cloud_download</i> Descargar</a></p>
+                                <ul>
+                                    <li>
+                                        Recuerde agregar nombre y descripción de la lista
+                                    </li>
+                                    <li>
+                                        Asegúrese de diligenciar de manera correcta de lo contrario el sistema lo reportara
+                                    </li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+                                    
+                                    <form id="formMasivo" action="CargaMasiva" method="POST" enctype="multipart/form-data">
+
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="" id="files" name="files" aria-describedby="inputGroupFileAddon04" >
+                                            </div>
+                                        </div>
+
+                                    </form>
+
+                                </div>
+
+                            </div>
+
+                        </div> <!-- cierree input type file -->
+
+                      
+
+                        <div class="container pt-3">
+
+                            <div class="row justify-content-md-center">
+
+                                <div class="col-md-auto">
+
+                                    <div class="input-group">
+                                        <div class="custom-file float-right">
+
+                                            <button id="botonCargeMas" type="button" class="btn btn-primary">Enviar</button>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>  <!-- cierre container cargue masivo--> 
 
                     </div>
 
                 </div>
             </div>
-                    
+
         </div>
     </div>
 </div>
@@ -122,6 +179,7 @@
 <script src="./assets/js/plugins/jquery.quicksearch.js" charset="utf-8"></script>
 <script src="./assets/js/proyect/instructorTP/listas/lista.js" charset="utf-8"></script>
 <script src="./assets/js/proyect/instructorTP/listas/lista2.js" charset="utf-8"></script>
+<script src="./assets/js/proyect/instructorTP/listas/carge.js" charset="utf-8"></script>
 
 <%@include file="/pages/template/validationRols/notifications.jspf"%>
 

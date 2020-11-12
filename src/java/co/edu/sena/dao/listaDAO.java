@@ -16,6 +16,7 @@ import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationExceptio
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +34,9 @@ public class listaDAO {
     public listaDAO(Connection conn) {
         this.conn = conn;
     }
-    
+
+    public listaDAO() {
+    }
     
      public int insertReturnTwo(ListaDTO listaDTO) throws Exception{
         int productoVirtual = 0;
@@ -119,7 +122,7 @@ public class listaDAO {
         }
     }
     
-         public int insertListaGeneral(ListaDTO listaDTO) throws Exception{
+         public int insertListaGeneral(ListaDTO listaDTO) throws SQLException, Exception{
         int productoVirtual = 0;
         String sql = "INSERT INTO lista_chequeo (nom_lista_chequeo, des_lista_chequeo, Tipo, id_funcionario)"
                 + "VALUES (?, ?, ?, ?)";
@@ -140,7 +143,7 @@ public class listaDAO {
             return productoVirtual;
         } catch (MySQLIntegrityConstraintViolationException e) {
             System.out.println(e);
-            throw new Exception();
+            throw new SQLException();
         } catch (Exception e) {
             System.out.println(e);
            throw new Exception();
@@ -242,6 +245,26 @@ public class listaDAO {
         } catch (Exception e) {
             System.out.println(e);
             return null;
+        }
+    }
+      
+       public int getIDLista(String nombre, String descripcion) {
+        try {
+            int id = 0;
+            
+            String sql = "SELECT id_lista_chequeo FROM lista_chequeo WHERE nom_lista_chequeo = ? AND des_lista_chequeo = ? ";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, nombre);
+            ps.setString(2, descripcion);
+            rs = ps.executeQuery();
+            ListaDTO listaDTO = new ListaDTO();
+            while (rs.next()) {
+                id = rs.getInt("id_lista_chequeo");
+            }
+            return id;
+        } catch (Exception e) {
+            System.out.println(e);
+            return 0;
         }
     }
                

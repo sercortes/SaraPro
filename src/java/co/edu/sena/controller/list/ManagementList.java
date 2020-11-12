@@ -36,6 +36,7 @@ public class ManagementList extends HttpServlet {
             throws ServletException, IOException {
 
         Gson gson = new Gson();
+        if (request.getSession().getAttribute("idUser") != null) {
 
         try {
 
@@ -70,6 +71,11 @@ public class ManagementList extends HttpServlet {
         } catch (Exception ex) {
             gson.toJson(0, response.getWriter());
             System.out.println(ex);
+        }
+        
+        }else{
+            System.out.println("Sesión vencida");
+            response.sendRedirect(request.getContextPath() + "/Home");
         }
 
     }

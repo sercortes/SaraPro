@@ -25,9 +25,15 @@ function queryProducts() {
 function generateTable(data) {
 
     $('#example').dataTable({
-        "processing": false,
+//        "processing": true,
+//        
+        "orderClasses": false,
+        "deferRender": true,
+//        "serverSide": false,
+          
 //        "responsive": true,
-        "order": [[3, "desc"]],
+//        "order": [[3, "desc"]],
+        "order": [],
         "aaData": data,
         "columns": [
             {
