@@ -2,6 +2,7 @@
     width: 5%;
     color: red;
 }
+.modal { overflow: auto !important; }
 #bill-row{
     width: 5%;
 }
