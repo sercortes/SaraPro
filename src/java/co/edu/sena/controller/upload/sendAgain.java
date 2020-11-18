@@ -40,24 +40,27 @@ import org.apache.commons.io.FileUtils;
  */
 public class sendAgain extends HttpServlet {
 
-//    private final String UPLOAD_DIRECTORY = "C:\\glassfish4\\glassfish\\domains\\domain1\\docroot\\files";
-//    private final String SERVER_UPLOAD = "http://sarapro.datasena.com:8080/files/";
-//    private static final long serialVersionUID = 1L;
-    
-    private final String UPLOAD_DIRECTORY = "/home/equipo/servers2/glassfish4/glassfish/domains/domain1/docroot/files/";
-    private final String SERVER_UPLOAD = "http://192.168.0.7:8080/files/";
+    private final String UPLOAD_DIRECTORY = "C:\\glassfish4\\glassfish\\domains\\domain1\\docroot\\files";
+    private final String SERVER_UPLOAD = "http://sarapro.datasena.com:8080/files/";
     private static final long serialVersionUID = 1L;
+    
+//    private final String UPLOAD_DIRECTORY = "/home/equipo/servers2/glassfish4/glassfish/domains/domain1/docroot/files/";
+//    private final String SERVER_UPLOAD = "http://192.168.0.7:8080/files/";
+//    private static final long serialVersionUID = 1L;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+            System.out.println("send again no soporta GET");
+            response.sendRedirect(request.getContextPath() + "/Home");
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+          if (request.getSession().getAttribute("idUser") != null) {
+        
         String idVer = request.getParameter("idVer");
 
         VersioDTO versioDTO = new VersioDTO();
@@ -157,6 +160,13 @@ public class sendAgain extends HttpServlet {
 
         }
 
+    }else{
+          
+            System.out.println("Sesión vencida");
+            response.sendRedirect(request.getContextPath() + "/Home");
+              
+          }
+        
     }
 
     @Override

@@ -8,6 +8,9 @@ $(function () {
 
 function queryProducts() {
 
+
+    $('#cargas').addClass('is-active');
+
     $.ajax({
         type: 'POST',
         async: true,
@@ -15,6 +18,7 @@ function queryProducts() {
         success: function (data) {
 
             generateTable(data)
+            $('#cargas').removeClass('is-active');
 
         }
 
