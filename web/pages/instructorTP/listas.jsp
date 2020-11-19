@@ -109,15 +109,15 @@
                                     
                                       <div class="row">
                             <div class="col-lg-12">
-                                <p>Descargar la siguiente plantilla
+                                <p>Descargar el siguiente formato.
                                     <a class="btn btn-primary btn-sm" href="./assets/files/FormatoListasChequeo.xls">
                                         <i class="material-icons md-48">cloud_download</i> Descargar</a></p>
                                 <ul>
                                     <li>
-                                        Recuerde agregar nombre y descripción de la lista
+                                        Recuerde agregar nombre y descripción en el formato.
                                     </li>
                                     <li>
-                                        Asegúrese de diligenciar de manera correcta de lo contrario el sistema lo reportara
+                                        Asegúrese de diligenciar de manera correcta, de lo contrario el sistema lo reportará.
                                     </li>
                                 </ul>
 

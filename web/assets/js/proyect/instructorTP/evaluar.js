@@ -36,9 +36,11 @@ function getListas() {
         async: true,
         url: "./getList",
         success: function (data) {
-
+            
             $('#listas').dataTable({
+                "pageLength": 5,
                 "bDestroy": true,
+                "order": [],
                 "processing": true,
                 "aaData": data,
                 "columns": [

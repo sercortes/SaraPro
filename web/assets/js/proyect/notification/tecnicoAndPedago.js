@@ -5,7 +5,7 @@ $(function () {
     setTimeout(() => {
         barraNotification()
     },
-        1000
+        10000
     );
     
 //    setInterval(() => {

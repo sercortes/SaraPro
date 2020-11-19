@@ -67,7 +67,8 @@ public class listaDAO {
        public ArrayList<ListaDTO> getListaTecnico(String centroCoor) {
         try {
             String sql = "SELECT l.*, f.nom_funcionario, f.apellidos FROM lista_chequeo l "
-                    + "INNER JOIN funcionario f ON l.id_funcionario = f.id_funcionario WHERE l.Tipo = 1 AND f.id_area_centro = ?";
+                    + "INNER JOIN funcionario f ON l.id_funcionario = f.id_funcionario "
+                    + "WHERE l.Tipo = 1 AND f.id_area_centro = ? ORDER BY l.fecha_creacion DESC";
             ps = conn.prepareStatement(sql);
             ps.setString(1, centroCoor);
             
@@ -96,7 +97,8 @@ public class listaDAO {
         public ArrayList<ListaDTO> getListaPedago(String centroCoor) {
         try {
             String sql = "SELECT l.*, f.nom_funcionario, f.apellidos FROM lista_chequeo l "
-                    + "INNER JOIN funcionario f ON l.id_funcionario = f.id_funcionario WHERE l.Tipo = 2 AND f.id_area_centro = ?";
+                    + "INNER JOIN funcionario f ON l.id_funcionario = f.id_funcionario "
+                    + "WHERE l.Tipo = 2 AND f.id_area_centro = ? ORDER BY l.fecha_creacion DESC";
             ps = conn.prepareStatement(sql);
             ps.setString(1, centroCoor);
             

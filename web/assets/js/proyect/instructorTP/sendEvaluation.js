@@ -58,7 +58,7 @@ $(document).on('click', '.sendEvaluation', function (e) {
     }
 
     if (aprobado && resultado === 0) {
-        swal('', 'Apruebe todos los items!', "info")
+        swal('', 'Por favor ¡Apruebe todos los items!', "info")
         $('#Aprueba').prop('checked', false)
         return false
     }
@@ -71,7 +71,7 @@ $(document).on('click', '.sendEvaluation', function (e) {
     
     if (noAprobado && fechaLimite === '') {
         $('#tituloAprobar').focus().after("<div class='remove'><font color='red'>Fecha Limite</font><div>")   
-        swal('', 'Selecione una fecha limite!', "info")
+        swal('', '¡Por favor, Selecione una fecha limite!', "info")
         return false
     }
     
@@ -90,11 +90,11 @@ $(document).on('click', '.sendEvaluation', function (e) {
     
 //    let fechaActualTwo = new Date().getTime()+604800000
    let today = new Date()
-   let fechaActualTwo = new Date(today.getFullYear(), today.getMonth(), today.getDate()+7);
+   let fechaActualTwo = new Date(today.getFullYear(), today.getMonth(), today.getDate()+3);
 
     if (!aprobado && fechaIngresada<=fechaActualTwo) {
         $('#tituloAprobar').focus().after("<div class='remove'><font color='red'>Recuerde dejar 7 días para la correción</font><div>")   
-        swal('', 'Recuerde dejar 7 días para la correción!', "info")
+        swal('', '¡Recuerde, son 3 días mínimos para la correción!', "info")
         return false
     }
     

@@ -4,7 +4,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalTittleD">Detalles</h5>
+                <h5 class="modal-title" id="modalTittleD">Detalles producto virtual</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -13,6 +13,7 @@
 
                 <div class="col-md-12">
 
+                    <p id="tittleP"></p>
                     <p id="description"></p>
                     <p id="palabrasC"></p>
                     <p id="fechaE"></p>
@@ -30,9 +31,9 @@
                         </tbody>
                     </table>
 
-                        <p id="tituloDerechos"></p>
                     <div class="row">
                         <div id="" class="col-md-8">
+                        <p id="tituloDerechos"></p>
                             <p id="descripcionDerechos" class="text-justify"></p>
                             <div id="derechosAutor">
                                 

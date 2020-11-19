@@ -6,15 +6,15 @@ $(document).on('click', '.btnDetails', function (e) {
         backdrop: 'static',
         keyboard: false
     })
-    $('#modalTittleD').text(nombre)
+//    $('#modalTittleD').text(nombre)
     $('#modalDetails').modal('show')
 
-    getPV(idVersion)
+    getPV(idVersion, nombre)
     getAutores(idVersion, nombre)
 
 });
 
-function getPV(id) {
+function getPV(id, nombre) {
 
     $.ajax({
         type: 'POST',
@@ -26,7 +26,7 @@ function getPV(id) {
         success: function (data) {
 
             console.log(data)
-            informePV(data)
+            informePV(data, nombre)
 
         },
         error: function (data) {
@@ -37,14 +37,15 @@ function getPV(id) {
 
 }
 
-function informePV(data) {
+function informePV(data, nombre) {
 
-    $('#description').text('Descripción : ' + data.descripcion)
-    $('#palabrasC').text('Palabras Clave : ' + data.palabrasClave)
-    $('#fechaE').text('Fecha Envío : ' + data.versioDTO.fechaEnvio)
-    $('#numeroV').text('# Versión : ' + data.versioDTO.numVersion)
-    $('#instrc').text('Instrucciones Instalación : ' + data.versioDTO.intrucionesInstalacion)
-    $('#reqInstrc').text('Requerimientos Instalación : ' + data.versioDTO.requeInstalacion)
+    $('#tittleP').html('<b>Nombre : </b>'+nombre)
+    $('#description').html('<b>Descripción : </b>' + data.descripcion)
+    $('#palabrasC').html('<b>Palabras Clave : </b>' + data.palabrasClave)
+    $('#fechaE').html('<b>Fecha Envío : </b>' + data.versioDTO.fechaEnvio)
+    $('#numeroV').html('<b># Versión : </b>' + data.versioDTO.numVersion)
+    $('#instrc').html('<b>Instrucciones Instalación : </b>' + data.versioDTO.intrucionesInstalacion)
+    $('#reqInstrc').html('<b>Requerimientos Instalación : </b>' + data.versioDTO.requeInstalacion)
 
     getDerechos(data.derechosAutor, data.versioDTO.url)
     
@@ -73,14 +74,14 @@ function getDerechos(id, url){
         },
         success: function (data) {
 
-        $('#tituloDerechos').text('Derechos de Autor:'+data.nombre)
+        $('#tituloDerechos').html("<b>Derechos de Autor : </b>"+data.nombre)
         $('#descripcionDerechos').text(data.descripcion)
             document.getElementById('derechosAutor').innerHTML  = 
-                    `<img src="${data.imagen}" class="img-fluid text-center" alt="Responsive image"></a>`
+                    `<img src="${data.imagen}" class="img-fluid" style="max-height: 70px;" alt="Responsive image"></a>`
     
         document.getElementById('download').innerHTML =
-            `<a class="p-4 pl-2 btnDown" href="#">
-             <img src="./assets/img/download.png" class="img-fluid" alt="Responsive image"></a>`
+            `<a class="btnDown" href="#">
+             <img src="./assets/img/download.png" class="img-fluid mx-auto d-block" alt="Responsive image"></a>`
             
         $('#tituloD').text(data.nombre)
         $('#desD').text(data.descripcion)
