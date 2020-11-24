@@ -30,6 +30,9 @@ public class InstructorDTO {
     private String idCentroFK;
     
     private ArrayList<RolDTO> rolDTO;
+    
+    private String area;
+    private String centro;
 
     public InstructorDTO() {
     }
@@ -167,9 +170,25 @@ public class InstructorDTO {
         this.linkHash = linkHash;
     }
 
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    public String getCentro() {
+        return centro;
+    }
+
+    public void setCentro(String centro) {
+        this.centro = centro;
+    }
+
     @Override
     public String toString() {
-        return "InstructorDTO{" + "idFuncionario=" + idFuncionario + ", idTipoDocumento=" + idTipoDocumento + ", numDocumento=" + numDocumento + ", nomFuncionario=" + nomFuncionario + ", apeFuncionario=" + apeFuncionario + ", correo=" + correo + ", cargo=" + cargo + ", telefono=" + telefono + ", pass=" + pass + ", idEstadoFK=" + idEstadoFK + ", idAreaCentroFK=" + idAreaCentroFK + ", linkHash=" + linkHash + ", idCentroFK=" + idCentroFK + ", rolDTO=" + rolDTO + '}';
+        return "InstructorDTO{" + "idFuncionario=" + idFuncionario + ", idTipoDocumento=" + idTipoDocumento + ", numDocumento=" + numDocumento + ", nomFuncionario=" + nomFuncionario + ", apeFuncionario=" + apeFuncionario + ", correo=" + correo + ", cargo=" + cargo + ", telefono=" + telefono + ", pass=" + pass + ", idEstadoFK=" + idEstadoFK + ", idAreaCentroFK=" + idAreaCentroFK + ", linkHash=" + linkHash + ", idCentroFK=" + idCentroFK + ", rolDTO=" + rolDTO + ", area=" + area + ", centro=" + centro + '}';
     }
     
 }

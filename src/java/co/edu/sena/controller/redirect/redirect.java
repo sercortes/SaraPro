@@ -126,6 +126,13 @@ public class redirect extends HttpServlet {
                 rd.forward(request, response);
 
                 break;
+                
+             case "/Users":
+
+                rd = request.getRequestDispatcher("/pages/admin/users.jsp");
+                rd.forward(request, response);
+
+                break;
 
         }
 

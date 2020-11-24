@@ -16,6 +16,7 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -51,19 +52,21 @@ public class RegistrerUsers extends HttpServlet {
                 newUser(request, response);
 
                 break;
+                
+             case "/getAllUsers":
+
+                getAllUsers(request, response);
+
+                break;
+                
+             case "/getUserOne":
+
+                getUserOne(request, response);
+
+                break;
 
         }
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
     private void newUser(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, IOException {
 
@@ -163,8 +166,48 @@ public class RegistrerUsers extends HttpServlet {
 
     }
 
-    public String generatePassword() {
-        return RandomStringUtils.random(10, 0, 20, true, true, "qw32rfHIJk9iQ8Ud7h0X".toCharArray());
+  
+
+    private void getAllUsers(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, IOException {
+        
+         request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
+        ConexionSer conexions = new ConexionSer();
+        InstructoresDAO productoVirtualDAO = new InstructoresDAO(conexions.getConnection());
+
+        ArrayList<?> lista = productoVirtualDAO.getFuncionarios();
+
+        productoVirtualDAO.CloseAll();
+        response.setContentType("application/json");
+        new Gson().toJson(lista, response.getWriter());
+        
     }
 
+    
+      public String generatePassword() {
+        return RandomStringUtils.random(10, 0, 20, true, true, "qw32rfHIJk9iQ8Ud7h0X".toCharArray());
+    }
+      
+          @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+    private void getUserOne(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, IOException {
+        
+          request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
+        ConexionSer conexions = new ConexionSer();
+        InstructoresDAO productoVirtualDAO = new InstructoresDAO(conexions.getConnection());
+
+        InstructorDTO instructorDTO = productoVirtualDAO.getFuncionarioOne(request.getParameter("idUser"));
+
+        productoVirtualDAO.CloseAll();
+        response.setContentType("application/json");
+        new Gson().toJson(instructorDTO, response.getWriter());
+        
+    }
+      
 }

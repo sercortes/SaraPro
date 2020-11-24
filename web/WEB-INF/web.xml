@@ -83,6 +83,7 @@
         <url-pattern>/Error404</url-pattern>
         <url-pattern>/Error500</url-pattern>
         <url-pattern>/ForgotPassPage</url-pattern>
+        <url-pattern>/Users</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Selects</servlet-name>
@@ -149,6 +150,8 @@
     <servlet-mapping>
         <servlet-name>RegistrerUsers</servlet-name>
         <url-pattern>/newUser</url-pattern>
+        <url-pattern>/getUserOne</url-pattern>
+        <url-pattern>/getAllUsers</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CargeMasivo</servlet-name>
