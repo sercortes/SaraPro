@@ -41,9 +41,13 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 public class uploadProduct extends HttpServlet {
 
-    private final String UPLOAD_DIRECTORY = "C:\\glassfish4\\glassfish\\domains\\domain1\\docroot\\files";
+    private final String UPLOAD_DIRECTORY = "/home/sarapro/Descargas/glassfish4/glassfish/domains/domain1/docroot/files/";
     private final String SERVER_UPLOAD = "http://sarapro.datasena.com:8080/files/";
     private static final long serialVersionUID = 1L;
+    
+//    private final String UPLOAD_DIRECTORY = "C:\\glassfish4\\glassfish\\domains\\domain1\\docroot\\files";
+//    private final String SERVER_UPLOAD = "http://sarapro.datasena.com:8080/files/";
+//    private static final long serialVersionUID = 1L;
 //    private final String UPLOAD_DIRECTORY = "/home/equipo/servers2/glassfish4/glassfish/domains/domain1/docroot/files/";
 //    private final String SERVER_UPLOAD = "http://192.168.0.9:8080/files/";
 //    private static final long serialVersionUID = 1L;

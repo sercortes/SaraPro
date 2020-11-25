@@ -31,14 +31,13 @@ import org.apache.commons.lang3.RandomStringUtils;
  */
 public class RegistrerUsers extends HttpServlet {
 
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        System.out.println("registreUsers no soporta GET");
+        response.sendRedirect(request.getContextPath() + "/Home");
     }
 
-   
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -52,16 +51,22 @@ public class RegistrerUsers extends HttpServlet {
                 newUser(request, response);
 
                 break;
-                
-             case "/getAllUsers":
+
+            case "/getAllUsers":
 
                 getAllUsers(request, response);
 
                 break;
-                
-             case "/getUserOne":
+
+            case "/getUserOne":
 
                 getUserOne(request, response);
+
+                break;
+
+            case "/UpdateRoles":
+
+                UpdateRoles(request, response);
 
                 break;
 
@@ -71,7 +76,7 @@ public class RegistrerUsers extends HttpServlet {
     private void newUser(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, IOException {
 
         request.setCharacterEncoding("UTF-8");
-        
+
         response.setContentType("application/json");
 
         String nombre = request.getParameter("nombre");
@@ -133,7 +138,7 @@ public class RegistrerUsers extends HttpServlet {
             for (String item : arreglo) {
                 areaCentroDAO.insertRoles(item, Integer.toString(idUsuario));
             }
-            
+
             DJCorreoHTML correoHTML = new DJCorreoHTML();
             correoHTML.mandarCorreo(email, "ACCESO A SARA PRO", pass);
 
@@ -166,11 +171,9 @@ public class RegistrerUsers extends HttpServlet {
 
     }
 
-  
-
     private void getAllUsers(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, IOException {
-        
-         request.setCharacterEncoding("UTF-8");
+
+        request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
         ConexionSer conexions = new ConexionSer();
@@ -181,22 +184,21 @@ public class RegistrerUsers extends HttpServlet {
         productoVirtualDAO.CloseAll();
         response.setContentType("application/json");
         new Gson().toJson(lista, response.getWriter());
-        
+
     }
 
-    
-      public String generatePassword() {
+    public String generatePassword() {
         return RandomStringUtils.random(10, 0, 20, true, true, "qw32rfHIJk9iQ8Ud7h0X".toCharArray());
     }
-      
-          @Override
+
+    @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 
     private void getUserOne(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, IOException {
-        
-          request.setCharacterEncoding("UTF-8");
+
+        request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
         ConexionSer conexions = new ConexionSer();
@@ -207,7 +209,47 @@ public class RegistrerUsers extends HttpServlet {
         productoVirtualDAO.CloseAll();
         response.setContentType("application/json");
         new Gson().toJson(instructorDTO, response.getWriter());
-        
+
     }
-      
+
+    private void UpdateRoles(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        Gson gson = new Gson();
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
+        ConexionSer conexions = new ConexionSer();
+        Connection conn = conexions.getConnection();
+        String items = request.getParameter("roles");
+        
+        InstructoresDAO instructoresDAO = null;
+        AreaCentroDAO areaCentroDAO = null;
+        try {
+            if (conn.getAutoCommit()) {
+                conn.setAutoCommit(false);
+            }
+            instructoresDAO = new InstructoresDAO(conn);
+            areaCentroDAO = new AreaCentroDAO(conn);
+            instructoresDAO.deleteRoles(request.getParameter("idUser"));
+            String[] arregloRoles = items.split(",");
+            for(String item : arregloRoles){
+                areaCentroDAO.insertRoles(item, request.getParameter("idUser"));
+            }
+            conn.commit();
+            gson.toJson(1, response.getWriter());
+        } catch (Exception ex) {
+            try {
+                conn.rollback();
+            } catch (SQLException ex1) {
+                System.out.println(ex1);
+            }
+            System.out.println("ROLL back");
+            System.out.println(ex);
+            gson.toJson(0, response.getWriter());
+        } finally {
+            instructoresDAO.CloseAll();
+        }
+
+    }
+
 }

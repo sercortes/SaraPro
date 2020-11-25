@@ -19,14 +19,15 @@
                         <p id="email"></p>
                         <p id="area"></p>
                         <p id="centro"></p>
-                        
-                          <div class="form-group">
-                                        <label for="exampleFormControlInput1">Roles</label>
-                                        <select required  id="selectRoles" class="autoresMultiselect"  multiple='multiple' title="Busca un autor..">
-                                     
-                                        </select>
-                          </div>
 
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Roles no establecidos</label>
+                            <select required  id="selectRoles" class="multi"  multiple='multiple' title="Busca un autor..">
+                            </select>
+                        </div>
+
+                        <button id="botonRoles" type="button" class="btn btn-primary">Agregar</button>
+                        
                     </div>
 
                 </div>

@@ -152,6 +152,7 @@
         <url-pattern>/newUser</url-pattern>
         <url-pattern>/getUserOne</url-pattern>
         <url-pattern>/getAllUsers</url-pattern>
+        <url-pattern>/UpdateRoles</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CargeMasivo</servlet-name>

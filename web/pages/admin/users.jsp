@@ -67,4 +67,5 @@
 
 <script src="./assets/js/proyect/admin/users/users.js" charset="utf-8"></script>
 <script src="./assets/js/proyect/admin/users/add.js" charset="utf-8"></script>
+<script src="./assets/js/proyect/admin/users/rol.js" charset="utf-8"></script>
 

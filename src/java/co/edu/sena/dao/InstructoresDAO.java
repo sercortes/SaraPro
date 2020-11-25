@@ -228,6 +228,19 @@ public class InstructoresDAO {
             return null;
         }
     }
+      public boolean deleteRoles(String id) throws Exception{
+        try {
+            String sql = "DELETE FROM rol_funcionariologin WHERE id_funcionario = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, id);
+            int rows = ps.executeUpdate();
+            boolean estado = rows > 0;
+            return estado;
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            throw new Exception();
+        }
+    }
 
     
     public ArrayList<RolDTO> getRoles(String idFuncionario) {
