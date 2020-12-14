@@ -93,7 +93,7 @@ $(document).on('click', '.sendEvaluation', function (e) {
    let fechaActualTwo = new Date(today.getFullYear(), today.getMonth(), today.getDate()+3);
 
     if (!aprobado && fechaIngresada<=fechaActualTwo) {
-        $('#tituloAprobar').focus().after("<div class='remove'><font color='red'>Recuerde dejar 7 días para la correción</font><div>")   
+        $('#tituloAprobar').focus().after("<div class='remove'><font color='red'>Recuerde dejar mínimo 3 días para la correción</font><div>")   
         swal('', '¡Recuerde, son 3 días mínimos para la correción!', "info")
         return false
     }

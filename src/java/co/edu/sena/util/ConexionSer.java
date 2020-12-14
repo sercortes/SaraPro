@@ -15,7 +15,7 @@ public class ConexionSer {
 
     private static String bd = "saradb";
     private static String user = "root";
-    private static String pass = "";
+    private static String pass = "ShellcyForever_1995*";
     private static String url = "jdbc:mysql://localhost/" + bd +"?useUnicode=true&amp;characterEncoding=utf8";
     private Connection conn = null;
     

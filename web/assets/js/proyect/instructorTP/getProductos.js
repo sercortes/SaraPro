@@ -2,14 +2,12 @@ $(function () {
 
     let menu = document.getElementById('getProducts')
     menu.classList.add('active')
+    $('#cargas').addClass('is-active');
     queryProducts()
 
 })
 
 function queryProducts() {
-
-
-    $('#cargas').addClass('is-active');
 
     $.ajax({
         type: 'POST',
