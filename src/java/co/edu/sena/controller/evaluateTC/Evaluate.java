@@ -32,6 +32,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import co.edu.sena.util.ConexionSer;
 import co.edu.sena.util.DJCorreoHTML;
+import java.io.UnsupportedEncodingException;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.LocalDate;
@@ -55,7 +56,22 @@ public class Evaluate extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+           if (request.getSession().getAttribute("idUser") != null) {
 
+               chechEvaluation(request, response);
+
+           }else{
+           
+                  System.out.println("Sesión vencida");
+                  response.sendRedirect(request.getContextPath() + "/Home");
+            
+           }
+        
+    }
+
+    private void chechEvaluation(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, IOException {
+       
         int id = (Integer) request.getSession().getAttribute("idUser");
         String idUser = Integer.toString(id);
         int roll = (Integer) request.getSession().getAttribute("idRol");
@@ -214,10 +230,10 @@ public class Evaluate extends HttpServlet {
             autorDAO.CloseAll();
             detallesNotificacionDAO.CloseAll();
         }
-
+        
     }
 
-    public VersioDTO getVersioDTO(boolean aprobado, VersioDTO versioDTO, int rol) throws Exception {
+     public VersioDTO getVersioDTO(boolean aprobado, VersioDTO versioDTO, int rol) throws Exception {
 
         if (!aprobado) {
 
@@ -278,15 +294,10 @@ public class Evaluate extends HttpServlet {
         return notificacionDTO;
 
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+    
     @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
+    
 }
